@@ -126,21 +126,19 @@ def process_scaffold(npn):
     return res
 
 
-def find_phages(filename):
+def find_phages(npn_filename):
     # type: (str) -> list[(str, str, list[dict])]
 
-    with open(filename) as f:
-        lines = f.read().split("\n")
+    with open(npn_filename) as f:
+        scaffolds_npns = (x.strip().split(' ') for x in f if x.strip())
 
-    scaffolds_npns = [x.split(' ') for x in lines if x]
+        scaffold_phages = []
 
-    scaffold_phages = []
-
-    for scaffold, npn in scaffolds_npns:
-        phages = process_scaffold(npn)
-        if phages:
-            scaffold_phages.append(
-                (scaffold, npn, phages)
-            )
+        for scaffold, npn in scaffolds_npns:
+            phages = process_scaffold(npn)
+            if phages:
+                scaffold_phages.append(
+                    (scaffold, npn, phages)
+                )
 
     return scaffold_phages
