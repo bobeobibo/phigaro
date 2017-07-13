@@ -9,7 +9,7 @@ def main():
     p.add_argument('npn_file')
 
     args = p.parse_args()
-    phigaro.find_phage(args)
+    phigaro.find_phage(args.npn_file)
 
 if __name__ == '__main__':
     main()
