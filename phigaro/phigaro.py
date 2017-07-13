@@ -1,5 +1,6 @@
 from __future__ import print_function, absolute_import
 
+import csv
 import math
 from phigaro import const
 
@@ -85,50 +86,84 @@ def find_phage_end(sequence, i_end):  # find last phage protein in sequence
     return i + 1
 
 
-def find_phage(filename):
+def convert_npn(npn):
+    # type: (str)->(list[int], list[int)
+
+    kkz = []
+    ar_positions = []
+
+    for i, letter in enumerate(npn):
+        if letter == 'P':
+            kkz.append(1)
+        elif letter == 'r':
+            ar_positions.append(i)
+        else:
+            kkz.append(0)
+    return kkz, ar_positions
+
+
+def process_scaffold(npn):
+    # type: (str, str)->list[dict[str, str]]
+    kkz, ar_positions = convert_npn(npn)
+
+    grad = count_grad(kkz, const.WINDOW_SIZE)
+    norm_grad = count_norm_grad(grad, const.WINDOW_SIZE, const.MIN_PHAGE_IN_WINDOW)
+    phages = get_phages(kkz, norm_grad)
+
+    # res = {
+    #     'phage': False,
+    #     'pro_phage': False,
+    #     'ar_phage': False,
+    # }
+    res = []
+
+    # res['phage'] = True
+    # if ar_positions:
+    #     pass
+    for phage in phages:
+        # if ar_positions:
+        #     print(scaffold, npn[phage['start']:phage['end'] + 1])
+        # if phage['end'] - phage['start'] > 0.8 * len(kkz):  # this is not nessesary
+        #     print("It is a phage")
+        # else:
+        #     print("It is a prophage")
+        # ar_here = False
+        # for ar_pos in ar_positions:
+        #     if (ar_pos >= (phage['start'] - 2)) and (ar_pos <= (phage['end'] + 2)):
+        #         ar_here = True
+        #         print("AR-gene inside")
+        # if ar_here:
+        #     count_ar_phage += 1
+
+        ar_here = any(
+            phage['end'] + 2 >= pos >= phage['start'] - 2
+            for pos in ar_positions
+        )
+
+        res.append({
+            'start': phage['start'],
+            'end': phage['end'],
+            'is_pro_phage': phage['end'] - phage['start'] < 0.8 * len(kkz),
+            'ar_here': ar_here
+        })
+    return res
+
+
+def find_phages(filename):
+    # type: (str) -> list[(str, str, list[dict])]
+
     with open(filename) as f:
         lines = f.read().split("\n")
 
-    scaffolds = [x.split(' ')[0] for x in lines if x]
-    npn = [x.split(' ')[1] for x in lines if x]
+    scaffolds_npns = [x.split(' ') for x in lines if x]
 
-    kkz = list()
+    scaffold_phages = []
 
-    count_phage = 0
-    count_ar_phage = 0
-
-    for i in range(len(npn)):
-        kkz.append(list())
-        count = 0
-        ar_positions = []
-        for letter in npn[i]:
-            if letter == 'P':
-                kkz[i].append(1)
-            elif letter == 'r':
-                ar_positions.append(count)
-            else:
-                kkz[i].append(0)
-            count += 1
-        grad = count_grad(kkz[i], const.WINDOW_SIZE)
-        norm_grad = count_norm_grad(grad, const.WINDOW_SIZE, const.MIN_PHAGE_IN_WINDOW)
-        phages = get_phages(kkz[i], norm_grad)
-
+    for scaffold, npn in scaffolds_npns:
+        phages = process_scaffold(npn)
         if phages:
-            count_phage += 1
-            if ar_positions:
-                pass
-            for jj in phages:
-                if ar_positions:
-                    print(scaffolds[i], npn[i][jj['start']:jj['end'] + 1])
-                if jj['end'] - jj['start'] > 0.8 * len(kkz[i]):  # this is not nessesary
-                    print("It is a phage")
-                else:
-                    print("It is a prophage")
-                ar_here = False
-                for zz in ar_positions:
-                    if (zz >= (jj['start'] - 2)) and (zz <= (jj['end'] + 2)):
-                        ar_here = True
-                        print("AR-gene inside")
-                if ar_here == True:
-                    count_ar_phage += 1
-    print(count_phage, count_ar_phage)
+            scaffold_phages.append(
+                (scaffold, npn, phages)
+            )
+
+    return scaffold_phages
