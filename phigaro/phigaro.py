@@ -85,27 +85,6 @@ def find_phage_end(sequence, i_end):  # find last phage protein in sequence
     return i + 1
 
 
-# def findendofrange(i_start, nrmgr):
-#     i = i_start
-#     while nrmgr[i] != 0 and i < len(nrmgr) - 1:
-#         i += 1
-#     return i - 1
-
-
-# def find_fage_start(iStart, lin):
-#     i = iStart
-#     while lin[i] == 0:
-#         i += 1
-#     return i - 1
-
-
-# def find_fage_end(iEnd, lin):
-#     i = iEnd
-#     while lin[i] == 0:
-#         i -= 1
-#     return i + 1
-
-
 def find_phage(filename):
     with open(filename) as f:
         lines = f.read().split("\n")
