@@ -1,6 +1,5 @@
 from __future__ import print_function, absolute_import
 
-import csv
 import math
 from phigaro import const
 
@@ -95,10 +94,10 @@ def convert_npn(npn):
     for i, letter in enumerate(npn):
         if letter == 'P':
             kkz.append(1)
-        elif letter == 'r':
-            ar_positions.append(i)
         else:
             kkz.append(0)
+        if letter == 'r':
+            ar_positions.append(i)
     return kkz, ar_positions
 
 
@@ -110,31 +109,9 @@ def process_scaffold(npn):
     norm_grad = count_norm_grad(grad, const.WINDOW_SIZE, const.MIN_PHAGE_IN_WINDOW)
     phages = get_phages(kkz, norm_grad)
 
-    # res = {
-    #     'phage': False,
-    #     'pro_phage': False,
-    #     'ar_phage': False,
-    # }
     res = []
 
-    # res['phage'] = True
-    # if ar_positions:
-    #     pass
     for phage in phages:
-        # if ar_positions:
-        #     print(scaffold, npn[phage['start']:phage['end'] + 1])
-        # if phage['end'] - phage['start'] > 0.8 * len(kkz):  # this is not nessesary
-        #     print("It is a phage")
-        # else:
-        #     print("It is a prophage")
-        # ar_here = False
-        # for ar_pos in ar_positions:
-        #     if (ar_pos >= (phage['start'] - 2)) and (ar_pos <= (phage['end'] + 2)):
-        #         ar_here = True
-        #         print("AR-gene inside")
-        # if ar_here:
-        #     count_ar_phage += 1
-
         ar_here = any(
             phage['end'] + 2 >= pos >= phage['start'] - 2
             for pos in ar_positions
