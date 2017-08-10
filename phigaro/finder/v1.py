@@ -1,7 +1,35 @@
 from __future__ import print_function, absolute_import
 
+from .base import AbstractFinder, Phage
 import math
-from phigaro import const
+
+WINDOW_SIZE = 37  # optimize this
+MIN_PHAGE_IN_WINDOW = 14  # optimize this
+
+
+class V1Finder(AbstractFinder):
+    def __init__(self, window_size=WINDOW_SIZE, min_phage_in_window=MIN_PHAGE_IN_WINDOW):
+        self.window_size = window_size
+        self.min_phage_in_window = min_phage_in_window
+
+    def find_phages(self, bacteria_npn):
+        kkz, ar_positions = convert_npn(bacteria_npn)
+
+        grad = count_grad(kkz, self.window_size)
+        norm_grad = count_norm_grad(grad, self.window_size, self.min_phage_in_window)
+        phages = get_phages(kkz, norm_grad)
+
+        for phage in phages:
+            # ar_here = any(
+            #     phage['end'] + 2 >= pos >= phage['start'] - 2
+            #     for pos in ar_positions
+            # )
+
+            yield Phage(
+                begin=phage['start'],
+                end=phage['end'],
+                is_prophage=phage['end'] - phage['start'] < 0.8 * len(kkz),
+            )
 
 
 def count_grad(sequence, window_size):
@@ -86,7 +114,7 @@ def find_phage_end(sequence, i_end):  # find last phage protein in sequence
 
 
 def convert_npn(npn):
-    # type: (str)->(list[int], list[int)
+    # type: (str)->(list[int], list[int])
 
     kkz = []
     ar_positions = []
@@ -101,44 +129,3 @@ def convert_npn(npn):
     return kkz, ar_positions
 
 
-def process_scaffold(npn):
-    # type: (str, str)->list[dict[str, str]]
-    kkz, ar_positions = convert_npn(npn)
-
-    grad = count_grad(kkz, const.WINDOW_SIZE)
-    norm_grad = count_norm_grad(grad, const.WINDOW_SIZE, const.MIN_PHAGE_IN_WINDOW)
-    phages = get_phages(kkz, norm_grad)
-
-    res = []
-
-    for phage in phages:
-        ar_here = any(
-            phage['end'] + 2 >= pos >= phage['start'] - 2
-            for pos in ar_positions
-        )
-
-        res.append({
-            'start': phage['start'],
-            'end': phage['end'],
-            'is_pro_phage': phage['end'] - phage['start'] < 0.8 * len(kkz),
-            'ar_here': ar_here
-        })
-    return res
-
-
-def find_phages(npn_filename):
-    # type: (str) -> list[(str, str, list[dict])]
-
-    with open(npn_filename) as f:
-        scaffolds_npns = (x.strip().split(' ') for x in f if x.strip())
-
-        scaffold_phages = []
-
-        for scaffold, npn in scaffolds_npns:
-            phages = process_scaffold(npn)
-            if phages:
-                scaffold_phages.append(
-                    (scaffold, npn, phages)
-                )
-
-    return scaffold_phages
