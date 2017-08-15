@@ -1,0 +1,13 @@
+genemark:
+  bin: software/MetaGeneMark_linux_64/mgm/gmhmmp
+  mod_path: software/MetaGeneMark_linux_64/mgm/MetaGeneMark_v1.mod
+hmmer:
+  bin: software/hmmer/hmmer-3.1b2-linux-intel-x86_64/binaries/hmmsearch
+#  pvog_path: software/hmmer/data/InoviridaevogHMMprofiles.all.hmm
+  pvog_path: software/hmmer/data/allprofiles.hmm
+  e_value_threshold: 1.0e-5
+phigaro:
+  window_len: 34
+  threshold_min: 5.341108
+  threshold_max: 7.571429
+
