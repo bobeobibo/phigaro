@@ -1,24 +1,26 @@
-import sys
-import uuid
-
-import yaml
 import argparse
 import logging
 import multiprocessing
+import os
+import sys
+import uuid
+from os.path import join
 
+import yaml
 
 from phigaro.context import Context
 from phigaro.scheduling.path import sample_name
+from phigaro.scheduling.runner import run_tasks_chain
 from phigaro.scheduling.task.gene_mark import GeneMarkTask
 from phigaro.scheduling.task.hmmer import HmmerTask
 from phigaro.scheduling.task.run_phigaro import RunPhigaroTask
-from phigaro.scheduling.runner import make_tasks_chain, run_tasks_chain
 
 
 def main():
+    default_config_path = join(os.getenv('HOME'), '.phigaro.yml')
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--fasta-file', help='Scaffolds')
-    parser.add_argument('-c', '--config', default='config.yml', help='config file')
+    parser.add_argument('-f', '--fasta-file', help='Scaffolds', required=True)
+    parser.add_argument('-c', '--config', default=default_config_path, help='config file')
     parser.add_argument('-v', '--verbose', action='store_true')
     parser.add_argument('-t', '--threads',
                         type=int,
