@@ -18,8 +18,11 @@ from phigaro.scheduling.task.run_phigaro import RunPhigaroTask
 
 def main():
     default_config_path = join(os.getenv('HOME'), '.phigaro.yml')
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--fasta-file', help='Scaffolds', required=True)
+    parser = argparse.ArgumentParser(
+        description='Phigaro is a scalable command-line tool for predictions phages and prophages '
+                    'from nucleid acid sequences (including metagenomes) and '
+                    'is based on phage genes HMMs and a smoothing window algorithm.', )
+    parser.add_argument('-f', '--fasta-file', help='Assembly scaffolds\contigs or full genomes', required=True)
     parser.add_argument('-c', '--config', default=default_config_path, help='config file')
     parser.add_argument('-v', '--verbose', action='store_true')
     parser.add_argument('-t', '--threads',
@@ -34,7 +37,6 @@ def main():
     logging.getLogger('sh.command').setLevel(logging.WARN)
 
     with open(args.config) as f:
-        # context = Context().load(yaml.load(f))
         config = yaml.load(f)
 
     filename = args.fasta_file
@@ -66,4 +68,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
