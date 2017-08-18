@@ -1,5 +1,6 @@
-from .base import AbstractFinder, Phage
+from builtins import range
 
+from .base import AbstractFinder, Phage
 from functools import partial
 import numpy as np
 

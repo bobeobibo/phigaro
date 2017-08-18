@@ -17,7 +17,7 @@ class MetaGeneMarkNotFound(Exception):
 class MetaGeneMarkKeyNotFound(Exception):
     message = "Please update your MetaGeneMark key file: "+ \
               "http://topaz.gatech.edu/GeneMark/license_download.cgi . " + \
-              "You can download the “key” file only. "
+              "You can download the \"key\" file only. "
 
 
 class HMMERNotFound(Exception):

@@ -1,4 +1,4 @@
-from os.path import join, basename
+from os.path import join, basename, exists
 from os import makedirs, unlink
 import re
 
@@ -20,7 +20,8 @@ def remove(*items):
 
 def directory(*items):
     dir_name = path(*items)
-    makedirs(dir_name, exist_ok=True)
+    if not exists(dir_name):
+        makedirs(dir_name)
     return dir_name
 
 

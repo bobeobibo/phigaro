@@ -1,3 +1,4 @@
+from builtins import super
 import csv
 from itertools import groupby
 
@@ -33,8 +34,8 @@ class RunPhigaroTask(AbstractTask):
 
     def read_gene_coords(self):
         def extract_coords(gene_str):
-            *_, begin, end = gene_str.split('|')
-            return int(begin), int(end)
+            tokens = gene_str.split('|')
+            return int(tokens[-2]), int(tokens[-1])
 
         with open(self.gene_mark_task.output()) as f:
             genes_scaffolds = (
