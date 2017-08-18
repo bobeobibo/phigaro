@@ -11,7 +11,8 @@ setup(name='phigaro',
                 ],
       entry_points={
           'console_scripts': [
-              'phigaro = phigaro.cli.batch:main'
+              'phigaro = phigaro.cli.batch:main',
+              'phigaro-help = phigaro.cli.helper:main',
           ]
-      }, install_requires=['plotly', 'numpy', 'six', 'sh', 'marshmallow', 'singleton']
+      }, install_requires=['numpy', 'six', 'sh', 'singleton', 'PyYAML']
 )
