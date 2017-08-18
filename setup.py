@@ -4,7 +4,10 @@ setup(name='phigaro',
       description='Phigaro is a scalable command-line tool for predictions phages and prophages '
                   'from nucleid acid sequences (including metagenomes) and '
                   'is based on phage genes HMMs and a smoothing window algorithm.',
-      version='0.1.1',
+      version='0.1.1a',
+      # author='Greg Ward',
+      # author_email='gward@python.net',
+      # url='https://www.python.org/sigs/distutils-sig/',
       packages=['phigaro',
                 'phigaro.finder',
                 'phigaro.cli',

@@ -1,4 +1,4 @@
-# Phigaro v. 0.1.1
+# Phigaro v. 0.1.1a
 Phigaro is a scalable command-line tool for predictions phages and prophages from nucleid acid sequences (including metagenomes) and is based on phage genes HMMs and a smoothing window algorithm.
 
 ## Requirements
@@ -6,7 +6,7 @@ Note that in order to run Phigaro, you need to have MetaGeneMark and HMMER insta
 To install MetaGenemark, download it at http://topaz.gatech.edu/Genemark/license_download.cgi and follow the instructions.
 To install HMMER, download it at http://hmmer.org/
 
-##Installation
+## Installation
 
 ```
 sudo -H python3 setup.py install
@@ -25,7 +25,7 @@ optional arguments:
                         config file
   -v, --verbose
   -t THREADS, --threads THREADS
-                        num of threads (default is num of CPUs=4)
+                        num of threads (default is num of CPUs)
 ```
 
 Running time depends on the size of your input data and the number of CPUs used.
