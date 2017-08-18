@@ -1,7 +1,10 @@
 from setuptools import setup
 
 setup(name='phigaro',
-      version='0.1.0',
+      description='Phigaro is a scalable command-line tool for predictions phages and prophages '
+                  'from nucleid acid sequences (including metagenomes) and '
+                  'is based on phage genes HMMs and a smoothing window algorithm.',
+      version='0.1.1',
       packages=['phigaro',
                 'phigaro.finder',
                 'phigaro.cli',
@@ -12,7 +15,7 @@ setup(name='phigaro',
       entry_points={
           'console_scripts': [
               'phigaro = phigaro.cli.batch:main',
-              'phigaro-help = phigaro.cli.helper:main',
+              'phigaro-setup = phigaro.cli.helper:main',
           ]
       }, install_requires=['numpy', 'six', 'sh', 'singleton', 'PyYAML']
 )
