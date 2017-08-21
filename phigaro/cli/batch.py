@@ -21,10 +21,11 @@ from phigaro.scheduling.task.run_phigaro import RunPhigaroTask
 
 
 def parse_substitute_output(subs):
+    subs = subs or []
     res = {}
     for sub in subs:
         task_name, output = sub.split(":")
-        res[task_name] = DummyTask(output)
+        res[task_name] = DummyTask(output, task_name)
     return res
 
 
