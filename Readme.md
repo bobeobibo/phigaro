@@ -34,10 +34,10 @@ optional arguments:
                         num of threads (default is num of CPUs)
 ```
 Running time depends on the size of your input data and the number of CPUs used.
-The mean running time for a fasta file of ???MB is ... minutes.
+The approximate running time for a fasta file of 20MB is about 7-8 minutes.
 
 ## Output
-The output looks li
+The output is in .bed format
 
 ## Modus operandi
 ORFs and corresponging proteins are predicted from the input .fasta file using MetaGeneMark. Phage genes are predicted with pVOG Hidden Markov Models that can be downloaded stand-alone from http://dmk-brain.ecn.uiowa.edu/pVOGs/. Each contig is represented as a sequence of phage and non-phage genes. A smoothing window algorithm determines regions with high density of phage genes and prophage boundaries.
