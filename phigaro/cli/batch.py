@@ -6,7 +6,7 @@ import multiprocessing
 import os
 import sys
 import uuid
-from os.path import join
+from os.path import join, exists
 
 import yaml
 
@@ -19,14 +19,15 @@ from phigaro.scheduling.task.run_phigaro import RunPhigaroTask
 
 
 def main():
-    default_config_path = join(os.getenv('HOME'), '.phigaro.yml')
+    default_config_path = join(os.getenv('HOME'), '.phigaro', 'config.yml')
     parser = argparse.ArgumentParser(
         description='Phigaro is a scalable command-line tool for predictions phages and prophages '
                     'from nucleid acid sequences (including metagenomes) and '
-                    'is based on phage genes HMMs and a smoothing window algorithm.', )
+                    'is based on phage genes HMMs and a smoothing window algorithm.',
+    )
     parser.add_argument('-f', '--fasta-file', help='Assembly scaffolds\contigs or full genomes', required=True)
     parser.add_argument('-c', '--config', default=default_config_path, help='config file')
-    parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('-v', '--verbose', action='store_true', help='print debug information (for developers)')
     parser.add_argument('-t', '--threads',
                         type=int,
                         default=multiprocessing.cpu_count(),
@@ -38,7 +39,15 @@ def main():
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARN)
     logging.getLogger('sh.command').setLevel(logging.WARN)
 
+    logger = logging.getLogger(__name__)
+
+    if not exists(args.config):
+        # TODO: pretty message
+        print('Please create config file using phigaro-setup script')
+        exit(1)
+
     with open(args.config) as f:
+        logger.info('Using config file: {}'.format(args.config))
         config = yaml.load(f)
 
     filename = args.fasta_file
