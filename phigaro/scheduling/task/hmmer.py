@@ -72,6 +72,8 @@ class HmmerTask(AbstractTask):
                 #     print(i)
 
                 for scaffold, group in groupby(it, key=lambda t: t[1]):
+                    if scaffold not in hmm_res:
+                        continue
                     scaffold_res = hmm_res[scaffold]
 
                     is_phage_it = (
