@@ -16,3 +16,6 @@ class DummyTask(AbstractTask):
 
     def output(self):
         return self._output
+
+    def clean(self):
+        pass

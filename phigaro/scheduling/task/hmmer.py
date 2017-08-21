@@ -28,7 +28,6 @@ class HmmerTask(AbstractTask):
         self.hmmer = (
             sh.Command(self.config['hmmer']['bin'])
         )
-        # self._tmp_hmmer_out = self.file('{}.hmmer_out'.format(self.sample))
 
     def output(self):
         return self.file('{}.npn'.format(self.sample))

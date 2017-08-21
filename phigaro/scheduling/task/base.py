@@ -1,7 +1,9 @@
 import abc
+from os import unlink
 from shutil import rmtree
 
 import six
+from os.path import exists
 
 from phigaro.context import Context
 from phigaro.scheduling.path import directory, file, path
@@ -42,7 +44,9 @@ class AbstractTask(object):
         return file(self.task_name, *items)
 
     def clean(self):
-        rmtree(path(self.task_name))
+        out = self.output()
+        if exists(out):
+            unlink(out)
 
 
 

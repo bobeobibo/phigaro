@@ -47,15 +47,17 @@ def main():
                     'from nucleid acid sequences (including metagenomes) and '
                     'is based on phage genes HMMs and a smoothing window algorithm.',
     )
-    parser.add_argument('-f', '--fasta-file', help='Assembly scaffolds\contigs or full genomes', required=True)
+    parser.add_argument('-f', '--fasta-file', help='Assembly scaffolds\contigs or full genomes. Required', required=True)
     parser.add_argument('-c', '--config', default=default_config_path, help='config file')
     parser.add_argument('-v', '--verbose', action='store_true', help='print debug information (for developers)')
+    parser.add_argument('-o', '--output')
     parser.add_argument('-t', '--threads',
                         type=int,
                         default=multiprocessing.cpu_count(),
                         help='num of threads ('
                              'default is num of CPUs={})'.format(multiprocessing.cpu_count()))
 
+    parser.add_argument('--no-cleanup', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('-S', '--substitute-output', action='append', help=argparse.SUPPRESS)
 
     args = parser.parse_args()
@@ -96,17 +98,24 @@ def main():
                                    )
     run_phigaro_task = create_task(substitutions, RunPhigaroTask, gene_mark_task=gene_mark_task, parse_hmmer_task=parse_hmmer_task)
 
-    output_file = run_tasks_chain([
+    tasks = [
         gene_mark_task,
         hmmer_task,
         parse_hmmer_task,
         run_phigaro_task
-    ])
+    ]
+    task_output_file = run_tasks_chain(tasks)
 
-    with open(output_file) as f:
+    with open(task_output_file) as f:
+        out_f = open(args.output, 'w') if args.output else sys.stdout
         for line in f:
-            sys.stdout.write(line)
+            out_f.write(line)
+        if out_f is sys.stdout:
+            out_f.close()
 
+    if not args.no_cleanup:
+        for t in tasks:
+            t.clean()
 
 if __name__ == '__main__':
     main()
