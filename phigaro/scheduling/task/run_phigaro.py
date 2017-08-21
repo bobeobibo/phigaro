@@ -73,5 +73,5 @@ class RunPhigaroTask(AbstractTask):
                     for phage in phages:
                         begin = genes_coords[phage.begin][0]
                         end = genes_coords[phage.end][1]
-                        writer.writerow((scaffold, begin, end, phage.begin, phage.end))
+                        writer.writerow((scaffold, begin, end))
 
