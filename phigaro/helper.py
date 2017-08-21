@@ -36,6 +36,7 @@ class SetupHelper(object):
         options = [
             s.rstrip()
             for s in options
+            if s
         ]
         if len(options) == 1:
             return options[0]

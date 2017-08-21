@@ -4,7 +4,7 @@ setup(name='phigaro',
       description='Phigaro is a scalable command-line tool for predictions phages and prophages '
                   'from nucleid acid sequences (including metagenomes) and '
                   'is based on phage genes HMMs and a smoothing window algorithm.',
-      version='0.1.3.1',
+      version='0.1.3.2',
       author='E.Starikova, N.Pryanichnikov',
       author_email='hed.robin@gmail.com',
       url='https://github.com/lpenguin/phigaro',
