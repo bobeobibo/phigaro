@@ -86,7 +86,9 @@ def find_gm_key():
 
 def setup_mgm():
     mgm_location = find_gmhmmp_bin()
+    print('Found MetaGeneMark binary in: {}'.format(mgm_location))
     mod_file = find_mgm_mod_file(dirname(mgm_location))
+    print('Found MetaGeneMark model in: {}'.format(mod_file))
     gm_key_home = join(HOME, '.gm_key')
 
     if not exists(gm_key_home) or not is_gm_key_valid(gm_key_home):
@@ -117,6 +119,7 @@ def setup_hmmer():
         except sh.ErrorReturnCode_1:
             raise HMMERNotFound()
 
+    print('Found HMMER binary in: {}'.format(hmmsearch_location))
     return {
             'bin': hmmsearch_location,
             'pvog_path': 'software/hmmer/data/allprofiles.hmm',

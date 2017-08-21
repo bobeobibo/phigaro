@@ -38,10 +38,10 @@ def main():
 
     config['hmmer']['pvog_path'] = os.path.join(pvogs_dir, 'allpvoghmms')
 
-    print("Found MetaGeneMark in: {}".format(config['genemark']['bin']))
-    print("Found MetaGeneMark model in: {}".format(config['genemark']['mod_path']))
+    # print("Found MetaGeneMark in: {}".format(config['genemark']['bin']))
+    # print("Found MetaGeneMark model in: {}".format(config['genemark']['mod_path']))
     # print("Found MetaGeneMark key in: {}".format(config['genemark']['valid_key']))
-    print("Found HMMER in: {}".format(config['hmmer']['bin']))
+    # print("Found HMMER in: {}".format(config['hmmer']['bin']))
     print("HMMER model in: {}".format(config['hmmer']['pvog_path']))
 
     if not exists(pvogs_dir):
