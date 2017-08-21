@@ -10,7 +10,7 @@ Also note that you need `locate` to successfully run setup. It is pre-installed 
 ## Installation
 
 ```
-sudo -H python3 setup.py install
+sudo -H pip3 install phigaro
 ```
 then create a config file with:
 ```
@@ -34,7 +34,7 @@ optional arguments:
                         num of threads (default is num of CPUs)
 ```
 Running time depends on the size of your input data and the number of CPUs used.
-The approximate running time for a fasta file of 20MB is about 7-8 minutes.
+The approximate running time for a metagenomic assembly file of 150MB is about 20 minutes.
 
 ## Output
 The output is in .bed format
