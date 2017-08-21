@@ -1,4 +1,4 @@
-# Phigaro v. 0.1.1a
+# Phigaro v. 0.1.3
 Phigaro is a scalable command-line tool for predictions phages and prophages from nucleid acid sequences (including metagenomes) and is based on phage genes HMMs and a smoothing window algorithm.
 
 ## Requirements
@@ -9,7 +9,7 @@ To install HMMER, download it at http://hmmer.org/
 ## Installation
 
 ```
-sudo -H python3 setup.py install
+sudo -H pip install phigaro
 ```
 
 ## Usage
