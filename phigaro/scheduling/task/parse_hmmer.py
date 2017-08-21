@@ -55,7 +55,7 @@ class ParseHmmerTask(AbstractTask):
             for scaffold, name, evalue in it:
                 if scaffold not in hmm_res:
                     hmm_res[scaffold] = {}
-                hmm_res[scaffold][name] = 1 if evalue < max_evalue else 0
+                hmm_res[scaffold][name] = 1 if evalue <= max_evalue else 0
 
         with open(self.genemark_task.output()) as f:
             with open(self.output(), 'w') as of:
