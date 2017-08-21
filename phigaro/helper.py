@@ -31,6 +31,33 @@ class HMMERNotFound(HelperException):
     message = "No HMMER found. Please download HMMER package from here: http://hmmer.org/download.html "
 
 
+def select_from_many(message, options):
+    options = [
+        s.rstrip()
+        for s in options
+    ]
+    if len(options) == 1:
+        return options[0]
+
+    print(message)
+    while True:
+        res = None
+
+        for i, option in enumerate(options):
+            print("[{}] {}".format(i + 1, option))
+        option_num = input('Choose your option (Enter for {}): '.format(options[0]))
+        if option_num == '':
+            option_num = '1'
+        if option_num.isdecimal():
+            option_num = int(option_num) - 1
+            if 0 <= option_num < len(options):
+                res = options[option_num]
+        if res is None:
+            print('Please select valid option number ({} to {})'.format(1, len(options)))
+            continue
+        return res
+
+
 def locate(*args, **kwargs):
     # TODO: refactor this to class
     global is_updated_db
@@ -51,15 +78,20 @@ def find_gmhmmp_bin():
         return mgm_location
     # print("MetaGeneMark is not in the PATH")
     try:
-        res = locate("mgm/gmhmmp")
-        return next(res).rstrip()
+        message = 'Please select appropriate MetaGeneMark location'
+        res = select_from_many(message=message,
+                               options=locate("mgm/gmhmmp"))
+        return res
     except sh.ErrorReturnCode_1 as ex:
         raise MetaGeneMarkNotFound()
 
 
 def find_mgm_mod_file(mgm_dir):
     # TODO: handle no or multiple .mod files in mgm_dir
-    return glob(join(mgm_dir, '*.mod'))[0]
+    message = 'Please select appropriate MetaGeneMark .mod file location'
+    res = glob(join(mgm_dir, '*.mod'))
+    return select_from_many(message=message,
+                            options=res)
 
 
 def is_gm_key_valid(gm_key_path):
@@ -112,14 +144,14 @@ def setup_hmmer():
     if hmmsearch_location is None:
         try:
             # in case hmmscan is in several places
-            hs_not_in_path = locate("-r", "/hmmsearch$")
-            hmmsearch_location = hs_not_in_path.split('\n')[0]
+            message = 'Please select appropriate HMMER location'
+            hmmsearch_location = select_from_many(message=message,
+                                                  options=locate("-r", "/hmmsearch$"))
         except sh.ErrorReturnCode_1:
             raise HMMERNotFound()
 
     return {
             'bin': hmmsearch_location,
-            'pvog_path': 'software/hmmer/data/allprofiles.hmm',
             'e_value_threshold': 1.0e-5,
         }
 
