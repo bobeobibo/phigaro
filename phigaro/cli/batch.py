@@ -36,6 +36,7 @@ def create_task(substitutions, task_class, *args, **kwargs):
         ))
 
         return substitutions[task.task_name]
+    return task
 
 
 def main():
@@ -54,8 +55,7 @@ def main():
                         help='num of threads ('
                              'default is num of CPUs={})'.format(multiprocessing.cpu_count()))
 
-    parser.add_argument('-S', '--substitute-output', action='append', )
-    # help=argparse.SUPPRESS)
+    parser.add_argument('-S', '--substitute-output', action='append', help=argparse.SUPPRESS)
 
     args = parser.parse_args()
 
@@ -63,8 +63,6 @@ def main():
     logging.getLogger('sh.command').setLevel(logging.WARN)
 
     logger = logging.getLogger(__name__)
-
-    substitutions = parse_substitute_output(args.substitute_output)
 
     if not exists(args.config):
         # TODO: pretty message
@@ -86,6 +84,8 @@ def main():
         config=config,
         threads=args.threads,
     )
+
+    substitutions = parse_substitute_output(args.substitute_output)
 
     gene_mark_task = create_task(substitutions, GeneMarkTask, filename)
     hmmer_task = create_task(substitutions, HmmerTask, gene_mark_task=gene_mark_task)
