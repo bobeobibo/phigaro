@@ -3,25 +3,46 @@ import time
 from os.path import join, dirname, exists
 from glob import glob
 from shutil import copy
-
 import sh
+from future.backports.urllib.parse import urljoin
 
 HOME = os.getenv("HOME")
 
+# TODO: refactor this to class
+is_updated_db = False
 
-class MetaGeneMarkNotFound(Exception):
+
+class HelperException(Exception):
+    message = None
+
+
+class MetaGeneMarkNotFound(HelperException):
     message = "Didn't find MetaGeneMark anywhere, " + \
               "please download it from http://topaz.gatech.edu/Genemark/license_download.cgi "
 
 
-class MetaGeneMarkKeyNotFound(Exception):
+class MetaGeneMarkKeyNotFound(HelperException):
     message = "Please update your MetaGeneMark key file: "+ \
               "http://topaz.gatech.edu/GeneMark/license_download.cgi . " + \
               "You can download the \"key\" file only. "
 
 
-class HMMERNotFound(Exception):
+class HMMERNotFound(HelperException):
     message = "No HMMER found. Please download HMMER package from here: http://hmmer.org/download.html "
+
+
+def locate(*args, **kwargs):
+    # TODO: refactor this to class
+    global is_updated_db
+    if not is_updated_db:
+        try:
+            with sh.contrib.sudo:
+                sh.updatedb()
+                is_updated_db = True
+        except sh.ErrorReturnCode_1:
+            print('Invalid password')
+            exit(1)
+    return sh.locate(*args, **kwargs)
 
 
 def find_gmhmmp_bin():
@@ -30,14 +51,14 @@ def find_gmhmmp_bin():
         return mgm_location
     # print("MetaGeneMark is not in the PATH")
     try:
-        res = sh.locate("mgm/gmhmmp")
+        res = locate("mgm/gmhmmp")
         return next(res).rstrip()
-    except sh.ErrorReturnCode_1:
+    except sh.ErrorReturnCode_1 as ex:
         raise MetaGeneMarkNotFound()
 
 
 def find_mgm_mod_file(mgm_dir):
-    # TODO: handle no .mod files in mgm_dir
+    # TODO: handle no or multiple .mod files in mgm_dir
     return glob(join(mgm_dir, '*.mod'))[0]
 
 
@@ -50,7 +71,7 @@ def is_gm_key_valid(gm_key_path):
 def find_gm_key():
     gm_keys = [
         gm_key_path.rstrip()
-        for gm_key_path in sh.locate('gm_key')
+        for gm_key_path in locate('gm_key')
     ]
 
     valid_keys = [
@@ -91,7 +112,7 @@ def setup_hmmer():
     if hmmsearch_location is None:
         try:
             # in case hmmscan is in several places
-            hs_not_in_path = sh.locate("-r", "/hmmsearch$")
+            hs_not_in_path = locate("-r", "/hmmsearch$")
             hmmsearch_location = hs_not_in_path.split('\n')[0]
         except sh.ErrorReturnCode_1:
             raise HMMERNotFound()
@@ -101,6 +122,25 @@ def setup_hmmer():
             'pvog_path': 'software/hmmer/data/allprofiles.hmm',
             'e_value_threshold': 1.0e-5,
         }
+
+
+def download_pvogs(base_url, out_dir):
+    def download_file(filename):
+        url = urljoin(base_url, filename)
+        out = join(out_dir, filename)
+        print('Downloading {url} to {out}'.format(
+            url=url,
+            out=out,
+        ))
+        sh.curl('-o', out, url, _tty_out=True)
+
+    if not exists(out_dir):
+        os.makedirs(out_dir)
+    download_file('allpvoghmms')
+    download_file('allpvoghmms.h3f')
+    download_file('allpvoghmms.h3i')
+    download_file('allpvoghmms.h3m')
+    download_file('allpvoghmms.h3p')
 
 
 def setup():
