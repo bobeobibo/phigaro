@@ -79,7 +79,7 @@ def locate(*args, **kwargs):
 
 
 def find_gmhmmp_bin():
-    mgm_location = sh.which("gmhmmp") + locate("mgm/gmhmmp")
+    mgm_location = [sh.which("gmhmmp")] + locate("mgm/gmhmmp")
     if not mgm_location:
         MetaGeneMarkNotFound()
 
@@ -141,7 +141,7 @@ def setup_mgm():
 
 
 def setup_hmmer():
-    mgm_location = sh.which("hmmsearch") + locate("-r", "/hmmsearch$")
+    mgm_location = [sh.which("hmmsearch")] + locate("-r", "/hmmsearch$")
     if not mgm_location:
         MetaGeneMarkNotFound()
 
