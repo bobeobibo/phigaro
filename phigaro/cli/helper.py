@@ -7,8 +7,7 @@ import sys
 import yaml
 from os.path import exists
 
-from phigaro.helper import setup, MetaGeneMarkNotFound, MetaGeneMarkKeyNotFound, HMMERNotFound, download_pvogs, \
-    HelperException
+from phigaro.helper import SetupHelper, HelperException
 
 
 def main():
@@ -22,16 +21,16 @@ def main():
 
     parser.add_argument('-c', '--config', default=phigaro_config, help='config path')
     parser.add_argument('-p', '--pvog', default=pvogs_dir, help='pvogs dir')
-    # parser.add_argument('-v', '--verbose', action='store_true')
-
+    parser.add_argument('--no-updatedb', action='store_true', help='Do not run sudo updatedb')
     args = parser.parse_args()
 
     if exists(args.config):
         print('Phigaro already configured')
         exit(0)
 
+    helper = SetupHelper(args.no_updatedb)
     try:
-        config = setup()
+        config = helper.setup()
     except HelperException as ex:
         sys.stdout.write(ex.message+'\n')
         exit(1)
@@ -46,12 +45,10 @@ def main():
 
     if not exists(pvogs_dir):
         print('Downloading models')
-        download_pvogs('http://download.ripcm.com/phigaro/', pvogs_dir)
+        helper.download_pvogs('http://download.ripcm.com/phigaro/', pvogs_dir)
 
     with open(args.config, 'w') as f:
         yaml.safe_dump(config, f, default_flow_style=False)
-
-
 
 
 if __name__ == '__main__':
