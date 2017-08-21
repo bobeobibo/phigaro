@@ -7,7 +7,7 @@ import sys
 import yaml
 from os.path import exists
 
-from phigaro.helper import setup, MetaGeneMarkNotFound, MetaGeneMarkKeyNotFound, HMMERNotFound, download_pvogs, \
+from phigaro.helper import SetupHelper, download_pvogs, \
     HelperException
 
 
@@ -22,6 +22,8 @@ def main():
 
     parser.add_argument('-c', '--config', default=phigaro_config, help='config path')
     parser.add_argument('-p', '--pvog', default=pvogs_dir, help='pvogs dir')
+    parser.add_argument('--no-updatedb', action='store_true', help=argparse.SUPPRESS)
+
     # parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
@@ -31,7 +33,10 @@ def main():
         exit(0)
 
     try:
-        config = setup()
+        helper = SetupHelper(
+            do_not_updatedb=args.no_updatedb
+        )
+        config = helper.setup()
     except HelperException as ex:
         sys.stdout.write(ex.message+'\n')
         exit(1)
@@ -44,9 +49,9 @@ def main():
     # print("Found HMMER in: {}".format(config['hmmer']['bin']))
     print("HMMER model in: {}".format(config['hmmer']['pvog_path']))
 
-    if not exists(pvogs_dir):
+    if not exists(args.pvog):
         print('Downloading models')
-        download_pvogs('http://download.ripcm.com/phigaro/', pvogs_dir)
+        download_pvogs('http://download.ripcm.com/phigaro/', args.pvog)
 
     with open(args.config, 'w') as f:
         yaml.safe_dump(config, f, default_flow_style=False)
