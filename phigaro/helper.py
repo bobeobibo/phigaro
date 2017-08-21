@@ -69,21 +69,24 @@ def locate(*args, **kwargs):
         except sh.ErrorReturnCode_1:
             print('Invalid password')
             exit(1)
-    return sh.locate(*args, **kwargs)
+    try:
+        return [
+            s.rstrip()
+            for s in sh.locate(*args, **kwargs)
+            ]
+    except sh.ErrorReturnCode_1:
+        return []
 
 
 def find_gmhmmp_bin():
-    mgm_location = sh.which("gmhmmp")
-    if mgm_location:
-        return mgm_location
-    # print("MetaGeneMark is not in the PATH")
-    try:
-        message = 'Please select appropriate MetaGeneMark location'
-        res = select_from_many(message=message,
-                               options=locate("mgm/gmhmmp"))
-        return res
-    except sh.ErrorReturnCode_1 as ex:
-        raise MetaGeneMarkNotFound()
+    mgm_location = sh.which("gmhmmp") + locate("mgm/gmhmmp")
+    if not mgm_location:
+        MetaGeneMarkNotFound()
+
+    return select_from_many(
+            message='Please select appropriate MetaGeneMark location',
+            options=mgm_location
+    )
 
 
 def find_mgm_mod_file(mgm_dir):
@@ -138,17 +141,14 @@ def setup_mgm():
 
 
 def setup_hmmer():
-    # TODO: pVOG files
-    hmmsearch_location = sh.which("hmmsearch")
+    mgm_location = sh.which("hmmsearch") + locate("-r", "/hmmsearch$")
+    if not mgm_location:
+        MetaGeneMarkNotFound()
 
-    if hmmsearch_location is None:
-        try:
-            # in case hmmscan is in several places
-            message = 'Please select appropriate HMMER location'
-            hmmsearch_location = select_from_many(message=message,
-                                                  options=locate("-r", "/hmmsearch$"))
-        except sh.ErrorReturnCode_1:
-            raise HMMERNotFound()
+    hmmsearch_location = select_from_many(
+            message='Please select appropriate HMMER location',
+            options=mgm_location
+    )
 
     return {
             'bin': hmmsearch_location,
