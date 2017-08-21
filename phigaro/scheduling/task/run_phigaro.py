@@ -5,21 +5,21 @@ from itertools import groupby
 from phigaro.data import convert_npn
 from phigaro.finder.v2 import V2Finder
 from .base import AbstractTask
-from .hmmer import HmmerTask
+from .parse_hmmer import ParseHmmerTask
 from .gene_mark import GeneMarkTask
 
 
 class RunPhigaroTask(AbstractTask):
     task_name = 'run_phigaro'
 
-    def __init__(self, hmmer_task, gene_mark_task):
+    def __init__(self, parse_hmmer_task, gene_mark_task):
         """
 
-        :type hmmer_task: HmmerTask
+        :type parse_hmmer_task: ParseHmmerTask
         :type gene_mark_task: GeneMarkTask
         """
         super().__init__()
-        self.hmmer_task = hmmer_task
+        self.hmmer_task = parse_hmmer_task
         self.gene_mark_task = gene_mark_task
 
     def _prepare(self):
@@ -73,5 +73,5 @@ class RunPhigaroTask(AbstractTask):
                     for phage in phages:
                         begin = genes_coords[phage.begin][0]
                         end = genes_coords[phage.end][1]
-                        writer.writerow((scaffold, begin, end))
+                        writer.writerow((scaffold, begin, end, phage.begin, phage.end))
 

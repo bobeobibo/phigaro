@@ -15,7 +15,27 @@ from phigaro.scheduling.path import sample_name
 from phigaro.scheduling.runner import run_tasks_chain
 from phigaro.scheduling.task.gene_mark import GeneMarkTask
 from phigaro.scheduling.task.hmmer import HmmerTask
+from phigaro.scheduling.task.dummy import DummyTask
+from phigaro.scheduling.task.parse_hmmer import ParseHmmerTask
 from phigaro.scheduling.task.run_phigaro import RunPhigaroTask
+
+
+def parse_substitute_output(subs):
+    res = {}
+    for sub in subs:
+        task_name, output = sub.split(":")
+        res[task_name] = DummyTask(output)
+    return res
+
+
+def create_task(substitutions, task_class, *args, **kwargs):
+    task = task_class(*args, **kwargs)
+    if task.task_name in substitutions:
+        print('Substituting output for {}: {}'.format(
+            task.task_name, substitutions[task.task_name].output()
+        ))
+
+        return substitutions[task.task_name]
 
 
 def main():
@@ -34,12 +54,17 @@ def main():
                         help='num of threads ('
                              'default is num of CPUs={})'.format(multiprocessing.cpu_count()))
 
+    parser.add_argument('-S', '--substitute-output', action='append', )
+    # help=argparse.SUPPRESS)
+
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARN)
     logging.getLogger('sh.command').setLevel(logging.WARN)
 
     logger = logging.getLogger(__name__)
+
+    substitutions = parse_substitute_output(args.substitute_output)
 
     if not exists(args.config):
         # TODO: pretty message
@@ -62,13 +87,18 @@ def main():
         threads=args.threads,
     )
 
-    gene_mark_task = GeneMarkTask(filename)
-    hmmer_task = HmmerTask(gene_mark_task=gene_mark_task)
-    run_phigaro_task = RunPhigaroTask(gene_mark_task=gene_mark_task, hmmer_task=hmmer_task)
+    gene_mark_task = create_task(substitutions, GeneMarkTask, filename)
+    hmmer_task = create_task(substitutions, HmmerTask, gene_mark_task=gene_mark_task)
+    parse_hmmer_task = create_task(substitutions, ParseHmmerTask,
+                                   gene_mark_task=gene_mark_task,
+                                   hmmer_task=hmmer_task,
+                                   )
+    run_phigaro_task = create_task(substitutions, RunPhigaroTask, gene_mark_task=gene_mark_task, parse_hmmer_task=parse_hmmer_task)
 
     output_file = run_tasks_chain([
         gene_mark_task,
         hmmer_task,
+        parse_hmmer_task,
         run_phigaro_task
     ])
 
