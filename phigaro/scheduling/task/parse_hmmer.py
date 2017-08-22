@@ -1,15 +1,12 @@
-import logging
-from builtins import super
-import re
-
-import sh
-from itertools import groupby
 import csv
+import logging
+import re
+from builtins import super
+from itertools import groupby
 
 from .base import AbstractTask
-from .hmmer import HmmerTask
 from .gene_mark import GeneMarkTask
-
+from .hmmer import HmmerTask
 
 logger = logging.getLogger(__name__)
 

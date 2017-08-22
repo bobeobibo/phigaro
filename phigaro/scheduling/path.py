@@ -28,7 +28,3 @@ def directory(*items):
 def file(*items):
     directory(*items[:-1])
     return path(*items)
-
-
-def rm_dir(task_name):
-    pass

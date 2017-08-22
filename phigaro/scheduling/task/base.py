@@ -1,12 +1,11 @@
 import abc
 from os import unlink
-from shutil import rmtree
-
-import six
 from os.path import exists
 
+import six
+
 from phigaro.context import Context
-from phigaro.scheduling.path import directory, file, path
+from phigaro.scheduling.path import directory, file
 
 
 @six.add_metaclass(abc.ABCMeta)

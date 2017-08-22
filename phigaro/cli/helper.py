@@ -11,10 +11,6 @@ from phigaro.helper import SetupHelper, HelperException, download_pvogs
 
 
 def create_config(no_update_db, config_path, pvogs_dir):
-    """
-    :type no_update_db: bool
-    :type config_path: str
-    """
     config_dir = dirname(config_path)
     if not exists(config_dir):
         os.makedirs(config_dir)

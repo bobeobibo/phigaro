@@ -30,6 +30,7 @@ def parse_substitute_output(subs):
 
 
 def create_task(substitutions, task_class, *args, **kwargs):
+    # TODO: refactor to class Application
     task = task_class(*args, **kwargs)
     if task.task_name in substitutions:
         print('Substituting output for {}: {}'.format(
@@ -47,7 +48,8 @@ def main():
                     'from nucleid acid sequences (including metagenomes) and '
                     'is based on phage genes HMMs and a smoothing window algorithm.',
     )
-    parser.add_argument('-f', '--fasta-file', help='Assembly scaffolds\contigs or full genomes. Required', required=True)
+    parser.add_argument('-f', '--fasta-file', help='Assembly scaffolds/contigs or full genomes. Required',
+                        required=True)
     parser.add_argument('-c', '--config', default=default_config_path, help='config file')
     parser.add_argument('-v', '--verbose', action='store_true', help='print debug information (for developers)')
     parser.add_argument('-o', '--output')
@@ -90,13 +92,21 @@ def main():
 
     substitutions = parse_substitute_output(args.substitute_output)
 
-    gene_mark_task = create_task(substitutions, GeneMarkTask, filename)
-    hmmer_task = create_task(substitutions, HmmerTask, gene_mark_task=gene_mark_task)
-    parse_hmmer_task = create_task(substitutions, ParseHmmerTask,
+    gene_mark_task = create_task(substitutions,
+                                 GeneMarkTask,
+                                 filename)
+    hmmer_task = create_task(substitutions,
+                             HmmerTask,
+                             gene_mark_task=gene_mark_task)
+    parse_hmmer_task = create_task(substitutions,
+                                   ParseHmmerTask,
                                    gene_mark_task=gene_mark_task,
                                    hmmer_task=hmmer_task,
                                    )
-    run_phigaro_task = create_task(substitutions, RunPhigaroTask, gene_mark_task=gene_mark_task, parse_hmmer_task=parse_hmmer_task)
+    run_phigaro_task = create_task(substitutions,
+                                   RunPhigaroTask,
+                                   gene_mark_task=gene_mark_task,
+                                   parse_hmmer_task=parse_hmmer_task)
 
     tasks = [
         gene_mark_task,

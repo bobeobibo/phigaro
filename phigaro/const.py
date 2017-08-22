@@ -1,5 +1,5 @@
 """
-			                jakkard	true_positives	false_positives	false_negatives
+jakkard	true_positives	false_positives	false_negatives
 window_len	th_min	th_max
 34	5.341108	7.571429	0.488433	0.822679	0.025512	0.209178
 35	5.341108	7.571429	0.488433	0.822679	0.025512	0.209178
