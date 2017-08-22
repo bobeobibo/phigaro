@@ -1,3 +1,4 @@
+from builtins import input, str
 import os
 import time
 from os.path import join, dirname, exists
@@ -5,6 +6,7 @@ from glob import glob
 from shutil import copy
 import sh
 from future.backports.urllib.parse import urljoin
+import re
 
 
 class HelperException(Exception):
@@ -45,10 +47,10 @@ class SetupHelper(object):
 
             for i, option in enumerate(options):
                 print("[{}] {}".format(i + 1, option))
-            option_num = input('Choose your option (Enter for {}): '.format(options[0]))
+            option_num = str(input('Choose your option (Enter for {}): '.format(options[0])))
             if option_num == '':
                 option_num = '1'
-            if option_num.isdecimal():
+            if re.match(r'^\d+$', option_num):
                 option_num = int(option_num) - 1
                 if 0 <= option_num < len(options):
                     res = options[option_num]
@@ -74,15 +76,31 @@ class SetupHelper(object):
         except sh.ErrorReturnCode_1:
             return []
 
-    def find_gmhmmp_bin(self):
-        mgm_location = [sh.which("gmhmmp")] + self.locate("mgm/gmhmmp")
-        if not mgm_location:
-            MetaGeneMarkNotFound()
+    def _find_binary(self, which_name, locate_name, options_message, raise_if_not_found):
+        locations = [sh.which(which_name) or ''] + self.locate('-b', '-r', '^'+locate_name+'$')
+        locations = [
+            l.rstrip()
+            for l in locations
+            if l.rstrip()
+        ]
+
+        if not locations:
+            raise raise_if_not_found()
 
         return self.select_from_many(
-            message='Please select appropriate MetaGeneMark location',
-            options=mgm_location
+            message=options_message,
+            options=locations,
         )
+
+    # def find_gmhmmp_bin(self):
+    #     mgm_location = [sh.which("gmhmmp")] + self.locate("mgm/gmhmmp")
+    #     if not mgm_location:
+    #         MetaGeneMarkNotFound()
+    #
+    #     return self.select_from_many(
+    #         message='Please select appropriate MetaGeneMark location',
+    #         options=mgm_location
+    #     )
 
     def find_mgm_mod_file(self, mgm_dir):
         # TODO: handle no or multiple .mod files in mgm_dir
@@ -112,7 +130,12 @@ class SetupHelper(object):
         return valid_keys[0]
 
     def setup_mgm(self, ):
-        mgm_location = self.find_gmhmmp_bin()
+        mgm_location = self._find_binary(
+            which_name='gmhmmp',
+            locate_name='gmhmmp',
+            options_message='Please select appropriate MetaGeneMark location',
+            raise_if_not_found=MetaGeneMarkNotFound,
+        )
         mod_file = self.find_mgm_mod_file(dirname(mgm_location))
         gm_key_home = join(self.HOME, '.gm_key')
 
@@ -132,15 +155,20 @@ class SetupHelper(object):
         }
 
     def setup_hmmer(self, ):
-        mgm_location = [sh.which("hmmsearch")] + locate("-r", "/hmmsearch$")
-        if not mgm_location:
-            MetaGeneMarkNotFound()
-
-        hmmsearch_location = self.select_from_many(
-            message='Please select appropriate HMMER location',
-            options=mgm_location
+        # mgm_location = [sh.which("hmmsearch")] + locate("-r", "/hmmsearch$")
+        # if not mgm_location:
+        #     MetaGeneMarkNotFound()
+        #
+        # hmmsearch_location = self.select_from_many(
+        #     message='Please select appropriate HMMER location',
+        #     options=mgm_location
+        # )
+        hmmsearch_location = self._find_binary(
+            which_name='hmmsearch',
+            locate_name='hmmsearch',
+            options_message='Please select appropriate HMMER location',
+            raise_if_not_found=HMMERNotFound,
         )
-
         return {
             'bin': hmmsearch_location,
             'e_value_threshold': 1.0e-5,
