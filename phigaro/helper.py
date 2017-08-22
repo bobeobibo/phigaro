@@ -29,10 +29,10 @@ class HMMERNotFound(HelperException):
 class SetupHelper(object):
     def __init__(self, do_not_updatedb=False):
         self._do_not_updatedb = do_not_updatedb
-        self._is_updated_db = False
+        self._is_already_updated_db = False
         self.HOME = os.getenv("HOME")
 
-    def select_from_many(self, message, options):
+    def select_from_options(self, message, options):
         options = [
             s.rstrip()
             for s in options
@@ -61,11 +61,11 @@ class SetupHelper(object):
 
     def locate(self, *args, **kwargs):
         # TODO: refactor this to class
-        if not self._is_updated_db and not self._do_not_updatedb:
+        if not self._is_already_updated_db and not self._do_not_updatedb:
             try:
                 with sh.contrib.sudo:
                     sh.updatedb()
-                    self._is_updated_db = True
+                    self._is_already_updated_db = True
             except sh.ErrorReturnCode_1:
                 print('Invalid password')
                 exit(1)
@@ -82,7 +82,7 @@ class SetupHelper(object):
         if not mgm_location:
             MetaGeneMarkNotFound()
 
-        return self.select_from_many(
+        return self.select_from_options(
                 message='Please select appropriate MetaGeneMark location',
                 options=mgm_location
         )
@@ -91,8 +91,8 @@ class SetupHelper(object):
         # TODO: handle no or multiple .mod files in mgm_dir
         message = 'Please select appropriate MetaGeneMark .mod file location'
         res = glob(join(mgm_dir, '*.mod'))
-        return self.select_from_many(message=message,
-                                     options=res)
+        return self.select_from_options(message=message,
+                                        options=res)
 
     def is_gm_key_valid(self, gm_key_path):
         res = os.stat(gm_key_path)
@@ -139,7 +139,7 @@ class SetupHelper(object):
         if not mgm_location:
             MetaGeneMarkNotFound()
 
-        hmmsearch_location = self.select_from_many(
+        hmmsearch_location = self.select_from_options(
                 message='Please select appropriate HMMER location',
                 options=mgm_location
         )
