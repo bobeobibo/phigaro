@@ -2,7 +2,6 @@ from builtins import range
 
 from .base import AbstractFinder, Phage
 from functools import partial
-import numpy as np
 
 
 class V2Finder(AbstractFinder):
@@ -28,15 +27,17 @@ class V2Finder(AbstractFinder):
 
 
 def calc_scores(npn, window_len, score_func):
+    def zeros(l):
+        return [0] * l
     scores = []
     len_d2 = window_len // 2
-    tphage = np.concatenate([np.zeros(len_d2), npn, np.zeros(len_d2)])
+    tphage = zeros(len_d2) + npn + zeros(len_d2)
     for i in range(len_d2, len(npn) + len_d2):
         begin = i-len_d2
         end = i+len_d2 + 1
         part = tphage[begin: end]
         scores.append(score_func(part))
-    return np.array(scores)
+    return scores
 
 
 def plane_kernel(pos):

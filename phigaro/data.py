@@ -1,5 +1,4 @@
 import csv
-import numpy as np
 from itertools import groupby
 
 
@@ -27,7 +26,7 @@ def read_coords(filename, sep=None):
 
 
 def convert_npn(phage, ph_sym):
-    return np.array([
+    return [
         int(c == ph_sym)
         for c in phage
-    ])
+    ]

@@ -20,5 +20,5 @@ setup(name='phigaro',
               'phigaro = phigaro.cli.batch:main',
               'phigaro-setup = phigaro.cli.helper:main',
           ]
-      }, install_requires=['numpy', 'six', 'sh', 'singleton', 'PyYAML', 'future']
+      }, install_requires=['six', 'sh', 'singleton', 'PyYAML', 'future']
 )
