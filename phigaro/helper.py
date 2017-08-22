@@ -182,7 +182,7 @@ class SetupHelper(object):
                 url=url,
                 out=out,
             ))
-            sh.curl('-o', out, url, _tty_out=True)
+            sh.wget('-O', out, url, _tty_out=True)
 
         if not exists(out_dir):
             os.makedirs(out_dir)
