@@ -1,15 +1,9 @@
 from builtins import super
-import re
 
 import sh
-from itertools import groupby
-import csv
 
 from .base import AbstractTask
 from .gene_mark import GeneMarkTask
-
-
-logger = logging.getLogger(__name__)
 
 
 class HmmerTask(AbstractTask):
