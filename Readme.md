@@ -1,4 +1,4 @@
-# Phigaro v. 0.1.1a
+# Phigaro v. 0.1.4
 Phigaro is a command-line tool for predictions phages and prophages from nucleid acid sequences (including metagenomes) and is based on phage genes HMMs (pVOG) and a smoothing window algorithm.
 
 ## Requirements
