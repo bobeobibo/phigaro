@@ -1,6 +1,5 @@
-genemark:
-  bin: software/MetaGeneMark_linux_64/mgm/gmhmmp
-  mod_path: software/MetaGeneMark_linux_64/mgm/MetaGeneMark_v1.mod
+prodigal:
+  bin: software/prodigal
 hmmer:
   bin: software/hmmer/hmmer-3.1b2-linux-intel-x86_64/binaries/hmmsearch
 #  pvog_path: software/hmmer/data/InoviridaevogHMMprofiles.all.hmm

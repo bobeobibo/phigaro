@@ -1,3 +1,7 @@
+from __future__ import division
+import numpy as np
+
+
 def first(x):
     return x[0]
 
@@ -98,3 +102,45 @@ def minus(ranges1, ranges2):
         ]
     for (begin, end) in intersection(ranges1, ranges2):
         yield (begin, end)
+
+
+def true_positives_rate(test_ranges, real_ranges):
+    return (
+        len_ranges(intersection(test_ranges, real_ranges)) /
+        len_ranges(real_ranges)
+    )
+
+
+def false_positives_rate(test_ranges, real_ranges, max_len=None):
+    if not test_ranges:
+        return 0
+    return (
+        len_ranges(minus(test_ranges, real_ranges)) /
+        len_ranges(negate(real_ranges, max_len))
+    )
+
+
+def false_discovery_rate(test_ranges, real_ranges):
+    test_ranges_length = len_ranges(test_ranges)
+    if not test_ranges_length:
+        return np.nan
+    return (
+        len_ranges(minus(test_ranges, real_ranges)) /
+        test_ranges_length
+    )
+
+
+def positive_predictive_value(test_ranges, real_ranges):
+    test_ranges_length = len_ranges(test_ranges)
+    if not test_ranges_length:
+        return np.nan
+
+    true_positives = len_ranges(intersection(test_ranges, real_ranges))
+    return true_positives / test_ranges_length
+
+
+def false_negatives_rate(test_ranges, real_ranges):
+    return 1 - true_positives_rate(test_ranges, real_ranges)
+
+
+

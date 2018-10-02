@@ -1,26 +1,24 @@
-from builtins import super
 import csv
-from itertools import groupby
+from builtins import super
 
-from phigaro.data import convert_npn
+from phigaro.data import read_prodigal_output, read_hmmer_output, hmmer_res_to_npn, Gene
 from phigaro.finder.v2 import V2Finder
 from .base import AbstractTask
+from .prodigal import ProdigalTask
 from .hmmer import HmmerTask
-from .gene_mark import GeneMarkTask
 
 
 class RunPhigaroTask(AbstractTask):
     task_name = 'run_phigaro'
 
-    def __init__(self, hmmer_task, gene_mark_task):
+    def __init__(self, hmmer_task, prodigal_task):
         """
-
         :type hmmer_task: HmmerTask
-        :type gene_mark_task: GeneMarkTask
+        :type prodigal_task: ProdigalTask
         """
         super().__init__()
         self.hmmer_task = hmmer_task
-        self.gene_mark_task = gene_mark_task
+        self.prodigal_task = prodigal_task
 
     def _prepare(self):
         self.finder = V2Finder(
@@ -28,50 +26,47 @@ class RunPhigaroTask(AbstractTask):
             threshold_min=self.config['phigaro']['threshold_min'],
             threshold_max=self.config['phigaro']['threshold_max'],
         )
+        self._print_vogs = self.config['phigaro'].get('print_vogs', False)
 
     def output(self):
         return self.file('{}.tsv'.format(self.sample))
 
-    def read_gene_coords(self):
-        def extract_coords(gene_str):
-            tokens = gene_str.split('|')
-            return int(tokens[-2]), int(tokens[-1])
-
-        with open(self.gene_mark_task.output()) as f:
-            genes_scaffolds = (
-                line.strip().split('\t')
-                for line in f
-                if line.startswith('>')
-            )
-
-            genes_scaffolds = (
-                (scaffold, extract_coords(gene_str))
-                for gene_str, scaffold in genes_scaffolds
-            )
-
-            return {
-                scaffold: [
-                    coords
-                    for _, coords in group
-                ]
-                for scaffold, group in groupby(genes_scaffolds, key=lambda x: x[0])
-            }
-
     def run(self):
-        scaffold_genes_coords = self.read_gene_coords()
+        max_evalue = self.config['hmmer']['e_value_threshold']
+
+        scaffold_set = read_prodigal_output(self.prodigal_task.output())
+        hmmer_result = read_hmmer_output(self.hmmer_task.output())
 
         with open(self.output(), 'w') as of:
             writer = csv.writer(of, delimiter='\t')
 
-            with open(self.hmmer_task.output()) as f:
-                reader = csv.reader(f, delimiter='\t')
-                for scaffold, npn_str in reader:
-                    genes_coords = scaffold_genes_coords[scaffold]
+            if self._print_vogs:
+                writer.writerow(('scaffold', 'begin', 'end', 'vog'))
+            else:
+                writer.writerow(('scaffold', 'begin', 'end'))
 
-                    npn = convert_npn(npn_str, 'P')
-                    phages = self.finder.find_phages(npn)
-                    for phage in phages:
-                        begin = genes_coords[phage.begin][0]
-                        end = genes_coords[phage.end][1]
-                        writer.writerow((scaffold, begin, end))
+            for scaffold in scaffold_set:
+                genes = list(scaffold)  # type: list[Gene]
+                npn = hmmer_res_to_npn(scaffold, hmmer_result, max_evalue=max_evalue)
+
+                phages = self.finder.find_phages(npn)
+                for phage in phages:
+                    begin = genes[phage.begin].begin
+                    end = genes[phage.end].end
+                    if self._print_vogs:
+                        hmmer_records = (
+                            hmmer_result.min_record(hmmer_result.get_records(scaffold.name, gene.name))
+                            for gene in genes[phage.begin: phage.end]
+                        )
+
+                        hmmer_records = (
+                            record.vog_name
+                            for record in hmmer_records
+                            if record and record.evalue <= max_evalue
+                        )
+
+                        hmmer_records_str = ','.join(hmmer_records)
+                        writer.writerow((scaffold.name, begin, end, hmmer_records_str))
+                    else:
+                        writer.writerow((scaffold.name, begin, end))
 

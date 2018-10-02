@@ -1,8 +1,9 @@
+from __future__ import division
 from builtins import range
+import numpy as np
 
 from .base import AbstractFinder, Phage
 from functools import partial
-import numpy as np
 
 
 class V2Finder(AbstractFinder):
@@ -17,7 +18,7 @@ class V2Finder(AbstractFinder):
         self.threshold_max = threshold_max
 
     def find_phages(self, bacteria_npn):
-        scores = calc_scores(bacteria_npn, self.window_len, score_tri)
+        scores = calc_scores(bacteria_npn, self.window_len)
         ranges = scan_phages(scores, self.threshold_min, self.threshold_max)
         for (begin, end) in ranges:
             yield Phage(
@@ -27,35 +28,23 @@ class V2Finder(AbstractFinder):
             )
 
 
-def calc_scores(npn, window_len, score_func):
+def calc_scores(npn, window_len):
     scores = []
     len_d2 = window_len // 2
     tphage = np.concatenate([np.zeros(len_d2), npn, np.zeros(len_d2)])
+
+    kernel_koeffs = tri_kernel(np.arange(len_d2 * 2 + 1) / (len_d2 * 2))
     for i in range(len_d2, len(npn) + len_d2):
-        begin = i-len_d2
-        end = i+len_d2 + 1
+        begin = i - len_d2
+        end = i + len_d2 + 1
         part = tphage[begin: end]
-        scores.append(score_func(part))
-    return np.array(scores)
 
-
-def plane_kernel(pos):
-    return 1
+        scores.append(np.sum(part * kernel_koeffs))
+    return scores
 
 
 def tri_kernel(pos):
     return 1 - abs(pos - 0.5)/0.5
-
-
-def score(part, kernel_func):
-    return sum(
-        c * kernel_func(i/(len(part) - 1))
-        for i, c in enumerate(part)
-    )
-
-
-score_tri = partial(score, kernel_func=tri_kernel)
-score_plane = partial(score, kernel_func=plane_kernel)
 
 
 def scan_phages(scores, threshold_min, threshold_max):
