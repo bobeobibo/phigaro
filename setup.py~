@@ -11,8 +11,8 @@ setup(name='phigaro',
       packages=['phigaro',
                 'phigaro.finder',
                 'phigaro.cli',
-                'phigaro.batch',
-                'phigaro.batch.task',
+                'phigaro.scheduling',
+                'phigaro.scheduling.task',
                 'phigaro.misc',
                 ],
       entry_points={
@@ -20,5 +20,5 @@ setup(name='phigaro',
               'phigaro = phigaro.cli.batch:main',
               'phigaro-setup = phigaro.cli.helper:main',
           ]
-      }, install_requires=['numpy', 'six', 'sh', 'singleton', 'PyYAML', 'future']
+      }, install_requires=['numpy', 'six', 'sh', 'singleton', 'PyYAML', 'future', 'pickle']
 )

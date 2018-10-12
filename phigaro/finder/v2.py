@@ -38,7 +38,6 @@ def calc_scores(npn, window_len):
         begin = i - len_d2
         end = i + len_d2 + 1
         part = tphage[begin: end]
-
         scores.append(np.sum(part * kernel_koeffs))
     return scores
 

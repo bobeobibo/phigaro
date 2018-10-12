@@ -3,8 +3,7 @@ from plotly import tools
 from plotly.graph_objs import Bar
 import plotly.offline as py
 
-from .search import calc_scores, score_tri
-
+from phigaro.finder.v2 import calc_scores
 
 def _make_coords_colors(data_len, real_phage_coords):
     colors = np.zeros(data_len)
@@ -34,7 +33,7 @@ def plot_scores(scores, title, real_phage_coords=None):
 
 def plot_phage(phage, title):
     ind = np.arange(len(phage))
-    int_phage = [int(c) + .1 for c in phage]
+    int_phage = [c + .1 for c in phage]
     data = Bar(
         x=ind,
         y=int_phage,
@@ -90,8 +89,8 @@ def plot_scores_and_phage(phage, window_len, score_func=None, scan_func=None, re
     py.iplot(fig)
 
 
-def plot_scores_and_phage2(phage, scores, found_phage_coords, real_phage_coords=None):
-    real_phage_coords = real_phage_coords or []
+def plot_scores_and_phage2(phage, scores, found_phage_coords, real_phage_coords=None, filename='filename'):
+    # real_phage_coords = real_phage_coords or []
     fig = tools.make_subplots(rows=2, cols=1, shared_xaxes=True)
     title = 'Scores'
 
@@ -102,11 +101,13 @@ def plot_scores_and_phage2(phage, scores, found_phage_coords, real_phage_coords=
     fig.append_trace(phage_fig, 2, 1)
 
     ymax = max(scores)
-    if real_phage_coords or found_phage_coords:
+    # print(len(real_phage_coords), len(found_phage_coords))
+    if (len(real_phage_coords) + len(found_phage_coords)) != 0:
+        # print('got real coords')
         fig['layout'].update(dict(
             shapes=_make_rects(found_phage_coords, ymax * 0.5, ymax * 0.75, '#0000ff', 0.5) + \
-                   _make_rects(real_phage_coords or [], ymax * 0.75, ymax, '#aaaa00', 0.5)
+                   _make_rects(real_phage_coords, ymax * 0.75, ymax, '#aaaa00', 0.5)
 
         ))
 
-    py.iplot(fig)
+    py.plot(fig, filename=filename+'.html')
