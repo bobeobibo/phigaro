@@ -3,7 +3,6 @@ from builtins import range
 import numpy as np
 
 from .base import AbstractFinder, Phage
-from functools import partial
 
 
 class V2Finder(AbstractFinder):
@@ -17,9 +16,10 @@ class V2Finder(AbstractFinder):
         self.threshold_min = threshold_min
         self.threshold_max = threshold_max
 
-    def find_phages(self, bacteria_npn):
+    def find_phages(self, bacteria_npn, bacteria_gc):
         scores = calc_scores(bacteria_npn, self.window_len)
-        ranges = scan_phages(scores, self.threshold_min, self.threshold_max)
+        gc_scores = calc_scores(bacteria_gc, self.window_len)
+        ranges = scan_phages(np.array(scores) * np.array(gc_scores), self.threshold_min, self.threshold_max)
         for (begin, end) in ranges:
             yield Phage(
                 begin=begin,

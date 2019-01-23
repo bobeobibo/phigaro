@@ -1,6 +1,5 @@
 from os.path import join, basename
 from os import makedirs, unlink
-import re
 import errno
 
 

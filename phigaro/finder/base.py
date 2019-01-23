@@ -18,10 +18,11 @@ class Phage(object):
 @six.add_metaclass(abc.ABCMeta)
 class AbstractFinder(object):
     @abc.abstractmethod
-    def find_phages(self, bacteria_npn):
+    def find_phages(self, bacteria_npn, bacteria_gc):
         """
 
         :type bacteria_npn: list[int]
+        :type bacteria_gc: list[int]
         :rtype: list[Phage]
         """
         pass

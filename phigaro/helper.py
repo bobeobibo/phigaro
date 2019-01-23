@@ -1,4 +1,4 @@
-from builtins import input, str
+from builtins import input
 import os
 from os.path import join, exists
 import sh
@@ -77,7 +77,6 @@ def download_pvogs(base_url, out_dir):
     download_file('allpvoghmms.h3i')
     download_file('allpvoghmms.h3m')
     download_file('allpvoghmms.h3p')
-    download_file('allpvoghmms.h3p')
 
 
 class SetupHelper(object):
@@ -145,11 +144,12 @@ class SetupHelper(object):
             'hmmer': {
                 'bin': hmmer_params['bin'],
                 'e_value_threshold': const.DEFAULT_MAX_EVALUE,
-                'penalty_black': const.DEFAULT_PENALTY_BLACK,
             },
             'phigaro': {
                 'window_len': const.DEFAULT_WINDOW_SIZE,
                 'threshold_min': const.DEFAULT_THRESHOLD_MIN,
                 'threshold_max': const.DEFAULT_THRESHOLD_MAX,
+                'penalty_black': const.DEFAULT_PENALTY_BLACK,
+                'penalty_white': const.DEFAULT_PENALTY_WHITE
             }
         }

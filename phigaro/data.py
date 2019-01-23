@@ -38,8 +38,8 @@ def convert_npn(phage, ph_sym):
     ]
 
 
-def hmmer_res_to_npn(scaffold, hmmer_result, max_evalue, penalty_black, pvogs_black_list):
-    # type: (Scaffold, HmmerResult, float)->list[int]
+def hmmer_res_to_npn(scaffold, hmmer_result, max_evalue, penalty_black, penalty_white, pvogs_black_list, pvogs_white_list):
+    # type: (Scaffold, HmmerResult, float, float, float, float, float)->list[float]
     ordered_records_it = (
         HmmerResult.min_record(hmmer_result.get_records(scaffold.name, gene.name))
         for gene in scaffold
@@ -49,7 +49,22 @@ def hmmer_res_to_npn(scaffold, hmmer_result, max_evalue, penalty_black, pvogs_bl
         0
         if not record or record.evalue > max_evalue
         else 1 - penalty_black if record.vog_name in pvogs_black_list
+        else 1 + penalty_white if record.vog_name in pvogs_white_list
         else 1
+        for record in ordered_records_it
+    ]
+
+def hmmer_res_to_gc(scaffold, hmmer_result, max_evalue):
+    # type: (Scaffold, HmmerResult, float)->list[int]
+    ordered_records_it = (
+        HmmerResult.min_record(hmmer_result.get_records(scaffold.name, gene.name))
+        for gene in scaffold
+    )
+
+    return [
+        0
+        if not record or record.evalue > max_evalue
+        else record.gc_cont
         for record in ordered_records_it
     ]
 
@@ -99,12 +114,13 @@ class ScaffoldSet(object):
 
 
 class HmmerRecord(object):
-    def __init__(self, scaffold_name, gene_name, vog_name, evalue):
-        # type: (str, str, str, float)->HmmerRecord
+    def __init__(self, scaffold_name, gene_name, vog_name, evalue, gc_cont):
+        # type: (str, str, str, float, float)->HmmerRecord
         self.scaffold_name = scaffold_name
         self.gene_name = gene_name
         self.vog_name = vog_name
         self.evalue = evalue
+        self.gc_cont = gc_cont
 
 
 class HmmerResult(object):
@@ -137,12 +153,14 @@ def read_hmmer_output(file_path):
     def parse_line(line):
         # type: (str)->HmmerRecord
         tokens = re.split(r'\s+', line)
+        gc_cont = float([x.split('=')[-1] for x in tokens[-1].split(';') if x.startswith('gc_cont')][0])
 
         return HmmerRecord(
             scaffold_name='_'.join(tokens[0].split('_')[:-1]),
             gene_name=tokens[0].split('_')[-1],
             vog_name=tokens[2],
-            evalue=float(tokens[4])
+            evalue=float(tokens[4]),
+            gc_cont=gc_cont
         )
 
     with open(file_path) as f:

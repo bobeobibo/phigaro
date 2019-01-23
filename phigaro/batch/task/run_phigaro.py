@@ -1,7 +1,7 @@
 import csv
 from builtins import super
 
-from phigaro.data import read_prodigal_output, read_hmmer_output, hmmer_res_to_npn, Gene
+from phigaro.data import read_prodigal_output, read_hmmer_output, hmmer_res_to_npn, hmmer_res_to_gc, Gene
 from phigaro.finder.v2 import V2Finder
 from phigaro import const
 from .base import AbstractTask
@@ -34,9 +34,11 @@ class RunPhigaroTask(AbstractTask):
 
     def run(self):
         max_evalue = self.config['hmmer']['e_value_threshold']
-        penalty_black = self.config['hmmer']['penalty_black']
+        penalty_black = self.config['phigaro']['penalty_black']
+        penalty_white = self.config['phigaro']['penalty_white']
 
         pvogs_black_list = const.DEFAULT_BLACK_LIST
+        pvogs_white_list = const.DEFAULT_WHITE_LIST
 
         scaffold_set = read_prodigal_output(self.prodigal_task.output())
         hmmer_result = read_hmmer_output(self.hmmer_task.output())
@@ -52,9 +54,11 @@ class RunPhigaroTask(AbstractTask):
             for scaffold in scaffold_set:
                 genes = list(scaffold)  # type: list[Gene]
                 npn = hmmer_res_to_npn(scaffold, hmmer_result, max_evalue=max_evalue,
-                                       penalty_black = penalty_black, pvogs_black_list = pvogs_black_list)
+                                       penalty_black = penalty_black, penalty_white = penalty_white,
+                                       pvogs_black_list = pvogs_black_list, pvogs_white_list = pvogs_white_list)
+                gc = hmmer_res_to_gc(scaffold, hmmer_result, max_evalue=max_evalue)
 
-                phages = self.finder.find_phages(npn)
+                phages = self.finder.find_phages(npn, gc)
                 for phage in phages:
                     begin = genes[phage.begin].begin
                     end = genes[phage.end].end
@@ -74,4 +78,3 @@ class RunPhigaroTask(AbstractTask):
                         writer.writerow((scaffold.name, begin, end, hmmer_records_str))
                     else:
                         writer.writerow((scaffold.name, begin, end))
-
