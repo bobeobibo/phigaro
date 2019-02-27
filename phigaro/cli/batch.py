@@ -57,12 +57,13 @@ def main():
     parser.add_argument('-v', '--verbose', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('-o', '--output', help='Output file, not required, default is stdout')
     parser.add_argument('-p', '--print-vogs', help='Print phage vogs for each region', action='store_true')
+    parser.add_argument('--no-html', help='Do not generate output html file.', action='store_true')
+    parser.add_argument('--not-open', help='Do not open automatically html file.', action='store_true')
     parser.add_argument('-t', '--threads',
                         type=int,
                         default=multiprocessing.cpu_count(),
                         help='Num of threads ('
                              'default is num of CPUs={})'.format(multiprocessing.cpu_count()))
-
     parser.add_argument('--no-cleanup', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('-S', '--substitute-output', action='append', help=argparse.SUPPRESS)
 
@@ -83,6 +84,10 @@ def main():
         config = yaml.load(f)
 
     config['phigaro']['print_vogs'] = args.print_vogs
+    config['phigaro']['filename'] = args.fasta_file
+    config['phigaro']['no_html'] = args.no_html
+    config['phigaro']['not_open'] = args.not_open
+    config['phigaro']['output'] = args.output
 
     filename = args.fasta_file
     sample = '{}-{}'.format(

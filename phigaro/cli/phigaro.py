@@ -4,12 +4,10 @@ import argparse
 import csv
 
 import sys
-
 from phigaro import const
 from phigaro.finder.base import AbstractFinder, Phage
 from phigaro.finder.v2 import V2Finder
 from phigaro.data import convert_npn
-
 
 def find_and_print_phages(npn_filename, finder, sep='\t'):
     # type: (str, AbstractFinder) -> list[(str, str, list[Phage])]

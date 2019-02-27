@@ -1,4 +1,4 @@
-# Phigaro v. 0.2.0
+# Phigaro v. 0.1.4
 Phigaro is a command-line tool for predictions phages and prophages from nucleid acid sequences (including metagenomes) and is based on phage genes HMMs (pVOG) and a smoothing window algorithm.
 
 ## Requirements
@@ -32,14 +32,6 @@ optional arguments:
   -v, --verbose
   -t THREADS, --threads THREADS
                         num of threads (default is num of CPUs)
-  -o, --output OUTPUT 
-                        output file, not required, default is stdout
-  -p, --print-vogs
-                        print phage vogs for each region
-  --no-html 
-                        do not generate output html file
-  --not-open 
-                        do not open automatically html file
 ```
 Running time depends on the size of your input data and the number of CPUs used.
 The approximate running time for a metagenomic assembly file of 150MB is about 20 minutes.
