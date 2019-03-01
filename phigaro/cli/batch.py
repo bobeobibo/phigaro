@@ -55,10 +55,11 @@ def main():
                         required=True)
     parser.add_argument('-c', '--config', default=default_config_path, help='Config file, not required')
     parser.add_argument('-v', '--verbose', action='store_true', help=argparse.SUPPRESS)
-    parser.add_argument('-o', '--output', help='Output file, not required, default is stdout')
+    parser.add_argument('-o', '--output', help='Output filename, not required, default is stdout')
     parser.add_argument('-p', '--print-vogs', help='Print phage vogs for each region', action='store_true')
-    parser.add_argument('--no-html', help='Do not generate output html file.', action='store_true')
-    parser.add_argument('--not-open', help='Do not open automatically html file.', action='store_true')
+    parser.add_argument('--txt', help='Generate txt file, default is stdout or html if --output argument is specified.', action='store_true')
+    parser.add_argument('--no-html', help='Do not generate output html file. If --output argument is specified, text file will be generated.', action='store_true')
+    parser.add_argument('--not-open', help='Do not open html file automatically.', action='store_true')
     parser.add_argument('-t', '--threads',
                         type=int,
                         default=multiprocessing.cpu_count(),
@@ -122,16 +123,17 @@ def main():
     ]
     task_output_file = run_tasks_chain(tasks)
 
-    with open(task_output_file) as f:
-        out_f = open(args.output, 'w') if args.output else sys.stdout
-        for line in f:
-            out_f.write(line)
-        if out_f is sys.stdout:
-            out_f.close()
+    if (not args.output) or (args.txt or args.no_html):
+        with open(task_output_file) as f:
+            out_f = open(args.output, 'w') if (args.output and (args.txt or args.no_html)) else sys.stdout
+            for line in f:
+                out_f.write(line)
+            if out_f is sys.stdout:
+                out_f.close()
 
-    if not args.no_cleanup:
-        for t in tasks:
-            t.clean()
+        if not args.no_cleanup:
+            for t in tasks:
+                t.clean()
 
 if __name__ == '__main__':
     main()
