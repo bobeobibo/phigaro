@@ -52,4 +52,4 @@ ORFs and corresponging proteins are predicted from the input .fasta file using P
 
 In case of any questions regarding installing and running Phigaro please adress estarikova@rcpcm.org
 
-(c) N.Pryanichnikov, E.Starikova, 2017
+(c) E.Starikova, P. Tikhonova, N.Pryanichnikov, 2019
