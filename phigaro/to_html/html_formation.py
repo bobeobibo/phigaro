@@ -1,9 +1,9 @@
 from .html_templates import *
 from bs4 import BeautifulSoup
 
-def form_html_document(prophage_data, plots_data, filename_input):    
+def form_html_document(prophage_data, transposables_status, plots_data, filename_input):
   
-    def form_tbody(data):
+    def form_tbody(data, transposables_data):
         prophage_index = 1
         tbody = BeautifulSoup(features="lxml").new_tag('tbody')
         for scaffold, scaffold_info in data:
@@ -13,10 +13,11 @@ def form_html_document(prophage_data, plots_data, filename_input):
             tr.append(th)
             tbody.append(tr)
             for prophage_info in scaffold_info:
+                index_to_paste = BeautifulSoup(transposable_index.format(prophage_index), 'html.parser') if transposables_data[prophage_index-1] else prophage_index
                 if (prophage_index == 1):
-                    prophage_info = [prophage_index]+prophage_info+['active']
+                    prophage_info = [prophage_index]+prophage_info+['active', index_to_paste]
                 else:
-                    prophage_info = [prophage_index]+prophage_info+[''] 
+                    prophage_info = [prophage_index]+prophage_info+['', index_to_paste]
                 tbody.append(BeautifulSoup(row.format(*prophage_info), 'html.parser'))
                 prophage_index += 1
         return str(tbody)
@@ -37,10 +38,10 @@ def form_html_document(prophage_data, plots_data, filename_input):
             plots_body.append(div)
         return str(plots_body)
     
-    def arrange_html_parts(prophage_data, plots_data, filename_input):
+    def arrange_html_parts(prophage_data, transposables_status, plots_data, filename_input):
         global header, style_css, body_main, body_table, body_plots, row, footer
         header = header.format(filename_input)
-        tbody = form_tbody(prophage_data)
+        tbody = form_tbody(prophage_data, transposables_status)
         plots_body = form_plots_body(plots_data)
         body_table = body_table.format(tbody)
         body_plots = body_plots.format(plots_body)
@@ -48,4 +49,4 @@ def form_html_document(prophage_data, plots_data, filename_input):
         html = header + style_css + body_main + footer
         return html
     
-    return arrange_html_parts(prophage_data, plots_data, filename_input)
+    return arrange_html_parts(prophage_data, transposables_status, plots_data, filename_input)

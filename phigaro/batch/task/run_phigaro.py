@@ -9,7 +9,7 @@ from .prodigal import ProdigalTask
 from .hmmer import HmmerTask
 import os
 
-from phigaro.to_html.preprocess import plot_html, form_sequence
+from phigaro.to_html.preprocess import plot_html, form_sequence, if_transposable
 from phigaro.to_html.html_formation import form_html_document
 
 class RunPhigaroTask(AbstractTask):
@@ -54,12 +54,13 @@ class RunPhigaroTask(AbstractTask):
             writer = csv.writer(of, delimiter='\t')
 
             if self._print_vogs:
-                writer.writerow(('scaffold', 'begin', 'end', 'taxonomy','vog'))
+                writer.writerow(('scaffold', 'begin', 'end', 'transposable', 'taxonomy', 'vog'))
             else:
-                writer.writerow(('scaffold', 'begin', 'end', 'taxonomy'))
+                writer.writerow(('scaffold', 'begin', 'end', 'transposable', 'taxonomy'))
 
             plotly_plots = []
             phage_info = []
+            transposables_status = []
             phage_num = 0
             for scaffold in scaffold_set:
                 phage_info.append([scaffold.name, []])
@@ -85,23 +86,26 @@ class RunPhigaroTask(AbstractTask):
                     )
                     pvogs_records_str = ', '.join(hmmer_pvogs_records)
                     taxonomy = define_taxonomy(pvogs_records_str)
-                    if self._print_vogs:
-                        writer.writerow((scaffold.name, begin, end, taxonomy, pvogs_records_str))
-                    else:
-                        writer.writerow((scaffold.name, begin, end, taxonomy))
-
-                    hmmer_records = (
+                    hmmer_records = [
                         record
                         for record in hmmer_records
                         if record and record.evalue <= max_evalue
-                    )
+                    ]
+                    transposable = if_transposable(hmmer_records)
+                    if self._print_vogs:
+                        writer.writerow((scaffold.name, begin, end, transposable, taxonomy,  pvogs_records_str))
+                    else:
+                        writer.writerow((scaffold.name, begin, end, transposable, taxonomy))
+
                     sequence = form_sequence(self._filename, '%s_prophage_%d' % (scaffold.name, phage_num), begin, end, scaffold.name)
+                    transposables_status.append(transposable)
                     the_phage_info = [begin, end, taxonomy, sequence, pvogs_records_str]
                     phage_info[-1][1].append(the_phage_info)
-                    plotly_plots.append(plot_html(hmmer_records, begin, end))
+                    if (not self._no_html) and (self._output):
+                        plotly_plots.append(plot_html(hmmer_records, begin, end))
                 phage_info = phage_info if len(phage_info[-1][1]) > 0 else phage_info[:-1]
             if (len(phage_info) > 0) and (not self._no_html) and (self._output):
-                html = form_html_document(phage_info, plotly_plots, self._filename)
+                html = form_html_document(phage_info, transposables_status, plotly_plots, self._filename)
                 with open(self._output+'.html', 'w') as f:
                     f.write(html)
                 if not self._not_open:

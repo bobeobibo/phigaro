@@ -253,7 +253,10 @@ style_css = '''
       animation: dash-check .9s .35s ease-in-out forwards;
     }
   }
-
+  th svg {
+    width: 1.7rem;
+    margin-left: -0.55rem;
+  }
   @-webkit-keyframes dash {
     0% {
       stroke-dashoffset: 1000;
@@ -442,8 +445,20 @@ body_table = '''<div class="col-md-12 col-lg-4 col-xl-4">
 
 body_plots = '''<div class="col-md-12 col-lg-8 col-xl-8 tab-content" id="nav-tabContent">{0}</div>'''
 
+transposable_index = '''<div data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This prophage may contain transposable elements.">
+<svg version="1.1" class="transpose" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 490.1 490.1" style="enable-background:new 0 0 490.1 490.1;" xml:space="preserve">
+<g>
+    <path d="m386.9,12.2l-281.6,0c-28.2,0 -51.1,19.229653 -51.1,42.909836l0,195.739391l-32.3,-27.123047c-4.8,-4.03067 -12.5,-4.03067 -17.3,0s-4.8,10.496535 0,14.527205l53.3,44.757227c2.4,2.015335 5.5,3.023002 8.7,3.023002s6.3,-1.007667 8.7,-3.023002l53.3,-44.757227c4.8,-4.03067 4.8,-10.496535 0,-14.527205c-4.8,-4.03067 -12.5,-4.03067 -17.3,0l-32.4,27.20702l0,-195.823363c0,-12.343926 11.9,-22.336627 26.6,-22.336627l281.5,0c14.7,0 26.6,9.992702 26.6,22.336627l0,28.550576c0,5.710115 5.5,10.328591 12.3,10.328591s12.3,-4.618476 12.3,-10.328591l0,-28.550576c-0.3,-23.596211 -23.2,-42.909836 -51.3,-42.909836z"/>
+    <path d="m417,129.17339l-53.3,44.757227c-4.8,4.03067 -4.8,10.496535 0,14.527205c2.4,2.015335 5.5,3.023002 8.7,3.023002s6.3,-1.007667 8.7,-3.023002l32.4,-27.20702l0,195.739391c0,12.343926 -11.9,22.336627 -26.6,22.336627l-281.6,0c-14.7,0 -26.6,-9.992702 -26.6,-22.336627l0,-28.550576c0,-5.710115 -5.5,-10.328591 -12.3,-10.328591s-12.3,4.618476 -12.3,10.328591l0,28.550576c0,23.680184 22.9,42.909836 51.1,42.909836l281.5,0c28.2,0 51.1,-19.229653 51.1,-42.909836l0,-195.739391l32.4,27.20702c4.8,4.03067 12.5,4.03067 17.3,0s4.8,-10.496535 0,-14.527205l-53.3,-44.757227c-4.4,-3.862725 -12.6,-3.862725 -17.2,0z"/>
+ </g>
+<text x="250" y="300" fill='black' font-size="220"  text-anchor="middle" alignment-baseline="baseline">{0}</text>
+</svg>
+</div>
+'''
+
 row = '''<tr class="ListGroupItem {6}" data-href="phage-{0}" id="tab-phage-{0}">
-    <th scope="row">{0}</th>
+    <th scope="row">{7}</th>
     <td>{1} - {2}
         <div id='blast-phage-{0}' class="to-blast">
             <div id='accordeon-blast-{0}-id' class="accordion-toggle" data-target="#accordeon-blast-{0}" data-toggle="collapse">

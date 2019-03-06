@@ -143,3 +143,15 @@ def form_sequence(fasta_file, fasta_name, prophage_begin, prophage_end, scaffold
                 ins_ind += 80
             sequence = '%' + '3E%s' % fasta_name + '%' + '0A%s' % sequence
             return sequence
+
+def if_transposable(records):
+    status = False
+    for record in records:
+        group = annotations.loc[record.vog_name.strip()].group if record.vog_name.strip() in annotations.index else 'Other'
+        if (group == 'Integration') & status:
+            return True
+        elif (group == 'Integration'):
+            status = True
+        elif (group != 'Integration') & (group != 'Other'):
+            status = False
+    return False
