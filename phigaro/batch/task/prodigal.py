@@ -7,14 +7,14 @@ import sh
 class ProdigalTask(AbstractTask):
     task_name = 'prodigal'
 
-    def __init__(self, input):
+    def __init__(self, preprocess_task):
         super().__init__()
 
-        self.input = input
+        self.preprocess_task = preprocess_task
         self.prodigal = (
             sh.Command(self.config['prodigal']['bin'])
             .bake(
-                i=self.input,
+                i=self.preprocess_task.output(),
                 a=self.output()
             )
         )

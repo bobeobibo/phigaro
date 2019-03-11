@@ -16,9 +16,9 @@ from phigaro.batch.task.path import sample_name
 from phigaro.batch.task.prodigal import ProdigalTask
 from phigaro.batch.task.hmmer import HmmerTask
 from phigaro.batch.task.dummy import DummyTask
+from phigaro.batch.task.preprocess import PreprocessTask
 from phigaro.batch.task.run_phigaro import RunPhigaroTask
 from phigaro._version import __version__
-
 
 def parse_substitute_output(subs):
     subs = subs or []
@@ -40,6 +40,18 @@ def create_task(substitutions, task_class, *args, **kwargs):
         return substitutions[task.task_name]
     return task
 
+def clean_fold():
+    is_empty = True
+    for root, dirs, files in os.walk('proc', topdown=False):
+        for name in files:
+            is_empty = False
+            break
+        if is_empty:
+            for name in dirs:
+                os.rmdir(os.path.join(root, name))
+    if is_empty:
+        os.rmdir('proc')
+
 
 def main():
     default_config_path = join(os.getenv('HOME'), '.phigaro', 'config.yml')
@@ -55,11 +67,10 @@ def main():
                         required=True)
     parser.add_argument('-c', '--config', default=default_config_path, help='Config file, not required')
     parser.add_argument('-v', '--verbose', action='store_true', help=argparse.SUPPRESS)
-    parser.add_argument('-o', '--output', help='Output filename, not required, default is stdout')
     parser.add_argument('-p', '--print-vogs', help='Print phage vogs for each region', action='store_true')
-    parser.add_argument('--txt', help='Generate txt file, default is stdout or html if --output argument is specified.', action='store_true')
-    parser.add_argument('--no-html', help='Do not generate output html file. If --output argument is specified, text file will be generated.', action='store_true')
-    parser.add_argument('--not-open', help='Do not open html file automatically.', action='store_true')
+    parser.add_argument('-e', '--extension', default=['html'], nargs='+', help='Type of the output: html, txt or stdout. Default is html. You can specify several file formats with a space as a separator. Example: -e txt html stdout.')
+    parser.add_argument('-o', '--output', default=False, help='Output filename for html and txt outputs. Required by default, but not required for stdout only output.')
+    parser.add_argument('--not-open', help='Do not open html file automatically, if html output type is specified.', action='store_true')
     parser.add_argument('-t', '--threads',
                         type=int,
                         default=multiprocessing.cpu_count(),
@@ -77,7 +88,12 @@ def main():
 
     if not exists(args.config):
         # TODO: pretty message
-        print('Please create config file using phigaro-setup script')
+        print('Please, create config file using phigaro-setup script')
+        exit(1)
+
+    args.extension = [atype.lower() for atype in args.extension]
+    if (not args.output) and (args.extension != ['stdout']):
+        print('Error! Argument -o/--output is required or change the type of the output to stdout.')
         exit(1)
 
     with open(args.config) as f:
@@ -86,7 +102,7 @@ def main():
 
     config['phigaro']['print_vogs'] = args.print_vogs
     config['phigaro']['filename'] = args.fasta_file
-    config['phigaro']['no_html'] = args.no_html
+    config['phigaro']['no_html'] = True if 'html' not in args.extension else False
     config['phigaro']['not_open'] = args.not_open
     config['phigaro']['output'] = args.output
 
@@ -104,9 +120,13 @@ def main():
 
     substitutions = parse_substitute_output(args.substitute_output)
 
+    preprocess_task = create_task(substitutions,
+                       PreprocessTask,
+                       filename)
+
     prodigal_task = create_task(substitutions,
-                                 ProdigalTask,
-                                 filename)
+                                ProdigalTask,
+                                preprocess_task=preprocess_task)
     hmmer_task = create_task(substitutions,
                              HmmerTask,
                              prodigal_task=prodigal_task)
@@ -117,23 +137,30 @@ def main():
                                    hmmer_task=hmmer_task)
 
     tasks = [
+        preprocess_task,
         prodigal_task,
         hmmer_task,
         run_phigaro_task
     ]
     task_output_file = run_tasks_chain(tasks)
 
-    if (not args.output) or (args.txt or args.no_html):
+    if ('txt' in args.extension) or ('stdout' in args.extension):
         with open(task_output_file) as f:
-            out_f = open(args.output, 'w') if (args.output and (args.txt or args.no_html)) else sys.stdout
-            for line in f:
-                out_f.write(line)
-            if out_f is sys.stdout:
+            if 'txt' in args.extension:
+                out_f = open(args.output, 'w')
+                for line in f:
+                    out_f.write(line)
+            if 'stdout' in args.extension:
+                out_f = sys.stdout
+                for line in f:
+                    out_f.write(line)
                 out_f.close()
 
-        if not args.no_cleanup:
-            for t in tasks:
-                t.clean()
+    if not args.no_cleanup:
+        for t in tasks:
+            t.clean()
+        clean_fold()
 
 if __name__ == '__main__':
     main()
+
