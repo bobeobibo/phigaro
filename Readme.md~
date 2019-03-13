@@ -55,6 +55,6 @@ The output can be on html, text or stdout format.
 ## Modus operandi
 ORFs and corresponging proteins are predicted from the input .fasta file using Prodigal. Phage genes are predicted with pVOG Hidden Markov Models that can be downloaded stand-alone from http://dmk-brain.ecn.uiowa.edu/pVOGs/. Each contig is represented as a sequence of phage and non-phage genes. A smoothing window algorithm determines regions with high density of phage genes and prophage boundaries.
 
-In case of any questions regarding installing and running Phigaro, please, adress estarikova@rcpcm.org
+In case of any questions regarding installing and running Phigaro please adress estarikova@rcpcm.org
 
 (c) E.Starikova, P. Tikhonova, N.Pryanichnikov, 2019

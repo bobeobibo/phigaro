@@ -545,10 +545,7 @@ footer = '''<script type="text/javascript">
     var blast_fail_icon_for_check = '<div data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Cannot get the response from Blast. Please, check your Internet connection and reload the page or click to follow the process manually. If you use Chrome, check if CORS extension is enabled."><div class="blast-fail-icon blast-icons"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 543.987 543.987" style="enable-background:new 0 0 543.987 543.987;" xml:space="preserve"><g ><path style="fill:#E84849;" d="M85.265,74.203C-23.952,177.311-28.901,349.431,74.207,458.647c1.811,1.925,3.655,3.818,5.526,5.684 c106.203,106.209,278.398,106.209,384.596,0c106.209-106.198,106.209-278.393,0-384.596C360.297-24.391,192.3-26.844,85.265,74.203 z M137.431,191.268l53.841-53.841l80.765,80.765l80.765-80.765l53.847,53.841l-80.765,80.792l80.77,80.737l-53.847,53.847 l-80.765-80.77l-80.765,80.77l-53.841-53.847l80.759-80.737L137.431,191.268z"/></svg></div></div>';
     var blast_fail_icon = '<div data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Cannot get the response from Blast. Please, check your Internet connection and reload the page. If you use Chrome, check if CORS extension is enabled."><div class="blast-fail-icon blast-icons"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 543.987 543.987" style="enable-background:new 0 0 543.987 543.987;" xml:space="preserve"><g ><path style="fill:#E84849;" d="M85.265,74.203C-23.952,177.311-28.901,349.431,74.207,458.647c1.811,1.925,3.655,3.818,5.526,5.684 c106.203,106.209,278.398,106.209,384.596,0c106.209-106.198,106.209-278.393,0-384.596C360.297-24.391,192.3-26.844,85.265,74.203 z M137.431,191.268l53.841-53.841l80.765,80.765l80.765-80.765l53.847,53.841l-80.765,80.792l80.77,80.737l-53.847,53.847 l-80.765-80.77l-80.765,80.77l-53.841-53.847l80.759-80.737L137.431,191.268z"/></svg></div></div>';
     var blast_waiting_icon = '<div data-toggle="popover" data-trigger="manual" data-placement="right"><div class="blast-fail-icon blast-icons blinking"><svg viewbox="0 0 512 512.00076" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m509.070312 138.953125c-3.902343-3.90625-10.234374-3.90625-14.140624 0-1.367188 1.367187-2.765626 2.65625-4.191407 3.890625l-76.457031-76.460938c-3.902344-3.902343-10.234375-3.902343-14.140625 0-3.90625 3.90625-3.90625 10.238282 0 14.144532l73.550781 73.550781c-32.914062 15.960937-76.007812 9.238281-121.210937 1.9375-3.183594-18.378906-6.003907-36.34375-6.859375-53.460937l41.578125 41.578124c1.953125 1.953126 4.511719 2.929688 7.070312 2.929688 2.5625 0 5.121094-.980469 7.074219-2.929688 3.902344-3.90625 3.902344-10.238281 0-14.144531l-55.058594-55.054687c2.4375-21.535156 10.011719-41.113282 26.597656-57.695313l.175782-.175781c3.898437-3.914062 3.890625-10.242188-.019532-14.144531-3.914062-3.898438-10.246093-3.890625-14.144531.019531l-.167969.167969c-41.109374 41.109375-36.199218 95.464843-27.101562 149.601562-55.082031-8.386719-110.136719-12.363281-150.621094 28.121094-41.941406 41.941406-34.816406 98.542969-25.144531 154.3125-56.132813-8.96875-113.175781-15.988281-152.929687 23.765625-3.90625 3.90625-3.90625 10.238281 0 14.144531 1.953124 1.953125 4.511718 2.929688 7.070312 2.929688s5.117188-.980469 7.070312-2.929688c16.332032-16.335937 36.851563-23.007812 59.902344-24.546875l61.980469 61.980469c1.953125 1.953125 4.511719 2.929687 7.070313 2.929687 2.558593 0 5.117187-.976562 7.070312-2.929687 3.90625-3.90625 3.90625-10.238281 0-14.144531l-47.515625-47.515625c17.257813 1.277343 35.421875 4.167969 53.9375 7.160156 7.582031 43.71875 13.089844 85.089844-5.011719 118.3125l-83.433594-83.4375c-3.902343-3.902344-10.234374-3.902344-14.140624 0-3.90625 3.90625-3.90625 10.238281 0 14.144531l85.867187 85.867188c-1.175781 1.3125-2.398437 2.613281-3.679687 3.894531l-.175782.175781c-3.898437 3.910156-3.890625 10.242188.019532 14.140625 1.953124 1.945313 4.507812 2.917969 7.0625 2.917969 2.5625 0 5.128906-.980469 7.082031-2.9375l.164062-.167969c41.113281-41.109375 36.199219-95.464843 27.105469-149.601562 55.082031 8.386719 110.136719 12.363281 150.621094-28.121094 41.941406-41.941406 34.8125-98.542969 25.144531-154.308594 56.132813 8.964844 113.175781 15.988281 152.929687-23.765625 3.90625-3.90625 3.90625-10.238281 0-14.144531zm-173.820312 34.554687c4.257812 24.203126 8.242188 47.777344 8.308594 69.691407l-36.722656-36.71875c-3.90625-3.90625-10.234376-3.90625-14.144532 0-3.902344 3.902343-3.902344 10.234375 0 14.140625l48.699219 48.699218c-2.703125 14.578126-8.191406 28.082032-17.785156 40.144532l-121.097657-121.101563c34.777344-27.957031 82.148438-22.839843 132.742188-14.855469zm-158.496094 164.988282c-4.269531-24.238282-8.257812-47.847656-8.3125-69.789063l37.425782 37.425781c1.953124 1.953126 4.511718 2.929688 7.070312 2.929688 2.5625 0 5.121094-.976562 7.074219-2.929688 3.902343-3.90625 3.902343-10.238281 0-14.140624l-49.386719-49.386719c2.707031-14.546875 8.191406-28.03125 17.769531-40.070313l121.101563 121.105469c-34.777344 27.953125-82.152344 22.839844-132.742188 14.855469zm0 0"></path><path d="m243.515625 315.492188-.097656-.09375c-3.90625-3.90625-10.234375-3.90625-14.140625 0-3.90625 3.902343-3.90625 10.234374 0 14.140624l.09375.09375c1.953125 1.953126 4.511718 2.929688 7.070312 2.929688s5.117188-.976562 7.070313-2.929688c3.90625-3.902343 3.90625-10.234374.003906-14.140624zm0 0"></path><path d="m269.191406 197.121094.097656.09375c1.953126 1.953125 4.511719 2.929687 7.070313 2.929687s5.117187-.976562 7.070313-2.929687c3.90625-3.90625 3.90625-10.238282 0-14.144532l-.09375-.09375c-3.90625-3.90625-10.238282-3.90625-14.144532 0-3.902344 3.90625-3.902344 10.238282 0 14.144532zm0 0"></path></svg></div></div>'
-  var this_filename = window.location.pathname;
-  this_filename = this_filename.replace('file:///', '');
-  this_filename = this_filename.replace('.html', ' ');
-  function make_request(rid, time, idname){
+    function make_request(rid, time, idname){
             $.ajax({
                 url: "https://blast.ncbi.nlm.nih.gov/blast/Blast.cgi?CMD=Get&FORMAT_OBJECT=SearchInfo&RID="+rid,
                 async: true,
@@ -558,7 +555,7 @@ footer = '''<script type="text/javascript">
                         $('#'+idname).html('<a target="_blank" class="blast-link" href="'+link+'"></a>');
                         delete_popover();
                         $('#'+idname+' .blast-link').html(blast_loading_icon);
-                        localStorage.setItem(this_filename+idname+'-RID', rid);
+                        localStorage.setItem(uuid+'-'+idname+'-RID', rid);
                         $('[data-toggle="popover"]').popover();
                     }
                    if (html.indexOf("Status=WAITING") != -1){
@@ -669,9 +666,9 @@ footer = '''<script type="text/javascript">
                 var was_alert = false;
                 $( ".to-blast-click" ).each(function() {
                     blast_idname = $( this ).attr('data-target');
-                    if ((localStorage.getItem(this_filename+blast_idname+'-RID') != '') && (localStorage.getItem(this_filename+blast_idname+'-RID') != null) && (! was_alert)) {
+                    if ((localStorage.getItem(uuid+'-'+blast_idname+'-RID') != '') && (localStorage.getItem(uuid+'-'+blast_idname+'-RID') != null) && (! was_alert)) {
                         var checked = false;
-                        var rid = localStorage.getItem(this_filename+blast_idname+'-RID');
+                        var rid = localStorage.getItem(uuid+'-'+blast_idname+'-RID');
                         $.ajax({
                                 url: "https://blast.ncbi.nlm.nih.gov/blast/Blast.cgi?CMD=Get&FORMAT_OBJECT=SearchInfo&RID="+rid,
                                 async: false,
@@ -690,7 +687,7 @@ footer = '''<script type="text/javascript">
                                               async: true,
                                               success: function(html_ready){
                                                   if (html_ready.indexOf("Status=FAILED") != -1){
-                                                      localStorage.setItem(this_filename+blast_idname+'-RID', '');
+                                                      localStorage.setItem(uuid+'-'+blast_idname+'-RID', '');
                                                   }
                                                   else {
                                                     delete_popover();
@@ -708,7 +705,7 @@ footer = '''<script type="text/javascript">
                                             make_request(rid, 5, blast_idname);
                                         }
                                         else {
-                                            localStorage.setItem(this_filename+blast_idname+'-RID', '');
+                                            localStorage.setItem(uuid+'-'+blast_idname+'-RID', '');
                                         }
                                     }
                                 }
@@ -806,7 +803,7 @@ footer = '''<script type="text/javascript">
                         		}
                     		}, 300);
             		});
-                        localStorage.setItem(this_filename+blast_idname+'-RID', '');
+                        localStorage.setItem(uuid+'-'+blast_idname+'-RID', '');
 			 send_sequence(sequence, db, blast_idname);
              });
               $('.to-blast-all').on('click',  function() {

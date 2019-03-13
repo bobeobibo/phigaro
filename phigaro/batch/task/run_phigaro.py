@@ -35,6 +35,7 @@ class RunPhigaroTask(AbstractTask):
         self._no_html = self.config['phigaro'].get('no_html', False)
         self._not_open = self.config['phigaro'].get('not_open', False)
         self._output = self.config['phigaro'].get('output', False)
+        self._uuid = self.config['phigaro'].get('uuid', False)
 
     def output(self):
         return self.file('{}.tsv'.format(self.sample))
@@ -105,7 +106,7 @@ class RunPhigaroTask(AbstractTask):
                         plotly_plots.append(plot_html(hmmer_records, begin, end))
                 phage_info = phage_info if len(phage_info[-1][1]) > 0 else phage_info[:-1]
             if (len(phage_info) > 0) and (not self._no_html) and (self._output):
-                html = form_html_document(phage_info, transposables_status, plotly_plots, self._filename)
+                html = form_html_document(phage_info, transposables_status, plotly_plots, self._filename, self._uuid)
                 with open(self._output+'.html', 'w') as f:
                     f.write(html)
                 if not self._not_open:

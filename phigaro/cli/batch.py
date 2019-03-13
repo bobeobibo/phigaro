@@ -105,11 +105,12 @@ def main():
     config['phigaro']['no_html'] = True if 'html' not in args.extension else False
     config['phigaro']['not_open'] = args.not_open
     config['phigaro']['output'] = args.output
+    config['phigaro']['uuid'] = uuid.uuid4().hex
 
     filename = args.fasta_file
     sample = '{}-{}'.format(
         sample_name(filename),
-        uuid.uuid4().hex
+        config['phigaro']['uuid']
     )
 
     Context.initialize(

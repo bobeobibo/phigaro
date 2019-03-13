@@ -1,7 +1,7 @@
 from .html_templates import *
 from bs4 import BeautifulSoup
 
-def form_html_document(prophage_data, transposables_status, plots_data, filename_input):
+def form_html_document(prophage_data, transposables_status, plots_data, filename_input, uuid):
   
     def form_tbody(data, transposables_data):
         prophage_index = 1
@@ -38,7 +38,7 @@ def form_html_document(prophage_data, transposables_status, plots_data, filename
             plots_body.append(div)
         return str(plots_body)
     
-    def arrange_html_parts(prophage_data, transposables_status, plots_data, filename_input):
+    def arrange_html_parts(prophage_data, transposables_status, plots_data, filename_input, uuid):
         global header, style_css, body_main, body_table, body_plots, row, footer
         header = header.format(filename_input)
         tbody = form_tbody(prophage_data, transposables_status)
@@ -46,7 +46,8 @@ def form_html_document(prophage_data, transposables_status, plots_data, filename
         body_table = body_table.format(tbody)
         body_plots = body_plots.format(plots_body)
         body_main = body_main.format(body_table, body_plots)
+        footer = footer.replace('<script type="text/javascript">','<script type="text/javascript">\n    var uuid="%s";'%uuid)
         html = header + style_css + body_main + footer
         return html
     
-    return arrange_html_parts(prophage_data, transposables_status, plots_data, filename_input)
+    return arrange_html_parts(prophage_data, transposables_status, plots_data, filename_input, uuid)
