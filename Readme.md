@@ -70,6 +70,8 @@ NC_003997.3     3495703 3505502 Siphoviridae
 NC_003997.3     3749518 3776811 Siphoviridae
 NC_003997.3     3779698 3784171 Siphoviridae
 ```
+If you encounter any issues while running Phigaro on test data, please report to us.
+
 ## Modus operandi
 ORFs and corresponging proteins are predicted from the input .fasta file using Prodigal. Phage genes are predicted with pVOG Hidden Markov Models that can be downloaded stand-alone from http://dmk-brain.ecn.uiowa.edu/pVOGs/. Each contig is represented as a sequence of phage and non-phage genes. A smoothing window algorithm determines regions with high density of phage genes and prophage boundaries.
 
