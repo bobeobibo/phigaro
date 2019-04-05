@@ -49,6 +49,15 @@ optional arguments:
 Running time depends on the size of your input data and the number of CPUs used.
 The approximate running time for a metagenomic assembly file of 150MB is about 20 minutes.
 
+## Test data
+Test data is available in `test_data` folder. 
+In order to run Phigaro on test data, enter the following command from your Phigaro folder:
+
+```
+phigaro -f test_data/Bacillus_anthracis_str_ames.fna -o test_data/Bacillus_anthracis_str_ames.phg -p --not-open
+```
+This command generates `Bacillus_anthracis_str_ames.phg` and `Bacillus_anthracis_str_ames.phg.html` files in `test_data` folder.
+
 ## Output
 The output can be on html, text or stdout format.
 
