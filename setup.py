@@ -24,5 +24,5 @@ setup(name='phigaro',
               'phigaro = phigaro.cli.batch:main',
               'phigaro-setup = phigaro.cli.helper:main',
           ]
-      }, install_requires=['numpy', 'six>=1.7.0', 'pandas>=0.23.4','sh', 'singleton', 'PyYAML', 'future', 'argparse', 'numpy', 'plotly', 'bs4', 'beautifulsoap4>=4.4.0', 'lxml','biopython']
+      }, install_requires=['numpy', 'six>=1.7.0', 'pandas>=0.23.4','sh', 'singleton', 'PyYAML', 'future', 'argparse', 'numpy', 'plotly', 'bs4', 'beautifulsoup4>=4.4.0', 'lxml','biopython']
 )
