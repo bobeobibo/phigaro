@@ -1,11 +1,11 @@
 # Phigaro v 0.2.1.5
-Phigaro is a command-line tool for predictions phages and prophages from nucleid acid sequences (including metagenomes) and is based on phage genes HMMs (pVOG) and a smoothing window algorithm.
+Phigaro is a command-line tool for predicting and annotating phages and prophages from nucleid acid sequences (including metagenome assemblies) and is based on identifying phage genes via pVOG profile HMMs and a smoothing window algorithm.
 
 ## Requirements
-Note, that in order to run Phigaro, you need to have Prodigal and HMMER installed.
+In order to run Phigaro, you need to have Prodigal and HMMER installed.
 To install Prodigal, download it at https://github.com/hyattpd/Prodigal/wiki/installation and follow the instructions.
-To install HMMER, download it at http://hmmer.org/
-Also note that you need `locate` to successfully run setup. It is pre-installed in the latest Ubuntu distributions, but in case you don't have it, please run `sudo apt-get install locate`, it is a very useful tool.
+To install HMMER, download it at http://hmmer.org/.
+You also need `locate`. It is pre-installed in the latest Ubuntu distributions, but in case you don't have it, please run `sudo apt-get install locate`.
 
 ## Installation
 
@@ -16,7 +16,7 @@ then create a config file with:
 ```
 phigaro-setup
 ```
-It may take some time, since we are downloading the database
+It may take some time, since you are downloading the databases.
 
 ## Usage
 
@@ -47,10 +47,10 @@ optional arguments:
                         do not open html file automatically, if html output type is specified
 ```
 Running time depends on the size of your input data and the number of CPUs used.
-The approximate running time for a metagenomic assembly file of 150MB is about 20 minutes.
+The running time for a metagenomic assembly file of 150MB is about 20 minutes.
 
 ## Output
-The output can be on html, text or stdout format.
+The output can be annotated prophage genome maps (html) or tabular format (text or stdout).
 
 ## Test data
 Test data is available in `test_data` folder. 
@@ -70,11 +70,14 @@ NC_003997.3     3495703 3505502 Siphoviridae
 NC_003997.3     3749518 3776811 Siphoviridae
 NC_003997.3     3779698 3784171 Siphoviridae
 ```
-If you encounter any issues while running Phigaro on test data, please report to us.
 
-## Modus operandi
-ORFs and corresponging proteins are predicted from the input .fasta file using Prodigal. Phage genes are predicted with pVOG Hidden Markov Models that can be downloaded stand-alone from http://dmk-brain.ecn.uiowa.edu/pVOGs/. Each contig is represented as a sequence of phage and non-phage genes. A smoothing window algorithm determines regions with high density of phage genes and prophage boundaries.
+## Methods overview
+Open-reading frames (i.e. proteins) are predicted from the input FASTA file using Prodigal. Phage genes are annotated with prokaryotic viral orthologous groups (pVOGs) profile Hidden Markov Models (HMMs), which can be downloaded stand-alone from http://dmk-brain.ecn.uiowa.edu/pVOGs/. Each contig is represented as a sequence of phage and non-phage genes. A smoothing window algorithm (a triangular window function) determines regions with a high density of phage genes and therefore the prophage regions and boundaries, considering the pVOG annotations and the GC content.
 
-In case of any questions regarding installing and running Phigaro, please, adress estarikova@rcpcm.org
+## Known issues
+Phigaro is tested on Linux systems. For MacOS, you may need to add the following softlink `ln -s /usr/libexec/locate.updatedb /usr/local/bin/updated` and run `brew install wget`. Currently, root permissions are required for the installation. If you encounter any issues while running Phigaro on test data, please report them to us at estarikova@rcpcm.org.
+
+## Publication
+Elizaveta V. Starikova, Polina O. Tikhonova, Nikita A. Prianichnikov, Chris M. Rands, Evgeny M. Zdobnov, Vadim M. Govorun (2019), Phigaro: high throughput prophage sequence annotation, bioRxiv 598243; doi: https://doi.org/10.1101/598243
 
 (c) E.Starikova, P. Tikhonova, N.Pryanichnikov, 2019
