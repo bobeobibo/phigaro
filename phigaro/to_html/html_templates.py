@@ -4,7 +4,7 @@ header = '''<html>
   <link rel="shortcut icon" href="https://pollytikhonova.github.io/phigaro/dna.png" />
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bobeobibo/phigaro/scripts/FileSaver.min.js"></script>
   <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> '''
