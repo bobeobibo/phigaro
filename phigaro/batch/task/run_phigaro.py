@@ -8,7 +8,9 @@ from .base import AbstractTask
 from .prodigal import ProdigalTask
 from .hmmer import HmmerTask
 import os
-
+from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
 from phigaro.to_html.preprocess import plot_html, form_sequence, if_transposable
 from phigaro.to_html.html_formation import form_html_document
 
@@ -34,6 +36,7 @@ class RunPhigaroTask(AbstractTask):
         self._filename = self.config['phigaro'].get('filename', False)
         self._no_html = self.config['phigaro'].get('no_html', False)
         self._not_open = self.config['phigaro'].get('not_open', False)
+        self._save_fasta = self.config['phigaro'].get('save_fasta', False)
         self._output = self.config['phigaro'].get('output', False)
         self._uuid = self.config['phigaro'].get('uuid', False)
 
@@ -98,10 +101,14 @@ class RunPhigaroTask(AbstractTask):
                     else:
                         writer.writerow((scaffold.name, begin, end, transposable, taxonomy))
 
-                    sequence = form_sequence(self._filename, '%s_prophage_%d' % (scaffold.name, phage_num), begin, end, scaffold.name)
+                    sequence, record = form_sequence(self._filename, '%s_prophage_%d' % (scaffold.name, phage_num), begin, end, scaffold.name)
                     transposables_status.append(transposable)
                     the_phage_info = [begin, end, taxonomy, sequence, pvogs_records_str]
                     phage_info[-1][1].append(the_phage_info)
+                    if self._save_fasta:
+                        with open(self._output+'.fasta', 'a') as f:
+                            SeqIO.write(SeqRecord(record, id='%s_prophage_%d' % (scaffold.name, phage_num),
+                                                  description='%s_prophage_%d' % (scaffold.name, phage_num)), f, "fasta")
                     if (not self._no_html) and (self._output):
                         plotly_plots.append(plot_html(hmmer_records, begin, end))
                 phage_info = phage_info if len(phage_info[-1][1]) > 0 else phage_info[:-1]

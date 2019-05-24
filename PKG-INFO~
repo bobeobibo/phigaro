@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: phigaro
+Version: 0.1.4
+Summary: Phigaro is a scalable command-line tool for predictions phages and prophages from nucleid acid sequences (including metagenomes) and is based on phage genes HMMs and a smoothing window algorithm.
+Home-page: https://github.com/bobeobibo/phigaro
+Author: E.Starikova, N.Pryanichnikov
+Author-email: hed.robin@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

@@ -137,12 +137,13 @@ def form_sequence(fasta_file, fasta_name, prophage_begin, prophage_end, scaffold
     for record in SeqIO.parse(fasta_file, "fasta"):
         if record.id.strip() == scaffold_name.strip():
             sequence = record.seq[prophage_begin:(prophage_end + 1)]
+            clean_sequence = sequence
             ins_ind = 77
             while ins_ind < len(sequence):
                 sequence = sequence[:ins_ind] + '%0A' + sequence[ins_ind:]
                 ins_ind += 80
             sequence = '%' + '3E%s' % fasta_name + '%' + '0A%s' % sequence
-            return sequence
+            return sequence, clean_sequence
 
 def if_transposable(records):
     status = False
