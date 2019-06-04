@@ -98,7 +98,7 @@ def main():
 
     with open(args.config) as f:
         logger.info('Using config file: {}'.format(args.config))
-        config = yaml.load(f)
+        config = yaml.load(f, Loader=yaml.FullLoader)
 
     config['phigaro']['print_vogs'] = args.print_vogs
     config['phigaro']['filename'] = args.fasta_file
