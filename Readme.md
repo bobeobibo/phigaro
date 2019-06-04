@@ -18,6 +18,31 @@ phigaro-setup
 ```
 It may take some time, since you are downloading the databases.
 
+## Permissions
+By default, root permissions are required for the installation. But you can disable it by adding a flag to '''phigaro-setup''':
+'''
+phigaro-setup --no-updatedb
+'''
+Moreover, you may want to change a path of a config installation file r reconfigurate ypur Phigaro - these can be also done by adding special flags:
+'''
+-> % phigaro-setup --help
+usage: phigaro-setup [-h] [-c CONFIG] [-p PVOG] [-f] [--no-updatedb]
+
+Phigaro setup helper
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c CONFIG, --config CONFIG
+                        Path to a config.yml, default is
+                        /home/polly/.phigaro/config.yml (default:
+                        /home/polly/.phigaro/config.yml)
+  -p PVOG, --pvog PVOG  pvogs directory, default is /home/polly/.phigaro/pvog
+                        (default: /home/polly/.phigaro/pvog)
+  -f, --force           Force configuration and rewrite config.yml if exists
+                        (default: False)
+  --no-updatedb         Do not run sudo updatedb (default: False)
+'''
+
 ## Usage
 
 ```
@@ -75,7 +100,7 @@ NC_003997.3     3779698 3784171 Siphoviridae
 Open-reading frames (i.e. proteins) are predicted from the input FASTA file using Prodigal. Phage genes are annotated with prokaryotic viral orthologous groups (pVOGs) profile Hidden Markov Models (HMMs), which can be downloaded stand-alone from http://dmk-brain.ecn.uiowa.edu/pVOGs/. Each contig is represented as a sequence of phage and non-phage genes. A smoothing window algorithm (a triangular window function) determines regions with a high density of phage genes and therefore the prophage regions and boundaries, considering the pVOG annotations and the GC content.
 
 ## Known issues
-Phigaro is tested on Linux systems. For MacOS, you may need to add the following softlink `ln -s /usr/libexec/locate.updatedb /usr/local/bin/updated` and run `brew install wget`. Currently, root permissions are required for the installation. If you encounter any issues while running Phigaro on test data, please report them to us at estarikova@rcpcm.org.
+Phigaro is tested on Linux systems. For MacOS, you may need to add the following softlink `ln -s /usr/libexec/locate.updatedb /usr/local/bin/updated` and run `brew install wget`. If you encounter any issues while running Phigaro on test data, please report them to us at estarikova@rcpcm.org.
 
 ## Publication
 Elizaveta V. Starikova, Polina O. Tikhonova, Nikita A. Prianichnikov, Chris M. Rands, Evgeny M. Zdobnov, Vadim M. Govorun (2019), Phigaro: high throughput prophage sequence annotation, bioRxiv 598243; doi: https://doi.org/10.1101/598243
