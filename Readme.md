@@ -20,12 +20,12 @@ It may take some time, since you are downloading the databases.
 
 ## Permissions
 By default, root permissions are required for the installation. But you can disable it by adding a flag to '''phigaro-setup''':
-'''
+```
 phigaro-setup --no-updatedb
-'''
+```
 Moreover, you may want to change a path of a config installation file r reconfigurate ypur Phigaro - these can be also done by adding special flags:
-'''
--> % phigaro-setup --help
+```
+phigaro-setup --help
 usage: phigaro-setup [-h] [-c CONFIG] [-p PVOG] [-f] [--no-updatedb]
 
 Phigaro setup helper
@@ -41,7 +41,7 @@ optional arguments:
   -f, --force           Force configuration and rewrite config.yml if exists
                         (default: False)
   --no-updatedb         Do not run sudo updatedb (default: False)
-'''
+```
 
 ## Usage
 
