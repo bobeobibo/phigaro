@@ -18,7 +18,7 @@ setup(name='phigaro',
 		'phigaro.to_html',
                 ],
       package_data = {
-        '': ['*.pickle', 'README.md']
+        '': ['*.pickle', 'Readme.md']
       },
       entry_points={
           'console_scripts': [
