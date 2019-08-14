@@ -10,7 +10,7 @@ You also need `locate`. It is pre-installed in the latest Ubuntu distributions, 
 ## Installation
 
 ```
-sudo -H pip3 install phigaro
+pip3 install phigaro --user
 ```
 then create a config file with:
 ```
