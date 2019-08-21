@@ -1,11 +1,21 @@
 # Phigaro v 0.2.1.8 
 Phigaro is a command-line tool for predicting and annotating phages and prophages from nucleid acid sequences (including metagenome assemblies) and is based on identifying phage genes via pVOG profile HMMs and a smoothing window algorithm. https://doi.org/10.1101/598243
 
+
 ## Requirements
-In order to run Phigaro, you need to have Prodigal and HMMER installed.
-To install Prodigal, download it at https://github.com/hyattpd/Prodigal/wiki/installation and follow the instructions.
-To install HMMER, download it at http://hmmer.org/.
-You also need `locate`. It is pre-installed in the latest Ubuntu distributions, but in case you don't have it, please run `sudo apt-get install locate`.
+* **Python**: Python 2.7, Python 3+ versions are supported. 
+`pip` utility is also required (`sudo apt-get install python-pip` on Ubuntu).
+
+
+* **Prodigal**: Download it from 
+[https://github.com/hyattpd/Prodigal/wiki/installation](https://github.com/hyattpd/Prodigal/wiki/installation) 
+and follow the instructions.
+
+* **HMMER**: Download it from http://hmmer.org/
+
+* **locate**: In order to install Phigaro, you need `locate`. 
+It is present in the latest Ubuntu distributions, 
+but in case you don't have it, install it with `sudo apt-get install locate` 
 
 ## Installation
 
@@ -18,12 +28,14 @@ phigaro-setup
 ```
 It may take some time, since you are downloading the databases.
 
-## Permissions
-By default, root permissions are required for the installation. But you can disable it by adding a flag to '''phigaro-setup''':
+## Setup Options
+### Root
+By default, root permissions are required for the installation. But you can disable it by adding a flag to `phigaro-setup`:
 ```
 phigaro-setup --no-updatedb
 ```
-Moreover, you may want to change a path of a config installation file r reconfigurate ypur Phigaro - these can be also done by adding special flags:
+### All Options
+Moreover, you may want to change a path of a config installation file or reconfigurate your Phigaro by adding special flags:
 ```
 phigaro-setup --help
 usage: phigaro-setup [-h] [-c CONFIG] [-p PVOG] [-f] [--no-updatedb]
@@ -41,6 +53,24 @@ optional arguments:
   -f, --force           Force configuration and rewrite config.yml if exists
                         (default: False)
   --no-updatedb         Do not run sudo updatedb (default: False)
+```
+### Manual Setup
+Also, you can manually create/change a `config.yml` file and write the `hmmer`, `prodigal` and `pvogs` paths like it is done in an example below. Other parameters should stay the same for the proper work of Phigaro unless you want to change them on purpose.
+
+For the `pvogs` you should download all the files to the `pvog` (or any other folder) via the [link](http://download.ripcm.com/phigaro/) unless it wasn't done previously by `phigaro-setup`.
+```
+hmmer:
+  bin: /usr/bin/hmmsearch
+  e_value_threshold: 0.00445
+  pvog_path: /home/user/.phigaro/pvog/allpvoghmms
+phigaro:
+  penalty_black: 2.2
+  penalty_white: 0.7
+  threshold_max: 46.0
+  threshold_min: 45.39
+  window_len: 32
+prodigal:
+  bin: /usr/local/bin/prodigal
 ```
 
 ## Usage
