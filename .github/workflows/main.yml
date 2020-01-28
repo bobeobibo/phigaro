@@ -15,7 +15,6 @@ jobs:
           shell: bash
           entrypoint:  /home/test_python3.sh
       - name: Test Phigaro at python2
-        shell: 
         run: |
           echo '::set-env name=CONDA_EXEC::/root/miniconda3/condabin/conda'
           /root/miniconda3/condabin/conda activate python2
