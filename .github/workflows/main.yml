@@ -10,4 +10,6 @@ jobs:
 
     steps:
       - name: Test Phigaro at python3 
-        run: bash -c "conda env list"
+        run: |
+            which pip
+            which pip2
