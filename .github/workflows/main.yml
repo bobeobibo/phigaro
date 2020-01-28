@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: PollyTikhonova/phigaro_git_action
+    - uses: PollyTikhonova/phigaro_git_action@v1
     - name: Test Phigaro at python3
       run: |
         conda activate python3
