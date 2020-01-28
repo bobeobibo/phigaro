@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Test Phigaro at python3
-      uses: PollyTikhonova/phigaro_git_action
+      uses: PollyTikhonova/phigaro_git_action@master
       with:
           entrypoint: test_python3.sh
     - name: Test Phigaro at python2
