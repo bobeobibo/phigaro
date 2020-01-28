@@ -9,6 +9,5 @@ jobs:
     container: tikhonovapolly/phigaro_test_for_git
 
     steps:
-      - uses: s-weigand/setup-conda@v1
       - name: Test Phigaro at python3 
         run: bash -c "conda env list"
