@@ -11,9 +11,7 @@ jobs:
     steps:
     - name: Test Phigaro at python3 
       run: |
-       /root/miniconda3/bin/conda init bash
-       source ~/.bashrc
-       /root/miniconda3/bin/conda activate python3
+       /root/miniconda3/condabin/conda activate python3
        /root/miniconda3/envs/python3/bin/pip install -r /home/latest_version.txt
        /root/miniconda3/envs/python3/bin/phigaro -f /home/test_short_seq.fasta -o /home/output -e html txt gff bed --not-open -d
        /root/miniconda3/envs/python3/bin/pip uninstall phigaro 
