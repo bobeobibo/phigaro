@@ -6,13 +6,16 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    container: tikhonovapolly/phigaro_test_for_git
     
     steps:
       - name: Test Phigaro at python3 
+        shell: bash
         uses: PollyTikhonova/phigaro_git_action@master
         with:
           entrypoint:  /home/test_python3.sh
       - name: Test Phigaro at python2
+        shell: bash
         run: |
           /root/miniconda3/bin/conda activate python2
           /root/miniconda3/envs/python2/bin/pip install -r /home/latest_version.txt
