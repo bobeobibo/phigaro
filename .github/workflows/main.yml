@@ -13,3 +13,4 @@ jobs:
         run: |
             which pip
             which pip2
+            conda env list
