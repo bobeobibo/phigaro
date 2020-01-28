@@ -1,4 +1,5 @@
 name: Phigaro Tests
+
 on: [push]
 
 jobs:
