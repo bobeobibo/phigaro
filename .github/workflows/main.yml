@@ -10,7 +10,9 @@ jobs:
 
     steps:
     - name: Test Phigaro at python3
-      run: hmmsearch
+      run: |
+        conda init
+        conda env list
     - name: Test Phigaro at python2
       uses: PollyTikhonova/phigaro_git_action@master
       with:
