@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: s-weigand/setup-conda@v1
       - name: Test Phigaro at python3 
-        run: conda env list
+        run: bash -c "conda env list"
