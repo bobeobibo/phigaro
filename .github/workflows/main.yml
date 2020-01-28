@@ -13,4 +13,4 @@ jobs:
         run: |
             which pip
             which pip2
-            conda env list
+            /root/miniconda3/bin/conda env list
