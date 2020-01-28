@@ -9,7 +9,7 @@ jobs:
     container: tikhonovapolly/phigaro_test_for_git
 
     steps:
-    - uses: PollyTikhonova/phigaro_git_action@master
+    - uses: actions/checkout@v1
     - name: Test Phigaro at python3
       run:  conda env list
     - name: Test Phigaro at python2
