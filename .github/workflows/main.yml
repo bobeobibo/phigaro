@@ -6,10 +6,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    container: tikhonovapolly/phigaro_test_for_git
 
     steps:
-    - uses: actions/checkout@v1
-    - uses: PollyTikhonova/phigaro_git_action@master
     - name: Test Phigaro at python3
       run: |
         conda env list
