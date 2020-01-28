@@ -6,7 +6,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container: tikhonovapolly/phigaro_test_for_git
+    container: 
+      image: tikhonovapolly/phigaro_test_for_git
 
     steps:
     - name: Test Phigaro at python3
