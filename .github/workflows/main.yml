@@ -12,4 +12,4 @@ jobs:
     - name: Test Phigaro at python3
       uses: PollyTikhonova/phigaro_git_action@master
     - name: echo smth
-      run: echo "smth"
+      run: echo "smth "
