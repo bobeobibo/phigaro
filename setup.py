@@ -4,7 +4,7 @@ setup(name='phigaro',
       description='Phigaro is a scalable command-line tool for predictions phages and prophages '
                   'from nucleid acid sequences (including metagenomes) and '
                   'is based on phage genes HMMs and a smoothing window algorithm.',
-      version="2.1.9",
+      version="2.1.10",
       license='MIT',
       author='E.Starikova, N.Pryanichnikov, P.Tikhonova',
       author_email='hed.robin@gmail.com',
@@ -15,7 +15,7 @@ setup(name='phigaro',
                 'phigaro.batch',
                 'phigaro.batch.task',
                 'phigaro.misc',
-		'phigaro.to_html',
+    'phigaro.to_html',
                 ],
       package_data = {
         '': ['*.pickle', 'README.md']

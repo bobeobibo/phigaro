@@ -72,11 +72,12 @@ def hmmer_res_to_gc(scaffold, hmmer_result, max_evalue):
 
 
 class Gene(object):
-    def __init__(self, name, begin, end, scaffold=None):
+    def __init__(self, name, begin, end, strand, scaffold=None):
         # type: (str, int, int, Scaffold|None)->Gene
         self.name = name
         self.begin = begin
         self.end = end
+        self.strand = strand
         self.scaffold = scaffold
 
 
@@ -166,9 +167,9 @@ def read_hmmer_output(file_path):
             vog_name=tokens[2],
             evalue=float(tokens[4]),
             gc_cont=gc_cont,
-            begin = int(begin),
-            end = int(end),
-            strand = int(strand)
+            begin=int(begin),
+            end=int(end),
+            strand=int(strand)
         )
 
     with open(file_path) as f:
@@ -192,7 +193,8 @@ def read_prodigal_output(file_name):
         return Gene(
             name=tokens[0],
             begin=int(tokens[1]),
-            end=int(tokens[2])
+            end=int(tokens[2]),
+            strand=int(tokens[3])
         )
 
     def parse_gene_records(gene_records):
