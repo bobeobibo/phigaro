@@ -29,7 +29,7 @@ jobs:
           mkdir /home/outpy${{ matrix.python-version }}
           /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip install -r /home/data/latest_version.txt
           echo Run Phigaro
-          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/python /root/miniconda3/envs/python${{ matrix.python-version }}/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy${{ matrix.python-version }}/output -e html txt gff bed --not-open 
+          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/python /root/miniconda3/envs/python${{ matrix.python-version }}/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy${{ matrix.python-version }}/output -e html txt gff bed --not-open -d 
           echo Deleting Phigaro
           /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip uninstall phigaro -y
           echo Phigaro works fine at python${{ matrix.python-version }}
