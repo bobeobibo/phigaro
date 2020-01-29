@@ -35,6 +35,9 @@ jobs:
         run: |
           echo "ls /home/outpy${{ matrix.python-version }}"
           ls /home/outpy${{ matrix.python-version }}
+      - name: sleep time
+        shell: bash
+        run: sleep `expr 3 \* 30 - ${{ matrix.python-version }} \* 30`
           
   upload_to_pypi:
     needs: test_at_python
