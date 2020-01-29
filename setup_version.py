@@ -73,7 +73,9 @@ with open(readme_file, 'w') as f:
     f.write(''.join(lines))
 
 with open(latest_version_file, 'w') as f:
-    f.write('https://github.com/PollyTikhonova/phigaro/raw/master/phigaro-%s.tar.gz'%version)
+    f.write('https://github.com/bobeobibo/phigaro/raw/master/dist/phigaro-%s.tar.gz'%version)
+
+
 
 with open(tag_file, 'w') as f:
     f.write('v%s'%version)
