@@ -47,7 +47,7 @@ jobs:
         run: echo ${{ secrets.phigaro_pypi_token }}
 
   check_pypi_upload:
-    needs: upload_to_pypi
+#     needs: upload_to_pypi
     runs-on: ubuntu-latest
     container: tikhonovapolly/phigaro_test_for_git
     
@@ -61,8 +61,9 @@ jobs:
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
           cp -r /root/.phigaro ~/.phigaro
           /root/miniconda3/envs/python3/bin/pip install phigaro
+          echo Phigaro version:
+          /root/miniconda3/envs/python3/bin/pip freeze | grep phigaro
           echo Run Phigaro
-          pip freeze | grep phigaro
           /root/miniconda3/envs/python3/bin/python /root/miniconda3/envs/python3/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy3/output -e html txt gff bed --not-open 
 
           
