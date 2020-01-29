@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     container: tikhonovapolly/phigaro_test_for_git
     strategy:
-      max-parallel: 4
+      max-parallel: 1
       matrix:
         python-version: [2, 3]
     
@@ -27,4 +27,6 @@ jobs:
           /root/miniconda3/envs/python${{ matrix.python-version }}/bin/python /root/miniconda3/envs/python${{ matrix.python-version }}/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy${{ matrix.python-version }}/output -e html txt gff bed --not-open 
           /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip uninstall phigaro
           echo Phigaro works fine at python${{ matrix.python-version }}
+      - name: General Thing
+        run: echo That's OK
 
