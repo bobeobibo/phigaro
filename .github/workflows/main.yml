@@ -1,10 +1,13 @@
 name: Phigaro Tests
 
-on: [push]
+on:
+    release:
+        paths-ignore:
+              - '.github/**'
 
 jobs:
   test_at_python:
-
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     runs-on: ubuntu-latest
     container: tikhonovapolly/phigaro_test_for_git
     strategy:
@@ -37,7 +40,7 @@ jobs:
           ls /home/outpy${{ matrix.python-version }}
           
   upload_to_pypi:
-#     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     needs: test_at_python
     runs-on: ubuntu-latest
     
@@ -47,7 +50,7 @@ jobs:
         run: echo ${{ secrets.phigaro_pypi_token }}
 
   check_pypi_upload:
-#     needs: upload_to_pypi
+    needs: upload_to_pypi
     runs-on: ubuntu-latest
     container: tikhonovapolly/phigaro_test_for_git
     
@@ -57,6 +60,7 @@ jobs:
         run: |
           echo ${{ secrets.phigaro_pypi_token }}
           mkdir /home/data
+          mkdir /home/outpy3
           cd /home/data
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
           cp -r /root/.phigaro ~/.phigaro
