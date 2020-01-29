@@ -6,12 +6,13 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container: tikhonovapolly/phigaro_test_for_git
     
     steps:
+      - uses: PollyTikhonova/phigaro_git_action@master
       - name: Test Phigaro at python2
         shell: bash
         run: |
+          hmmsearch
           /root/miniconda3/envs/python2/bin/pip install -r /home/latest_version.txt
           /root/miniconda3/envs/python2/bin/phigaro -f /home/test_short_seq.fasta -o /home/output -e html txt gff bed --not-open -d
           /root/miniconda3/envs/python2/bin/pip uninstall phigaro 
