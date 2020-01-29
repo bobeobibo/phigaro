@@ -7,6 +7,10 @@ jobs:
 
     runs-on: ubuntu-latest
     container: tikhonovapolly/phigaro_test_for_git
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [2, 3]
     
     steps:
       - name: Download data
@@ -16,18 +20,11 @@ jobs:
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/latest_version.txt
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
           cp -r /root/.phigaro ~/.phigaro
-      - name: Test Phigaro at python2
+      - name: Test Phigaro at python${{ matrix.python-version }}
         shell: bash
         run: |
-          /root/miniconda3/envs/python2/bin/pip install -r /home/data/latest_version.txt
-          /root/miniconda3/envs/python2/bin/python /root/miniconda3/envs/python2/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy2/output -e html txt gff bed --not-open 
-          /root/miniconda3/envs/python2/bin/pip uninstall phigaro
-          echo Phigaro works fine at python2
-      - name: Test Phigaro at python3
-        shell: bash
-        run: |
-          /root/miniconda3/envs/python3/bin/pip install -r /home/data/latest_version.txt
-          /root/miniconda3/envs/python3/bin/python /root/miniconda3/envs/python3/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy3/output -e html txt gff bed --not-open 
-          /root/miniconda3/envs/python3/bin/pip uninstall phigaro
-          echo Phigaro works fine at python3
+          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip install -r /home/data/latest_version.txt
+          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/python /root/miniconda3/envs/python${{ matrix.python-version }}/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy${{ matrix.python-version }}/output -e html txt gff bed --not-open 
+          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip uninstall phigaro
+          echo Phigaro works fine at python${{ matrix.python-version }}
 
