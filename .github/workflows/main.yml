@@ -35,16 +35,14 @@ jobs:
         run: |
           echo "ls /home/outpy${{ matrix.python-version }}"
           ls /home/outpy${{ matrix.python-version }}
-      - name: sleep time
-        shell: bash
-        run: sleep `expr 3 \* 30 - ${{ matrix.python-version }} \* 30`
           
   upload_to_pypi:
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     needs: test_at_python
     runs-on: ubuntu-latest
     
     steps:
       - name: Check outputs
         shell: bash
-        run: echo "here I am"
+        run: echo ${{ secrets.phigaro_pypi_token }}
 
