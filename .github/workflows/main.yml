@@ -15,6 +15,7 @@ jobs:
           cd /home/data
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/latest_version.txt
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
+          cp -r /root/.phigaro ~/.phigaro
       - name: Test Phigaro at python2
         shell: bash
         run: |
