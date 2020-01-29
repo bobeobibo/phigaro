@@ -36,4 +36,9 @@ jobs:
           echo Deleting Phigaro
           /root/miniconda3/envs/python3/bin/pip uninstall phigaro -y
           echo Phigaro works fine at python3
+      - name: Check outputs
+        shell: bash
+        run: |
+          ls /home/outpy2
+          ls /home/outpy3
 
