@@ -37,7 +37,7 @@ jobs:
           ls /home/outpy${{ matrix.python-version }}
           
   upload_to_pypi:
-
+    needs: test_at_python
     runs-on: ubuntu-latest
     
     steps:
