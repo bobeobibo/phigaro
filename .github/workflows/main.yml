@@ -1,58 +1,58 @@
 name: Phigaro Tests
 
-on: push
-#     push:
-#         paths-ignore:
-#               - '.github/**'
+on: 
+    push:
+        paths-ignore:
+              - '.github/**'
 
 jobs:
-#   test_at_python:
-# #     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-#     runs-on: ubuntu-latest
-#     container: tikhonovapolly/phigaro_test_for_git
-#     strategy:
-#       max-parallel: 2
-#       matrix:
-#         python-version: [2, 3]
+  test_at_python:
+#     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    runs-on: ubuntu-latest
+    container: tikhonovapolly/phigaro_test_for_git
+    strategy:
+      max-parallel: 2
+      matrix:
+        python-version: [2, 3]
     
-#     steps:
-#       - name: Download data
-#         run: |
-#           mkdir /home/data
-#           cd /home/data
-#           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/latest_version.txt
-#           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
-#           cp -r /root/.phigaro ~/.phigaro
-#       - name: Test Phigaro at python${{ matrix.python-version }}
-#         shell: bash
-#         run: |
-#           /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip install -r /home/data/latest_version.txt
-#           echo Run Phigaro
-#           /root/miniconda3/envs/python${{ matrix.python-version }}/bin/python /root/miniconda3/envs/python${{ matrix.python-version }}/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy${{ matrix.python-version }}/output -e html txt gff bed --not-open -d 
-#           echo Deleting Phigaro
-#           /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip uninstall phigaro -y
-#           echo Phigaro works fine at python${{ matrix.python-version }}
-#       - name: Check outputs
-#         shell: bash
-#         run: |
-#           echo "ls /home/outpy${{ matrix.python-version }}"
-#           ls /home/outpy${{ matrix.python-version }}
+    steps:
+      - name: Download data
+        run: |
+          mkdir /home/data
+          cd /home/data
+          wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/latest_version.txt
+          wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
+          cp -r /root/.phigaro ~/.phigaro
+      - name: Test Phigaro at python${{ matrix.python-version }}
+        shell: bash
+        run: |
+          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip install -r /home/data/latest_version.txt
+          echo Run Phigaro
+          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/python /root/miniconda3/envs/python${{ matrix.python-version }}/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy${{ matrix.python-version }}/output -e html txt gff bed --not-open -d 
+          echo Deleting Phigaro
+          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip uninstall phigaro -y
+          echo Phigaro works fine at python${{ matrix.python-version }}
+      - name: Check outputs
+        shell: bash
+        run: |
+          echo "ls /home/outpy${{ matrix.python-version }}"
+          ls /home/outpy${{ matrix.python-version }}
           
-#   upload_to_pypi:
-# #     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-#     needs: test_at_python
-#     runs-on: ubuntu-latest
+  upload_to_pypi:
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    needs: test_at_python
+    runs-on: ubuntu-latest
     
-#     steps:
-#       - uses: actions/checkout@v1
-#       - name: Pypi upload
-#         uses: pypa/gh-action-pypi-publish@master        
-#         with:
-#            user: __token__
-#            password: ${{ secrets.phigaro_pypi_token }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Pypi upload
+        uses: pypa/gh-action-pypi-publish@master        
+        with:
+           user: __token__
+           password: ${{ secrets.phigaro_pypi_token }}
 
   check_pypi_upload:
-#     needs: upload_to_pypi
+    needs: upload_to_pypi
     runs-on: ubuntu-latest
     container: tikhonovapolly/phigaro_test_for_git
     
