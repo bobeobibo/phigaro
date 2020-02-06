@@ -6,7 +6,7 @@ from .base import AbstractFinder, Phage
 
 
 class V2Finder(AbstractFinder):
-    def __init__(self, window_len, threshold_min, threshold_max):
+    def __init__(self, window_len, threshold_min, threshold_max, mode):
         """
         :type window_len: int
         :type threshold_min: float
@@ -15,11 +15,15 @@ class V2Finder(AbstractFinder):
         self.window_len = window_len
         self.threshold_min = threshold_min
         self.threshold_max = threshold_max
+        self.mode = mode
 
     def find_phages(self, bacteria_npn, bacteria_gc):
         scores = calc_scores(bacteria_npn, self.window_len)
-        gc_scores = calc_scores(bacteria_gc, self.window_len)
-        ranges = scan_phages(np.array(scores) * np.array(gc_scores), self.threshold_min, self.threshold_max)
+        if self.mode != 'without_gc':
+            gc_scores = calc_scores(bacteria_gc, self.window_len)
+            ranges = scan_phages(np.array(scores) * np.array(gc_scores), self.threshold_min, self.threshold_max)
+        else:
+            ranges = scan_phages(np.array(scores), self.threshold_min, self.threshold_max)
         for (begin, end) in ranges:
             yield Phage(
                 begin=begin,

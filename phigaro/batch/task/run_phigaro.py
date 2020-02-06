@@ -14,6 +14,7 @@ from Bio.SeqRecord import SeqRecord
 from phigaro.to_html.preprocess import plot_html, form_sequence, if_transposable
 from phigaro.to_html.html_formation import form_html_document
 from phigaro.context import Context
+import numpy as np
 
 class RunPhigaroTask(AbstractTask):
     task_name = 'run_phigaro'
@@ -28,10 +29,12 @@ class RunPhigaroTask(AbstractTask):
         self.prodigal_task = prodigal_task
 
     def _prepare(self):
+        self.mode = self.config['phigaro']['mode']
         self.finder = V2Finder(
             window_len=self.config['phigaro']['window_len'],
-            threshold_min=self.config['phigaro']['threshold_min'],
-            threshold_max=self.config['phigaro']['threshold_max'],
+            threshold_min=self.config['phigaro']['threshold_min_%s'%self.mode],
+            threshold_max=self.config['phigaro']['threshold_max_%s'%self.mode],
+            mode=self.mode
         )
         self._print_vogs = self.config['phigaro'].get('print_vogs', False)
         self._filename = self.config['phigaro'].get('filename', False)
@@ -51,6 +54,7 @@ class RunPhigaroTask(AbstractTask):
         penalty_white = self.config['phigaro']['penalty_white']
         gff = self.config['phigaro']['gff']
         bed = self.config['phigaro']['bed']
+        mean_gc = self.config['phigaro']['mean_gc']
 
         pvogs_black_list = const.DEFAULT_BLACK_LIST
         pvogs_white_list = const.DEFAULT_WHITE_LIST
@@ -86,6 +90,10 @@ class RunPhigaroTask(AbstractTask):
                                        penalty_black = penalty_black, penalty_white = penalty_white,
                                        pvogs_black_list = pvogs_black_list, pvogs_white_list = pvogs_white_list)
                 gc = hmmer_res_to_gc(scaffold, hmmer_result, max_evalue=max_evalue)
+                if self.mode == 'abs':
+                    gc = np.array(gc)
+                    gc = np.absolute(gc - mean_gc) + mean_gc
+                    gc[gc == np.absolute(0 - mean_gc) + mean_gc] = 0
                 phages = self.finder.find_phages(npn, gc)
                 for phage in phages:
                     phage_num += 1

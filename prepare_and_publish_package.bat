@@ -4,7 +4,7 @@ git pull
 move /-Y dist\*.* dist_old_versions\
 C:\Users\tikho\Anaconda3\python.exe setup_version.py
 pause
-C:\Users\tikho\Anaconda3\python.exe setup.py sdist
+C:\Users\tikho\Anaconda3\python.exe setup.py sdist bdist_wheel
 pause
 git add --all
 git status

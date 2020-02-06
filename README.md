@@ -1,4 +1,4 @@
-# Phigaro v2.1.10
+# Phigaro v2.2.0
 
 
 ## Requirements

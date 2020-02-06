@@ -158,8 +158,13 @@ class SetupHelper(object):
             },
             'phigaro': {
                 'window_len': const.DEFAULT_WINDOW_SIZE,
-                'threshold_min': const.DEFAULT_THRESHOLD_MIN,
-                'threshold_max': const.DEFAULT_THRESHOLD_MAX,
+                'threshold_min_basic': const.DEFAULT_THRESHOLD_MIN_BASIC,
+                'threshold_max_basic': const.DEFAULT_THRESHOLD_MAX_BASIC,
+                'threshold_min_abs': const.DEFAULT_THRESHOLD_MIN_ABS,
+                'threshold_max_abs': const.DEFAULT_THRESHOLD_MAX_ABS,
+                'threshold_min_without_gc': const.DEFAULT_THRESHOLD_MIN_WITHOUT_GC,
+                'threshold_max_without_gc': const.DEFAULT_THRESHOLD_MAX_WITHOUT_GC,
+                'mean_gc': const.DEFAULT_MEAN_GC,
                 'penalty_black': const.DEFAULT_PENALTY_BLACK,
                 'penalty_white': const.DEFAULT_PENALTY_WHITE
             }

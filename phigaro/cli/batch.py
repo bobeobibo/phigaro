@@ -68,7 +68,7 @@ def main():
     parser.add_argument('-c', '--config', default=default_config_path, help='Path to the config file, not required')
     parser.add_argument('-v', '--verbose', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('-p', '--print-vogs', help='Print phage vogs for each region', action='store_true')
-    parser.add_argument('-e', '--extension', default=['html'], nargs='+', help='Type of the output: html, txt, gff, bed or stdout. Default is html. You can specify several file formats with a space as a separator. Example: -e txt html stdout.')
+    parser.add_argument('-e', '--extension', default=['html'], nargs='+', help='Type of the output: html, tsv, gff, bed or stdout. Default is html. You can specify several file formats with a space as a separator. Example: -e tsv html stdout.')
     parser.add_argument('-o', '--output', default=False, help='Output filename for html and txt outputs. Required by default, but not required for stdout only output.')
     parser.add_argument('--not-open', help='Do not open html file automatically, if html output type is specified.', action='store_true')
     parser.add_argument('-t', '--threads',
@@ -79,6 +79,8 @@ def main():
     parser.add_argument('--no-cleanup', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('-S', '--substitute-output', action='append', help='If you have precomputed prodigal and/or hmmer data you can provide paths to the files in the following format: program:address/to/the/file. In place of program you should write hmmer or prodigal. If you need to provide both files you should pass them separetely as two parametres.')
     parser.add_argument('-d', '--delete-shorts', action='store_true', help='Exclude sequences with length < 20000 automatically.')
+    parser.add_argument('-m', '--mode', default='basic',
+                        help='You can launch Phigaro at one of 3 modes: basic, abs, without_gc. Default is basic. Read more about modes at https://github.com/bobeobibo/phigaro/')
 
     args = parser.parse_args()
 
@@ -110,6 +112,8 @@ def main():
     config['phigaro']['delete_shorts'] = args.delete_shorts
     config['phigaro']['gff'] = True if ('gff' in args.extension) else False
     config['phigaro']['bed'] = True if ('bed' in args.extension) else False
+    config['phigaro']['mode'] = args.mode
+
     filename = args.fasta_file
     sample = '{}-{}'.format(
         sample_name(filename),
@@ -153,10 +157,10 @@ def main():
     ]
     task_output_file = run_tasks_chain(tasks)
 
-    if ('txt' in args.extension) or ('stdout' in args.extension):
+    if ('tsv' in args.extension) or ('stdout' in args.extension):
         with open(task_output_file) as f:
             f = list(f)
-            if 'txt' in args.extension:
+            if 'tsv' in args.extension:
                 out_f = open(args.output+'.tsv', 'w')
                 for line in f:
                     out_f.write(line)
