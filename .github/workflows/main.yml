@@ -24,6 +24,7 @@ jobs:
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta          
           cp -r /root/.phigaro ~/.phigaro
           cd ~/.phigaro
+          rm config.yml
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/config.yml
       - name: Test Phigaro at python${{ matrix.python-version }}
         shell: bash
@@ -67,6 +68,7 @@ jobs:
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
           cp -r /root/.phigaro ~/.phigaro
           cd ~/.phigaro
+          rm config.yml
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/config.yml
           /root/miniconda3/envs/python3/bin/pip install phigaro
           echo Phigaro version:
