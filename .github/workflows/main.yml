@@ -4,7 +4,8 @@ name: Phigaro Tests
 on: 
     push:
         paths-ignore:
-              - '.github/**'
+        - '.github/**'
+        - 'README.md'
 
 jobs:
   test_at_python:
