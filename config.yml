@@ -1,12 +1,17 @@
 hmmer:
-  bin: /usr/bin/hmmsearch
+  bin: /usr/local/bin/hmmsearch
   e_value_threshold: 0.00445
-  pvog_path: /home/polly/.phigaro/pvog/allpvoghmms
+  pvog_path: /root/.phigaro/pvog/allpvoghmms
 phigaro:
+  mean_gc: 0.46354823199323625
   penalty_black: 2.2
   penalty_white: 0.7
-  threshold_max: 46.0
-  threshold_min: 45.39
+  threshold_max_abs: 11.42
+  threshold_max_basic: 46.0
+  threshold_max_without_gc: 52.96
+  threshold_min_abs: 11.28
+  threshold_min_basic: 45.39
+  threshold_min_without_gc: 52.32
   window_len: 32
 prodigal:
-  bin: /usr/local/bin/prodigal
+  bin: /root/miniconda3/bin/prodigal
