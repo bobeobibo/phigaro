@@ -21,14 +21,16 @@ jobs:
           mkdir /home/data
           cd /home/data
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/latest_version.txt
-          wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
+          wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta          
           cp -r /root/.phigaro ~/.phigaro
+          cd ~/.phigaro
+          wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/config.yml
       - name: Test Phigaro at python${{ matrix.python-version }}
         shell: bash
         run: |
           /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip install -r /home/data/latest_version.txt
           echo Run Phigaro
-          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/python /root/miniconda3/envs/python${{ matrix.python-version }}/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy${{ matrix.python-version }}/output -e html txt gff bed --not-open -d 
+          /root/miniconda3/envs/python${{ matrix.python-version }}/bin/python /root/miniconda3/envs/python${{ matrix.python-version }}/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy${{ matrix.python-version }}/output -e html txt gff bed --mode basic --not-open -d 
           echo Deleting Phigaro
           /root/miniconda3/envs/python${{ matrix.python-version }}/bin/pip uninstall phigaro -y
           echo Phigaro works fine at python${{ matrix.python-version }}
@@ -64,10 +66,12 @@ jobs:
           cd /home/data
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
           cp -r /root/.phigaro ~/.phigaro
+          cd ~/.phigaro
+          wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/config.yml
           /root/miniconda3/envs/python3/bin/pip install phigaro
           echo Phigaro version:
           /root/miniconda3/envs/python3/bin/pip freeze | grep phigaro
           echo Run Phigaro
-          /root/miniconda3/envs/python3/bin/python /root/miniconda3/envs/python3/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy3/output -e html txt gff bed --not-open -d
+          /root/miniconda3/envs/python3/bin/python /root/miniconda3/envs/python3/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy3/output -e html txt gff bed --mode basic --not-open -d
 
           
