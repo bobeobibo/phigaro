@@ -1,7 +1,6 @@
 ## V2.2.0
 New parameter:
- -m, --mode 
-
+ -m, --mode \
 Runs the tool at one of the available modes: 
 1. basic - find phages using phage score and GC content.
 2. abs - find phages using phage score and GC content deviation.
@@ -13,6 +12,5 @@ New output formats:
   - bed.
   
 New parameter:
-  -d, --delete-shorts 
-
+  -d, --delete-shorts \
 Allows the tool to exclude sequences with length less 20 000 bp automatically.
