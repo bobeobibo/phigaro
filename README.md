@@ -1,4 +1,4 @@
-# Phigaro v2.2.0
+# Phigaro v2.2.1
 
 ## Updates tracker
 You can find the information about updates and releases by [link.](https://github.com/bobeobibo/phigaro/blob/master/version_tracker.md)

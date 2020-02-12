@@ -13,6 +13,7 @@ set /P commit_name="Please, make up the commit name:"
 set /p tag=<tag_name
 git commit -m %commit_name%
 git tag %tag%
+pause
 git push
 git push --tags
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" https://github.com/bobeobibo/phigaro/actions

@@ -6,12 +6,12 @@ phigaro:
   mean_gc: 0.46354823199323625
   penalty_black: 2.2
   penalty_white: 0.7
-  threshold_max_abs: 11.42
+  threshold_max_abs: 52.96
   threshold_max_basic: 46.0
-  threshold_max_without_gc: 52.96
-  threshold_min_abs: 11.28
+  threshold_max_without_gc: 11.42
+  threshold_min_abs: 50.32
   threshold_min_basic: 45.39
-  threshold_min_without_gc: 52.32
+  threshold_min_without_gc: 11.28
   window_len: 32
 prodigal:
   bin: /root/miniconda3/bin/prodigal
