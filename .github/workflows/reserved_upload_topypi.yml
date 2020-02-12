@@ -1,10 +1,10 @@
 name: Pypi Upload
 
 #on: push
-#on: 
-#    push:
-#        paths:
-#        - '.github/worflows/reserved_upload_topypi.yml'
+on: 
+    push:
+        paths:
+        - '.github/worflows/reserved_upload_topypi.yml'
 
 jobs:
         
