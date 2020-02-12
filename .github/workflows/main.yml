@@ -1,7 +1,7 @@
 name: Phigaro Tests
 
-on: push
- on: 
+#on: push
+on: 
      push:
          paths-ignore:
          - '.github/**'
