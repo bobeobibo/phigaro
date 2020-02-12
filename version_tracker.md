@@ -1,5 +1,5 @@
 ## V2.2.1
-! IMPORTANT !
+! IMPORTANT !\
 Updated thresholds for abs and without_gc modes.
 
 ## V2.2.0
