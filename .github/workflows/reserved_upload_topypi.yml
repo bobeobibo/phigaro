@@ -1,4 +1,4 @@
-name: Phigaro Tests
+name: Pypi Upload
 
 #on: push
 on: 
