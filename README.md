@@ -19,11 +19,29 @@ It is present in the latest Ubuntu distributions,
 but in case you don't have it, install it with `sudo apt-get install locate` 
 
 ## Installation
-
+### Step 1
+#### Via pip
 ```
 pip3 install phigaro --user
 ```
-then create a config file with:
+#### Via conda
+```
+conda env create -f environment.yml
+conda activate phigaro_env
+```
+Where environment.yml can be downloaded form this repository or created manually:
+```
+name: phigaro_env
+dependencies:
+  - python=3.7
+  - pip
+  - prodigal
+  - hmmer
+  - pip:
+    - phigaro
+```
+### Step 2
+Create a config file with:
 ```
 phigaro-setup
 ```
