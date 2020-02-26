@@ -122,7 +122,7 @@ def main():
 
     if config['phigaro']['output'] is not None:
         fold = os.path.dirname(config['phigaro']['output'])
-        if not os.path.isdir(fold):
+        if fold and not os.path.isdir(fold):
             os.makedirs(fold)
 
     Context.initialize(
