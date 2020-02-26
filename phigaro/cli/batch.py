@@ -121,9 +121,9 @@ def main():
     )
 
     if config['phigaro']['output'] is not None:
-        fold = '/'.join(config['phigaro']['output'].replace('\\', '/').split('/')[:-1])
-        if not os.path.isdir(fold):
-            os.mkdir(fold)
+        fold = os.path.dirname(config['phigaro']['output'])
+        if fold and not os.path.isdir(fold):
+            os.makedirs(fold)
 
     Context.initialize(
         sample=sample,
