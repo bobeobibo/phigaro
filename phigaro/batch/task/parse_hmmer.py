@@ -56,7 +56,9 @@ class ParseHmmerTask(AbstractTask):
                     hmm_res[scaffold] = {}
                 # Take minimum of all evalues for current gene_name
                 if gene_name in hmm_res[scaffold]:
-                    hmm_res[scaffold][gene_name] = min(evalue, hmm_res[scaffold][gene_name])
+                    hmm_res[scaffold][gene_name] = min(
+                        evalue, hmm_res[scaffold][gene_name]
+                    )
                 else:
                     hmm_res[scaffold][gene_name] = evalue
 
@@ -80,8 +82,6 @@ class ParseHmmerTask(AbstractTask):
                     )
 
                     is_phage_it = (
-                        'P' if is_phage else 'N'
-                        for is_phage in is_phage_it
+                        'P' if is_phage else 'N' for is_phage in is_phage_it
                     )
                     writer.writerow((scaffold, ''.join(is_phage_it)))
-

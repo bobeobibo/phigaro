@@ -11,12 +11,8 @@ class ProdigalTask(AbstractTask):
         super().__init__()
 
         self.preprocess_task = preprocess_task
-        self.prodigal = (
-            sh.Command(self.config['prodigal']['bin'])
-            .bake(
-                i=self.preprocess_task.output(),
-                a=self.output()
-            )
+        self.prodigal = sh.Command(self.config['prodigal']['bin']).bake(
+            i=self.preprocess_task.output(), a=self.output()
         )
 
     def output(self):

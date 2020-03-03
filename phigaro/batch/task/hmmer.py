@@ -18,18 +18,18 @@ class HmmerTask(AbstractTask):
         self.prodigal = prodigal_task
 
     def _prepare(self):
-        self.hmmer = (
-            sh.Command(self.config['hmmer']['bin'])
-        )
+        self.hmmer = sh.Command(self.config['hmmer']['bin'])
 
     def output(self):
         return self.file('{}.hmmer_out'.format(self.sample))
 
     def run(self):
-        self.hmmer('--cpu', self.context.threads,
-                   '--notextw',
-                   '--tblout', self.output(),
-                   self.config['hmmer']['pvog_path'],
-                   self.prodigal.output())
-
-
+        self.hmmer(
+            '--cpu',
+            self.context.threads,
+            '--notextw',
+            '--tblout',
+            self.output(),
+            self.config['hmmer']['pvog_path'],
+            self.prodigal.output(),
+        )

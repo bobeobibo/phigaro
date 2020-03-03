@@ -8,7 +8,9 @@ MIN_PHAGE_IN_WINDOW = 14  # optimize this
 
 
 class V1Finder(AbstractFinder):
-    def __init__(self, window_size=WINDOW_SIZE, min_phage_in_window=MIN_PHAGE_IN_WINDOW):
+    def __init__(
+        self, window_size=WINDOW_SIZE, min_phage_in_window=MIN_PHAGE_IN_WINDOW
+    ):
         self.window_size = window_size
         self.min_phage_in_window = min_phage_in_window
 
@@ -16,7 +18,9 @@ class V1Finder(AbstractFinder):
         kkz, ar_positions = convert_npn(bacteria_npn)
 
         grad = count_grad(kkz, self.window_size)
-        norm_grad = count_norm_grad(grad, self.window_size, self.min_phage_in_window)
+        norm_grad = count_norm_grad(
+            grad, self.window_size, self.min_phage_in_window
+        )
         phages = get_phages(kkz, norm_grad)
 
         for phage in phages:
@@ -44,7 +48,9 @@ def count_grad(sequence, window_size):
         end = int(i + offset)
         if end > len(sequence) - 1:  # if end is out of range
             end = len(sequence) - 1
-        grad[i] += sum(sequence[start:end + 1])  # count sum of elements in window
+        grad[i] += sum(
+            sequence[start : end + 1]
+        )  # count sum of elements in window
     return grad
 
 
@@ -91,7 +97,9 @@ def get_phages(sequence, norm_grad):  # get coordinates of phages
     return phages
 
 
-def find_end_of_range(norm_grad, i_start):  # find where the sequence stops (12345321*here*0000)
+def find_end_of_range(
+    norm_grad, i_start
+):  # find where the sequence stops (12345321*here*0000)
     # takes normGrad and putative end position
     i = i_start
     while norm_grad[i] != 0 and i < (len(norm_grad) - 1):
@@ -127,5 +135,3 @@ def convert_npn(npn):
         if letter == 'r':
             ar_positions.append(i)
     return kkz, ar_positions
-
-

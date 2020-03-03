@@ -26,47 +26,57 @@ def read_coords(filename, sep=None):
         reader = csv.reader(f, delimiter=sep)
         res = {}
         for phage, group in groupby(reader, key=lambda x: x[0]):
-            res[phage] = sorted((
-                (int(begin), int(end))
-                for _, begin, end in group
-            ), key=lambda x: x[0])
+            res[phage] = sorted(
+                ((int(begin), int(end)) for _, begin, end in group),
+                key=lambda x: x[0],
+            )
     return res
 
 
 def convert_npn(phage, ph_sym):
-    return [
-        int(c == ph_sym)
-        for c in phage
-    ]
+    return [int(c == ph_sym) for c in phage]
 
 
-def hmmer_res_to_npn(scaffold, hmmer_result, max_evalue, penalty_black, penalty_white, pvogs_black_list, pvogs_white_list):
+def hmmer_res_to_npn(
+    scaffold,
+    hmmer_result,
+    max_evalue,
+    penalty_black,
+    penalty_white,
+    pvogs_black_list,
+    pvogs_white_list,
+):
     # type: (Scaffold, HmmerResult, float)->list[int]
     ordered_records_it = (
-        HmmerResult.min_record(hmmer_result.get_records(scaffold.name, gene.name))
+        HmmerResult.min_record(
+            hmmer_result.get_records(scaffold.name, gene.name)
+        )
         for gene in scaffold
     )
 
     return [
         0
         if not record or record.evalue > max_evalue
-        else 1 - penalty_black if record.vog_name in pvogs_black_list
-        else 1 + penalty_white if record.vog_name in pvogs_white_list
+        else 1 - penalty_black
+        if record.vog_name in pvogs_black_list
+        else 1 + penalty_white
+        if record.vog_name in pvogs_white_list
         else 1
         for record in ordered_records_it
     ]
 
+
 def hmmer_res_to_gc(scaffold, hmmer_result, max_evalue):
     # type: (Scaffold, HmmerResult, float)->list[int]
     ordered_records_it = (
-        HmmerResult.min_record(hmmer_result.get_records(scaffold.name, gene.name))
+        HmmerResult.min_record(
+            hmmer_result.get_records(scaffold.name, gene.name)
+        )
         for gene in scaffold
     )
 
     return [
-        0
-        if not record or record.evalue > max_evalue
-        else record.gc_cont
+        0 if not record or record.evalue > max_evalue else record.gc_cont
         for record in ordered_records_it
     ]
 
@@ -104,8 +114,7 @@ class ScaffoldSet(object):
     def __init__(self, scaffolds):
         # type: (list[Scaffold])->ScaffoldSet
         self._scaffolds_map = {
-            scaffold.name: scaffold
-            for scaffold in scaffolds
+            scaffold.name: scaffold for scaffold in scaffolds
         }
 
     def get_scaffold(self, scaffold_name):
@@ -117,7 +126,17 @@ class ScaffoldSet(object):
 
 
 class HmmerRecord(object):
-    def __init__(self, scaffold_name, gene_name, vog_name, evalue, gc_cont, begin, end, strand):
+    def __init__(
+        self,
+        scaffold_name,
+        gene_name,
+        vog_name,
+        evalue,
+        gc_cont,
+        begin,
+        end,
+        strand,
+    ):
         # type: (str, str, str, float)->HmmerRecord
         self.scaffold_name = scaffold_name
         self.gene_name = gene_name
@@ -128,10 +147,13 @@ class HmmerRecord(object):
         self.end = end
         self.strand = strand
 
+
 class HmmerResult(object):
     def __init__(self, hmmer_records):
         # type: (Iterable[HmmerRecord])->HmmerResult
-        self._scaffolds_map = defaultdict(lambda: defaultdict(list))  # type: dict[str, dict[str, list[HmmerRecord]]]
+        self._scaffolds_map = defaultdict(
+            lambda: defaultdict(list)
+        )  # type: dict[str, dict[str, list[HmmerRecord]]]
         for hmmer_record in hmmer_records:
             self._add_record(hmmer_record)
 
@@ -159,7 +181,13 @@ def read_hmmer_output(file_path):
         # type: (str)->HmmerRecord
         tokens = re.split(r'\s+', line)
         begin, end, strand = line.split(' # ', 4)[1:-1]
-        gc_cont = float([x.split('=')[-1] for x in tokens[-1].split(';') if x.startswith('gc_cont')][0])
+        gc_cont = float(
+            [
+                x.split('=')[-1]
+                for x in tokens[-1].split(';')
+                if x.startswith('gc_cont')
+            ][0]
+        )
 
         return HmmerRecord(
             scaffold_name='_'.join(tokens[0].split('_')[:-1]),
@@ -169,7 +197,7 @@ def read_hmmer_output(file_path):
             gc_cont=gc_cont,
             begin=int(begin),
             end=int(end),
-            strand=int(strand)
+            strand=int(strand),
         )
 
     with open(file_path) as f:
@@ -194,40 +222,50 @@ def read_prodigal_output(file_name):
             name=tokens[0],
             begin=int(tokens[1]),
             end=int(tokens[2]),
-            strand=int(tokens[3])
+            strand=int(tokens[3]),
         )
 
     def parse_gene_records(gene_records):
         # type: (list[str])->list[Gene]
         return [
-            extract_coords_and_name(gene_str)
-            for _, gene_str in gene_records
+            extract_coords_and_name(gene_str) for _, gene_str in gene_records
         ]
+
     with open(file_name) as f:
         genes_scaffold_recs = (
-            ['_'.join(line.strip().split(' # ', 1)[0].split('_')[:-1]),
-             line.strip().split(' # ', 1)[0].split('_')[-1]+' # '+line.strip().split(' # ', 1)[1]]
+            [
+                '_'.join(line.strip().split(' # ', 1)[0].split('_')[:-1]),
+                line.strip().split(' # ', 1)[0].split('_')[-1]
+                + ' # '
+                + line.strip().split(' # ', 1)[1],
+            ]
             for line in f
             if line.startswith('>')
         )
         scaffolds = [
             Scaffold(
-                name=scaffold_name[1:],
-                genes=parse_gene_records(gene_records)
+                name=scaffold_name[1:], genes=parse_gene_records(gene_records)
             )
-            for scaffold_name, gene_records in groupby(genes_scaffold_recs, key=first)
+            for scaffold_name, gene_records in groupby(
+                genes_scaffold_recs, key=first
+            )
         ]
         return ScaffoldSet(scaffolds=scaffolds)
 
+
 def define_taxonomy(pvogs_string):
-    with open(os.path.dirname(os.path.abspath(__file__))+'/pvogs_taxonomy.pickle', 'rb') as f:
+    with open(
+        os.path.dirname(os.path.abspath(__file__)) + '/pvogs_taxonomy.pickle',
+        'rb',
+    ) as f:
         pvogs_taxonomy, taxonomy_codes = pickle.load(f)
     taxonomy_codes = taxonomy_codes.astype(str)
     pvog_list = pvogs_string.split(', ')
-    taxonomy_variants = [pvogs_taxonomy[pvog] for pvog in pvog_list if pvog in pvogs_taxonomy]
+    taxonomy_variants = [
+        pvogs_taxonomy[pvog] for pvog in pvog_list if pvog in pvogs_taxonomy
+    ]
     if len(taxonomy_variants) > 0:
         taxonomies, counts = np.unique(taxonomy_variants, return_counts=True)
         return ' / '.join(taxonomy_codes[taxonomies[counts == max(counts)]])
     else:
         return 'Unknown'
-

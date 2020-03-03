@@ -13,7 +13,7 @@ def sample_name(sample_path):
 
 
 def path(*items):
-    items = ('proc', ) + items
+    items = ('proc',) + items
     return join(*items)
 
 

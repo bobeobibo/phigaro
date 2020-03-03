@@ -14,12 +14,8 @@ class GeneMarkTask(AbstractTask):
 
         self.input = input
         self._lst_file = input + '.lst'
-        self.gene_mark = (
-            sh.Command(self.config['genemark']['bin'])
-            .bake(
-                m=self.config['genemark']['mod_path'],
-                A=self.output(),
-            )
+        self.gene_mark = sh.Command(self.config['genemark']['bin']).bake(
+            m=self.config['genemark']['mod_path'], A=self.output(),
         )
 
     def output(self):

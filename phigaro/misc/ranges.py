@@ -65,10 +65,7 @@ def union(ranges1, ranges2):
 
 
 def len_ranges(ranges):
-    return sum(
-        end - begin + 1
-        for begin, end in ranges
-    )
+    return sum(end - begin + 1 for begin, end in ranges)
 
 
 def jakkard_index(ranges1, ranges2):
@@ -96,27 +93,23 @@ def minus(ranges1, ranges2):
     ranges2 = intersection(ranges1, ranges2)
     ranges2 = negate(ranges2, max_len)
     ranges2 = [
-        (begin + 1, end - 1)
-        for (begin, end) in ranges2
-        if end - begin >= 2
-        ]
+        (begin + 1, end - 1) for (begin, end) in ranges2 if end - begin >= 2
+    ]
     for (begin, end) in intersection(ranges1, ranges2):
         yield (begin, end)
 
 
 def true_positives_rate(test_ranges, real_ranges):
-    return (
-        len_ranges(intersection(test_ranges, real_ranges)) /
-        len_ranges(real_ranges)
+    return len_ranges(intersection(test_ranges, real_ranges)) / len_ranges(
+        real_ranges
     )
 
 
 def false_positives_rate(test_ranges, real_ranges, max_len=None):
     if not test_ranges:
         return 0
-    return (
-        len_ranges(minus(test_ranges, real_ranges)) /
-        len_ranges(negate(real_ranges, max_len))
+    return len_ranges(minus(test_ranges, real_ranges)) / len_ranges(
+        negate(real_ranges, max_len)
     )
 
 
@@ -124,10 +117,7 @@ def false_discovery_rate(test_ranges, real_ranges):
     test_ranges_length = len_ranges(test_ranges)
     if not test_ranges_length:
         return np.nan
-    return (
-        len_ranges(minus(test_ranges, real_ranges)) /
-        test_ranges_length
-    )
+    return len_ranges(minus(test_ranges, real_ranges)) / test_ranges_length
 
 
 def positive_predictive_value(test_ranges, real_ranges):
@@ -141,6 +131,3 @@ def positive_predictive_value(test_ranges, real_ranges):
 
 def false_negatives_rate(test_ranges, real_ranges):
     return 1 - true_positives_rate(test_ranges, real_ranges)
-
-
-
