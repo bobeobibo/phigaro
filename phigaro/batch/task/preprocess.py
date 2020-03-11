@@ -4,6 +4,7 @@ from .base import AbstractTask
 from Bio import SeqIO
 from phigaro.context import Context
 
+
 class PreprocessTask(AbstractTask):
     task_name = 'input_file'
 
@@ -42,9 +43,12 @@ class PreprocessTask(AbstractTask):
         if not self.config['phigaro']['delete_shorts']:
             if len(sequences_to_delete) > 0:
                 print(
-                    'Error! Your fasta file contains at least one sequence length < 20000.  The short sequences are: ')
+                    'Error! Your fasta file contains at least one sequence length < 20000.  The short sequences are: '
+                )
                 print('\n'.join(sequences_to_delete))
-                if not get_users_answer('Do you want to start Phigaro without these sequences?'):
+                if not get_users_answer(
+                    'Do you want to start Phigaro without these sequences?'
+                ):
                     self.clean()
                     exit(1)
 

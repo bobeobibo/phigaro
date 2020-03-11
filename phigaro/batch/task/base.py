@@ -14,7 +14,9 @@ class AbstractTask(object):
 
     def __init__(self):
         if self.task_name is None:
-            raise Exception("{}.task_name must by set".format(self.__class__.__name__))
+            raise Exception(
+                "{}.task_name must by set".format(self.__class__.__name__)
+            )
 
         self.directory()
         self.context = Context.instance()
@@ -46,8 +48,3 @@ class AbstractTask(object):
         out = self.output()
         if exists(out):
             unlink(out)
-
-
-
-
-

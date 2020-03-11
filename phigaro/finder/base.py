@@ -26,8 +26,3 @@ class AbstractFinder(object):
         :rtype: list[Phage]
         """
         pass
-
-
-
-
-

@@ -21,14 +21,18 @@ class V2Finder(AbstractFinder):
         scores = calc_scores(bacteria_npn, self.window_len)
         if self.mode != 'without_gc':
             gc_scores = calc_scores(bacteria_gc, self.window_len)
-            ranges = scan_phages(np.array(scores) * np.array(gc_scores), self.threshold_min, self.threshold_max)
+            ranges = scan_phages(
+                np.array(scores) * np.array(gc_scores),
+                self.threshold_min,
+                self.threshold_max,
+            )
         else:
-            ranges = scan_phages(np.array(scores), self.threshold_min, self.threshold_max)
+            ranges = scan_phages(
+                np.array(scores), self.threshold_min, self.threshold_max
+            )
         for (begin, end) in ranges:
             yield Phage(
-                begin=begin,
-                end=end,
-                is_prophage=True,
+                begin=begin, end=end, is_prophage=True,
             )
 
 
@@ -41,13 +45,13 @@ def calc_scores(npn, window_len):
     for i in range(len_d2, len(npn) + len_d2):
         begin = i - len_d2
         end = i + len_d2 + 1
-        part = tphage[begin: end]
+        part = tphage[begin:end]
         scores.append(np.sum(part * kernel_koeffs))
     return scores
 
 
 def tri_kernel(pos):
-    return 1 - abs(pos - 0.5)/0.5
+    return 1 - abs(pos - 0.5) / 0.5
 
 
 def scan_phages(scores, threshold_min, threshold_max):
