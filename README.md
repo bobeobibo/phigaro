@@ -39,8 +39,8 @@ name: phigaro_env
 dependencies:
   - python=3.7
   - pip
-  - prodigal
-  - hmmer
+  - bioconda::prodigal
+  - bioconda::hmmer
   - pip:
     - phigaro
 ```
