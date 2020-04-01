@@ -2,7 +2,6 @@
 ![Actions Status](https://github.com/bobeobibo/phigaro/workflows/Phigaro%20Tests/badge.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-# Phigaro v2.2.1
 
 ## Updates tracker
 You can find the information about updates and releases by [link.](https://github.com/bobeobibo/phigaro/blob/master/version_tracker.md)
