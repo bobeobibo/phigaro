@@ -4,7 +4,7 @@ name: Pypi Upload
 on: 
     push:
         paths:
-        - '.github/worflows/reserved_upload_topypi.yml'
+        - '**/reserved_upload_topypi.yml'
 
 jobs:
         
