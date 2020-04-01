@@ -1,4 +1,4 @@
-# name: Pypi Upload
+name: Pypi Upload
 
 # on: push
 # # on: 
