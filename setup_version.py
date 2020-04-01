@@ -13,7 +13,7 @@ latest_version_file = 'test_data_gitaction/latest_version.txt'
 tag_file = 'tag_name'
 
 with open(setup_file, 'r') as f:
-    tmp_version = f.readlines()[12].strip()
+    tmp_version = f.readlines()[14].strip()
 print('Temporary %s' % tmp_version)
 
 tmp_version = (

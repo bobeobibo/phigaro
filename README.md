@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/phigaro.svg)](https://badge.fury.io/py/phigaro)
+# Phigaro v2.2.2
 ![Actions Status](https://github.com/bobeobibo/phigaro/workflows/Phigaro%20Tests/badge.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
