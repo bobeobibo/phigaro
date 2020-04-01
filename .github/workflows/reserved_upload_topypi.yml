@@ -3,9 +3,9 @@ name: Pypi Upload
 #on: push
 on: 
     push:
-        paths:
-        - '**/reserved_upload_topypi.yml'
-
+        paths-ignore:
+            - '!.github/workflows/reserved_upload_topypi.yml'
+            - '**'
 jobs:
         
   upload_to_pypi:
