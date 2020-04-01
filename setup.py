@@ -12,7 +12,7 @@ setup(
     'is based on phage genes HMMs and a smoothing window algorithm.',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    version="2.2.2",
+    version="2.2.3",
     license='MIT',
     author='E.Starikova, N.Pryanichnikov, P.Tikhonova',
     author_email='hed.robin@gmail.com',
