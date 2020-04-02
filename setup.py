@@ -7,9 +7,7 @@ with open(path.join(this_directory, 'README.md'), "r") as fh:
 
 setup(
     name='phigaro',
-    description='Phigaro is a scalable command-line tool for predictions phages and prophages '
-    'from nucleid acid sequences (including metagenomes) and '
-    'is based on phage genes HMMs and a smoothing window algorithm.',
+    description='Phigaro is a scalable command-line tool for predicting phages and prophages.',
     long_description=long_description,
     long_description_content_type="text/markdown",
     version="2.2.3",
