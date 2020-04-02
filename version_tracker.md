@@ -1,3 +1,9 @@
+## V2.2.3
+Code style: black. Output parameter corrections.
+
+## V2.2.2
+This version is absent.
+
 ## V2.2.1
 ! IMPORTANT !\
 Updated thresholds for abs and without_gc modes.
