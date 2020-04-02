@@ -1,12 +1,12 @@
 name: Phigaro Tests
 
-on: push
-# on: 
-#      push:
-#          paths-ignore:
-#          - '.github/**'
-#          - 'README.md'
-#          - 'version_tracker.md'
+# on: push
+on: 
+     push:
+         paths-ignore:
+         - '.github/**'
+         - 'README.md'
+         - 'version_tracker.md'
 
 jobs:
   test_at_python:
@@ -44,21 +44,21 @@ jobs:
           echo "ls /home/outpy${{ matrix.python-version }}"
           ls /home/outpy${{ matrix.python-version }}
           
-#   upload_to_pypi:
+  upload_to_pypi:
 #     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-#     needs: test_at_python
-#     runs-on: ubuntu-latest
+    needs: test_at_python
+    runs-on: ubuntu-latest
     
-#     steps:
-#       - uses: actions/checkout@v1
-#       - name: Pypi upload
-#         uses: pypa/gh-action-pypi-publish@master        
-#         with:
-#            user: __token__
-#            password: ${{ secrets.phigaro_pypi_token }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Pypi upload
+        uses: pypa/gh-action-pypi-publish@master        
+        with:
+           user: __token__
+           password: ${{ secrets.phigaro_pypi_token }}
 
   check_pypi_upload:
-#     needs: upload_to_pypi
+    needs: upload_to_pypi
     runs-on: ubuntu-latest
     container: tikhonovapolly/phigaro_test_for_git
     
