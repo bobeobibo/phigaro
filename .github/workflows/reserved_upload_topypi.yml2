@@ -1,0 +1,42 @@
+name: Pypi Upload
+
+# # on: push
+# on: 
+#     push:
+#         paths-ignore:
+#             - '*'
+jobs:
+        
+  upload_to_pypi:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v1
+      - name: Pypi upload
+        uses: pypa/gh-action-pypi-publish@master        
+        with:
+           user: __token__
+           password: ${{ secrets.phigaro_pypi_token }}
+
+  check_pypi_upload:
+    needs: upload_to_pypi
+    runs-on: ubuntu-latest
+    container: tikhonovapolly/phigaro_test_for_git
+    
+    steps:
+      - name: Check outputs
+        shell: bash
+        run: |
+          mkdir /home/data
+          cd /home/data
+          wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/test_data_gitaction/test_short_seq.fasta
+          cp -r /root/.phigaro ~/.phigaro
+          cd ~/.phigaro
+          rm config.yml
+          wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/config.yml
+          /root/miniconda3/envs/python3/bin/pip install phigaro
+          echo Phigaro version:
+          /root/miniconda3/envs/python3/bin/pip freeze | grep phigaro
+          echo Run Phigaro
+          /root/miniconda3/envs/python3/bin/python /root/miniconda3/envs/python3/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy3/output -e html txt gff bed --mode basic --not-open -d
+          
