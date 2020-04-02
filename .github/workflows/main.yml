@@ -1,12 +1,12 @@
 name: Phigaro Tests
 
-on: push
-# on: 
-#      push:
-#          paths-ignore:
-#          - '.github/**'
-#          - 'README.md'
-#          - 'version_tracker.md'
+# on: push
+on: 
+     push:
+         paths-ignore:
+         - '.github/**'
+         - 'README.md'
+         - 'version_tracker.md'
 
 jobs:
   test_at_python:
