@@ -73,7 +73,7 @@ jobs:
           cd ~/.phigaro
           rm config.yml
           wget https://raw.githubusercontent.com/bobeobibo/phigaro/master/config.yml
-          /root/miniconda3/envs/python3/bin/pip install phigaro
+          /root/miniconda3/envs/python3/bin/pip install phigaro --no-cache
           echo Phigaro version:
           /root/miniconda3/envs/python3/bin/pip freeze | grep phigaro
           echo Run Phigaro
