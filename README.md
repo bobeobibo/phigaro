@@ -163,6 +163,6 @@ Open-reading frames (i.e. proteins) are predicted from the input FASTA file usin
 Phigaro is tested on Linux systems. For MacOS, you may need to add the following softlink `ln -s /usr/libexec/locate.updatedb /usr/local/bin/updated` and run `brew install wget`. If you encounter any issues while running Phigaro on test data, please report them to us at estarikova@rcpcm.org.
 
 ## Publication
-Elizaveta V. Starikova, Polina O. Tikhonova, Nikita A. Prianichnikov, Chris M. Rands, Evgeny M. Zdobnov, Vadim M. Govorun (2019), Phigaro: high throughput prophage sequence annotation, bioRxiv 598243; doi: https://doi.org/10.1101/598243
+Elizaveta V. Starikova, Polina O. Tikhonova, Nikita A. Prianichnikov, Chris M. Rands, Evgeny M. Zdobnov, Vadim M. Govorun (2020), Phigaro: high throughput prophage sequence annotation, Bioinformatics; doi: https://doi.org/10.1093/bioinformatics/btaa250
 
 (c) E.Starikova, P. Tikhonova, N.Pryanichnikov, 2019
