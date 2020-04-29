@@ -165,4 +165,6 @@ Phigaro is tested on Linux systems. For MacOS, you may need to add the following
 ## Publication
 Elizaveta V. Starikova, Polina O. Tikhonova, Nikita A. Prianichnikov, Chris M. Rands, Evgeny M. Zdobnov, Vadim M. Govorun (2020), Phigaro: high throughput prophage sequence annotation, Bioinformatics; doi: https://doi.org/10.1093/bioinformatics/btaa250
 
+Elizaveta V. Starikova, Polina O. Tikhonova, Nikita A. Prianichnikov, Chris M. Rands, Evgeny M. Zdobnov, Vadim M. Govorun (2019), Phigaro: high throughput prophage sequence annotation, bioRxiv 598243; doi: https://doi.org/10.1101/598243
+
 (c) E.Starikova, P. Tikhonova, N.Pryanichnikov, 2019
