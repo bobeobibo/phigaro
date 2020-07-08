@@ -4,7 +4,7 @@ name: Phigaro Tests
 on: 
      push:
          paths-ignore:
-#          - '.github/**'
+         - '.github/**'
          - 'README.md'
          - 'version_tracker.md'
 
@@ -45,7 +45,7 @@ jobs:
           ls /home/outpy${{ matrix.python-version }}
           
   upload_to_pypi:
-#     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     needs: test_at_python
     runs-on: ubuntu-latest
     
