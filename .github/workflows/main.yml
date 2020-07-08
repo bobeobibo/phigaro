@@ -10,7 +10,7 @@ on:
 
 jobs:
   test_at_python:
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+#     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     runs-on: ubuntu-latest
     container: tikhonovapolly/phigaro_test_for_git
     strategy:
@@ -45,7 +45,7 @@ jobs:
           ls /home/outpy${{ matrix.python-version }}
           
   upload_to_pypi:
-#     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     needs: test_at_python
     runs-on: ubuntu-latest
     
