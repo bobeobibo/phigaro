@@ -187,11 +187,12 @@ def plot_html(records, prophage_begin, prophage_end):
             func_groups[group].append(i)
         else:
             func_groups[group] = [i]
-    widths = 1.0 * (np.array(widths) - min(widths)) / max(widths) + 0.1
-    arrow_coords = [
-        form_arrow(*info, width=width)
-        for info, width in zip(arrow_coords, widths)
-    ]
+    if len(widths) > 0:
+	    widths = 1.0 * (np.array(widths) - min(widths)) / max(widths) + 0.1
+	    arrow_coords = [
+	        form_arrow(*info, width=width)
+	        for info, width in zip(arrow_coords, widths)
+	    ]
     plotly_fig = _plotly_to_html_(
         prophage_begin, prophage_end, func_groups, widths, coords, arrow_coords
     )
