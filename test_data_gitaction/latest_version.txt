@@ -1,1 +1,1 @@
-https://github.com/bobeobibo/phigaro/raw/master/dist/phigaro-2.2.4-1.tar.gz
+https://github.com/bobeobibo/phigaro/raw/master/dist/phigaro-2.2.4.post1.tar.gz
