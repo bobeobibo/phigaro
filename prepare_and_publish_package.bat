@@ -1,6 +1,9 @@
 echo "Did you change git action and updated the package?"
 pause
 git pull
+echo "Recovering Windows-Linux issues"
+C:\Users\tikho\Anaconda3\python.exe recover_pickle_files.py
+pause
 move /-Y dist\*.* dist_old_versions\
 C:\Users\tikho\Anaconda3\python.exe setup_version.py
 pause
