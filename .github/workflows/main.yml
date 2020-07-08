@@ -4,13 +4,13 @@ name: Phigaro Tests
 on: 
      push:
          paths-ignore:
-         - '.github/**'
+#          - '.github/**'
          - 'README.md'
          - 'version_tracker.md'
 
 jobs:
   test_at_python:
-#     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     runs-on: ubuntu-latest
     container: tikhonovapolly/phigaro_test_for_git
     strategy:
