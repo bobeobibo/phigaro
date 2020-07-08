@@ -4,7 +4,7 @@ name: Phigaro Tests
 on: 
      push:
          paths-ignore:
-         - '.github/**'
+#          - '.github/**'
          - 'README.md'
          - 'version_tracker.md'
 
@@ -16,7 +16,7 @@ jobs:
     strategy:
       max-parallel: 2
       matrix:
-        python-version: [2, 3]
+        python-version: [3]
     
     steps:
       - name: Download data
