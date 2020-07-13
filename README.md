@@ -81,19 +81,32 @@ optional arguments:
 Also, you can manually create/change a `config.yml` file and write the `hmmer`, `prodigal` and `pvogs` paths like it is done in an example below. Other parameters should stay the same for the proper work of Phigaro unless you want to change them on purpose.
 
 For the `pvogs` you should download all the files to the `pvog` (or any other folder) via the [link](http://download.ripcm.com/phigaro/) unless it wasn't done previously by `phigaro-setup`.
-```
+
+The content of the `config.yml` file could be found in [the repository](https://github.com/bobeobibo/phigaro/blob/master/config.yml) or can be copied from down here. It is possible that you may need to change the following paths:
+ - `hmmer: bin`
+ - `hmmer: pvog_path`
+ - `prodigal: bin `
+ 
+_If you use Phigaro version 2.1.x or lower (for some reason) you should use `config_old.yml` file, that you can find via [the link](https://github.com/bobeobibo/phigaro/blob/master/config_old.yml)._
+ 
+```  
 hmmer:
-  bin: /usr/bin/hmmsearch
+  bin: /usr/local/bin/hmmsearch
   e_value_threshold: 0.00445
-  pvog_path: /home/user/.phigaro/pvog/allpvoghmms
+  pvog_path: /root/.phigaro/pvog/allpvoghmms
 phigaro:
+  mean_gc: 0.46354823199323625
   penalty_black: 2.2
   penalty_white: 0.7
-  threshold_max: 46.0
-  threshold_min: 45.39
+  threshold_max_abs: 52.96
+  threshold_max_basic: 46.0
+  threshold_max_without_gc: 11.42
+  threshold_min_abs: 50.32
+  threshold_min_basic: 45.39
+  threshold_min_without_gc: 11.28
   window_len: 32
 prodigal:
-  bin: /usr/local/bin/prodigal
+  bin: /root/miniconda3/bin/prodigal
 ```
 
 ## Usage
