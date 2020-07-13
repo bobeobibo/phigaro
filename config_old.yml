@@ -1,0 +1,12 @@
+hmmer:
+  bin: /usr/bin/hmmsearch
+  e_value_threshold: 0.00445
+  pvog_path: /home/user/.phigaro/pvog/allpvoghmms
+phigaro:
+  penalty_black: 2.2
+  penalty_white: 0.7
+  threshold_max: 46.0
+  threshold_min: 45.39
+  window_len: 32
+prodigal:
+  bin: /usr/local/bin/prodigal
