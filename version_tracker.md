@@ -1,3 +1,9 @@
+## V2.2.5
+A locate exception was added. So, if the user does not have this tool the configuration of Phigaro will not fail.
+
+## V2.2.4-1
+Minor corrections and optional temporary files saving
+
 ## V2.2.3
 Code style: black. Output parameter corrections.
 
