@@ -115,7 +115,7 @@ class SetupHelper(object):
                 exit(1)
         try:
             return [s.rstrip() for s in sh.locate(*args, **kwargs)]
-        except sh.ErrorReturnCode_1:
+        except (sh.ErrorReturnCode_1, sh.CommandNotFound):
             return []
 
     def _find_binary(self, name, options_message, raise_if_not_found):
