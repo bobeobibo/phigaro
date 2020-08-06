@@ -80,7 +80,7 @@ jobs:
           echo Run Phigaro
           /root/miniconda3/envs/python3/bin/python /root/miniconda3/envs/python3/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy3/output -e html txt gff bed --mode basic --not-open -d
      
-  update containers:
+  update_containers:
      needs: check_pypi_upload
      runs-on: ubuntu-latest  
      steps: 
