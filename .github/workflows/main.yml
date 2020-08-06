@@ -79,5 +79,16 @@ jobs:
           /root/miniconda3/envs/python3/bin/pip freeze | grep phigaro
           echo Run Phigaro
           /root/miniconda3/envs/python3/bin/python /root/miniconda3/envs/python3/bin/phigaro -f /home/data/test_short_seq.fasta -o /home/outpy3/output -e html txt gff bed --mode basic --not-open -d
+     
+  update containers:
+     needs: check_pypi_upload
+     runs-on: ubuntu-latest  
+     steps: 
+       - name: Publish to Docker
+         uses: HurricanKai/Publish-Docker-Github-Action@master
+         with:
+             name: tikhonovapolly/phigaro
+             username: ${{ secrets.DOCKER_USERNAME }}
+             password: ${{ secrets.DOCKER_PASSWORD }}
+             tagging: true
 
-          
