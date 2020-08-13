@@ -81,7 +81,7 @@ def main():
         '-c',
         '--config',
         default=default_config_path,
-        help='Path to the config file, not required',
+        help='Path to the config file, not required. The deafult is %s'%default_config_path,
     )
     parser.add_argument(
         '-v', '--verbose', action='store_true', help=argparse.SUPPRESS
@@ -102,7 +102,7 @@ def main():
     parser.add_argument(
         '-o',
         '--output',
-        default=False,
+        default='',
         help='Output filename for html and txt outputs. Required by default, but not required for stdout only output.',
     )
     parser.add_argument(
@@ -139,6 +139,11 @@ def main():
         default='basic',
         help='You can launch Phigaro at one of 3 modes: basic, abs, without_gc. Default is basic. Read more about modes at https://github.com/bobeobibo/phigaro/',
     )
+    parser.add_argument(
+        '--wtp',
+        action='store_true',
+        help=argparse.SUPPRESS
+    )
 
     args = parser.parse_args()
 
@@ -153,7 +158,13 @@ def main():
         exit(1)
 
     args.extension = [atype.lower() for atype in args.extension]
-    if (not args.output) and (args.extension != ['stdout']):
+    for ext in args.extension:
+        if ext not in ['html', 'gff', 'bed', 'tsv', 'stdout']:
+            print(
+            'Error! The unknown output format in -e/--extensionn parameter: %s. Please, choose one or several from the list: html, gff, bed, tsv, stdout'%ext
+        )
+            exit(1)
+    if (args.output == '') and (args.extension != ['stdout']):
         print(
             'Error! Argument -o/--output is required or change the type of the output to stdout.'
         )
@@ -163,6 +174,7 @@ def main():
         logger.info('Using config file: {}'.format(args.config))
         config = yaml.load(f, Loader=yaml.FullLoader)
 
+    config['phigaro']['wtp'] = args.wtp
     config['phigaro']['print_vogs'] = args.print_vogs
     config['phigaro']['filename'] = args.fasta_file
     config['phigaro']['no_html'] = (
@@ -179,10 +191,27 @@ def main():
     filename = args.fasta_file
     sample = '{}-{}'.format(sample_name(filename), config['phigaro']['uuid'])
 
-    if config['phigaro']['output'] is not None:
+    if args.wtp:
+        config['phigaro']['not_open'] = True
+        config['phigaro']['gff'] = True
+        config['phigaro']['bed'] = True
+        args.extension.append('tsv')
+        config['phigaro']['delete_shorts'] = True
+        config['phigaro']['print_vogs'] = True
+        config['phigaro']['output_wtp'] = config['phigaro']['output'] + '/phigaro.txt'
+        config['phigaro']['output'] = config['phigaro']['output']+'/phigaro/phigaro'
+
+
+    if config['phigaro']['output'] != '':
         fold = os.path.dirname(config['phigaro']['output'])
         if fold and not os.path.isdir(fold):
             os.makedirs(fold)
+        if args.wtp:
+            fold = os.path.dirname(config['phigaro']['output_wtp'])
+            if fold and not os.path.isdir(fold):
+                os.makedirs(fold)
+
+
 
     Context.initialize(
         sample=sample, config=config, threads=args.threads,
@@ -213,7 +242,7 @@ def main():
         with open(task_output_file) as f:
             f = list(f)
             if 'tsv' in args.extension:
-                out_f = open(args.output + '.tsv', 'w')
+                out_f = open(config['phigaro']['output'] + '.tsv', 'w')
                 for line in f:
                     out_f.write(line)
             if 'stdout' in args.extension:

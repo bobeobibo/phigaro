@@ -1,4 +1,4 @@
-# Phigaro v2.2.5
+# Phigaro v2.2.6
 [![PyPI version](https://badge.fury.io/py/phigaro.svg)](https://badge.fury.io/py/phigaro)
 ![Actions Status](https://github.com/bobeobibo/phigaro/workflows/Phigaro%20Tests/badge.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)

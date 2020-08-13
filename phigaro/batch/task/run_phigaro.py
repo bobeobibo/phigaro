@@ -48,12 +48,15 @@ class RunPhigaroTask(AbstractTask):
             ],
             mode=self.mode,
         )
+        self._wtp = self.config['phigaro'].get('wtp', False)
         self._print_vogs = self.config['phigaro'].get('print_vogs', False)
         self._filename = self.config['phigaro'].get('filename', False)
         self._no_html = self.config['phigaro'].get('no_html', False)
         self._not_open = self.config['phigaro'].get('not_open', False)
         self._save_fasta = self.config['phigaro'].get('save_fasta', False)
         self._output = self.config['phigaro'].get('output', False)
+        if self._wtp:
+            self._output_wtp = self.config['phigaro'].get('output_wtp', False)
         self._uuid = self.config['phigaro'].get('uuid', False)
         self.context = Context.instance()
 
@@ -80,6 +83,7 @@ class RunPhigaroTask(AbstractTask):
         gff_gene = []
         bed_prophage = []
         bed_gene = []
+        wtp_output = []
 
         with open(self.output(), 'w') as of:
             writer = csv.writer(of, delimiter='\t')
@@ -282,12 +286,22 @@ class RunPhigaroTask(AbstractTask):
                         plotly_plots.append(
                             plot_html(hmmer_records, begin, end)
                         )
+
+
+
                 phage_info = (
                     phage_info
                     if len(phage_info[-1][1]) > 0
                     else phage_info[:-1]
                 )
 
+            wtp_output = [the_phage_info[0] for the_phage_info in phage_info]
+
+            if self._wtp:
+                with open(self._output_wtp, 'w') as f:
+                    f.write(
+                        '\n'.join(wtp_output)
+                    )
             if gff:
                 with open(self._output + '.gff3', 'w') as f:
                     f.write(

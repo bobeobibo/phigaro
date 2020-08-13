@@ -10,7 +10,7 @@ setup(
     description='Phigaro is a scalable command-line tool for predicting phages and prophages.',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    version="2.2.5",
+    version="2.2.6",
     license='MIT',
     author='E.Starikova, N.Pryanichnikov, P.Tikhonova',
     author_email='hed.robin@gmail.com',
