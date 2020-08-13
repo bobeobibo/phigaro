@@ -4,9 +4,9 @@ name: Phigaro Tests
 on: 
      push:
          paths-ignore:
-#          - '.github/**'
-         - 'README.md'
-         - 'version_tracker.md'
+            - '.github/**'
+            - 'README.md'
+            - 'version_tracker.md'
 
 jobs:
   test_at_python:
@@ -83,6 +83,7 @@ jobs:
      needs: check_pypi_upload
      runs-on: ubuntu-latest  
      steps: 
+       - uses: actions/checkout@master
        - name: Publish to Docker
          uses: HurricanKai/Publish-Docker-Github-Action@master
          with:
