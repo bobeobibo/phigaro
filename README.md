@@ -22,6 +22,17 @@ and follow the instructions.
 It is present in the latest Ubuntu distributions, 
 but in case you don't have it, install it with `sudo apt-get install locate` 
 
+
+## Docker, Singularity
+Phigaro is available in Docker and Singularity now! 
+You can find `Dockerfile` and `Singularity` files for creating images at this repository.
+Some useful paths in containers:
+```
+phigaro: /root/miniconda3/bin/phigaro
+config.yml: /root/.phigaro/config.yml
+test_data: /test_data
+```
+
 ## Installation
 ### Step 1
 #### Via pip
