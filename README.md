@@ -24,7 +24,7 @@ but in case you don't have it, install it with `sudo apt-get install locate`
 
 
 ## Docker, Singularity
-Phigaro is available in Docker and Singularity now! 
+Phigaro is available in [Dockerfile](https://github.com/bobeobibo/phigaro/blob/master/Dockerfile) and [Singularity](https://github.com/bobeobibo/phigaro/blob/master/Singularity) now! 
 You can find `Dockerfile` and `Singularity` files for creating images at this repository.
 Some useful paths in containers:
 ```
