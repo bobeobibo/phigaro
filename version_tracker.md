@@ -1,3 +1,6 @@
+## V2.2.6
+Minor corrections. Docker & Singularity containers. What_the_phage implementation.
+
 ## V2.2.5
 A locate exception was added. So, if the user does not have this tool the configuration of Phigaro will not fail.
 
