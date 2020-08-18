@@ -159,6 +159,24 @@ optional arguments:
 Running time depends on the size of your input data and the number of CPUs used.
 The running time for a metagenomic assembly file of 150MB is about 20 minutes.
 
+## Mode Description
+Here is a short decription of Phigaro modes. The more detailed description you can find in the [publication](https://github.com/bobeobibo/phigaro#user-content-publication). \
+<img src="https://render.githubusercontent.com/render/math?math=Tr(x)"> - [triangular function](https://en.wikipedia.org/wiki/Triangular_function), <img src="https://render.githubusercontent.com/render/math?math=\mathbf{1}_{pVOG}(gene_i))"> - [indicator function](https://en.wikipedia.org/wiki/Indicator_function), <img src="https://render.githubusercontent.com/render/math?math=GC(x)"> - GC content of x,  <img src="https://render.githubusercontent.com/render/math?math=mean\_gc"> - constant.
+### basic
+<img src="https://render.githubusercontent.com/render/math?math=Score_i = Phage\_score_i \cdot GC\_cont\_score_i">
+<img src="https://render.githubusercontent.com/render/math?math=Phage\_score_i = Tr(\mathbf{1}_{pVOG}(gene_i))">
+<img src="https://render.githubusercontent.com/render/math?math=GC\_cont\_score_i = Tr(GC(gene_i)\cdot \mathbf{1}_{pVOG}(gene_i))">
+
+### abs
+<img src="https://render.githubusercontent.com/render/math?math=Score_i = Phage\_score_i \cdot GC\_cont\_score'_i">
+<img src="https://render.githubusercontent.com/render/math?math=Phage\_score_i = Tr(\mathbf{1}_{pVOG}(gene_i))">
+<img src="https://render.githubusercontent.com/render/math?math=GC\_cont\_score'_i = Tr(GC_{deviation}(gene_i)\cdot \mathbf{1}_{pVOG}(gene_i))">
+<img src="https://render.githubusercontent.com/render/math?math=GC_{deviation}(gene_i) = \left|mean\_gc-GC(gene_i)\right|%2Bmean\_gc ">
+
+### without_gc
+<img src="https://render.githubusercontent.com/render/math?math=Score_i = Phage\_score_i">
+<img src="https://render.githubusercontent.com/render/math?math=Phage\_score_i = Tr(\mathbf{1}_{pVOG}(gene_i))">
+
 ## Output
 The output can be annotated prophage genome maps (html) or tabular format (text or stdout).
 
