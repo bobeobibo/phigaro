@@ -1,0 +1,16 @@
+site_name: Phigaro
+nav:
+    - Home: index.md
+    - Getting Started: getting_started.md
+    - Usage: usage.md
+    - License: license.md
+    - Publication & Citation: publication.md
+theme: readthedocs
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+extra_css:
+  - css/custom.css
+copyright: Copyright &copy; 2019 E.Starikova, P. Tikhonova, N.Pryanichnikov.
