@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>MathJax TeX Test Page</title>
+<!-- Copyright (c) 2010-2020 The MathJax Consortium -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+<!-- <script src="https://www.tuhh.de/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script> -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+<p>
+$$Score_i = Phage\_score_i \cdot GC\_cont\_score'_i$$
+$$Phage\_score_i = Tr(\mathbf{1}_{pVOG}(gene_i))$$
+$$GC\_cont\_score'_i = Tr(GC_{deviation}(gene_i)\cdot \mathbf{1}_{pVOG}(gene_i))$$
+$$GC_{deviation}(gene_i) = \left|mean\_gc-GC(gene_i)\right|%2Bmean\_gc$$
+</p>
+
+</body>
+</html>

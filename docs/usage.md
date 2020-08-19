@@ -46,19 +46,19 @@ Here is a short decription of Phigaro modes. The more detailed description you c
 $Tr(x)$ - [triangular function](https://en.wikipedia.org/wiki/Triangular_function), $\mathbf{1}_{pVOG}(gene_i))$ - [indicator function](https://en.wikipedia.org/wiki/Indicator_function), $GC(x)$ - GC content of x, $mean\_gc$ - constant.
 
 #### basic
-$Score_i = Phage\_score_i \cdot GC\_cont\_score_i$<br>
-$Phage\_score_i = Tr(\mathbf{1}_{pVOG}(gene_i))$<br>
-$GC\_cont\_score_i = Tr(GC(gene_i)\cdot \mathbf{1}_{pVOG}(gene_i))$<br>
+<div id="container">
+    <iframe id="embed" style="width: 100%;height:100%" src='../latex_sheet_basic.html'></iframe>
+</div>
 
 #### abs
-$Score_i = Phage\_score_i \cdot GC\_cont\_score'_i$<br>
-$Phage\_score_i = Tr(\mathbf{1}_{pVOG}(gene_i))$<br>
-$GC\_cont\_score'_i = Tr(GC_{deviation}(gene_i)\cdot \mathbf{1}_{pVOG}(gene_i))$<br>
-$GC_{deviation}(gene_i) = \left|mean\_gc-GC(gene_i)\right|%2Bmean\_gc$<br>
+<div id="container">
+    <iframe id="embed" style="width: 100%;height:100%" scrolling="no" src='../latex_sheet_abs.html'></iframe>
+</div>
 
 #### without_gc
-$Score_i = Phage\_score_i$<br>
-$Phage\_score_i = Tr(\mathbf{1}_{pVOG}(gene_i))$
+<div id="container">
+    <iframe id="embed" style="width: 100%;height:100%" src='../latex_sheet_without_gc.html'></iframe>
+</div>
 
 ________________
 ### Output

@@ -8,9 +8,13 @@ nav:
 theme: readthedocs
 markdown_extensions:
   - admonition
-  - pymdownx.arithmatex
+  # - pymdownx.arithmatex
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'https://polyfill.io/v3/polyfill.min.js?features=es6'
+  # - 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  - 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+  - 'js/custom.js'
 extra_css:
   - css/custom.css
 copyright: Copyright &copy; 2019 E.Starikova, P. Tikhonova, N.Pryanichnikov.

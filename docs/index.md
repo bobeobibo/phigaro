@@ -5,5 +5,5 @@ genome maps” and marks possible transposon insertion spots inside prophages. I
 prophage regions from large metagenomic datasets.
 
 <div id="container">
-    <iframe id="embed" style="width: 100%;height:70vh" src='iframe_content2.html'></iframe>
+    <iframe id="embed" style="width: 100%;height:70vh" scrolling="no" src='iframe_content.html'></iframe>
 </div>
