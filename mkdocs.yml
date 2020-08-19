@@ -18,3 +18,5 @@ extra_javascript:
 extra_css:
   - css/custom.css
 copyright: Copyright &copy; 2019 E.Starikova, P. Tikhonova, N.Pryanichnikov.
+repo_url: https://github.com/bobeobibo/phigaro
+site_description: A Python Prophage Searching Tool
