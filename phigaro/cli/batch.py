@@ -128,6 +128,11 @@ def main():
         help='If you have precomputed prodigal and/or hmmer data you can provide paths to the files in the following format: program:address/to/the/file. In place of program you should write hmmer or prodigal. If you need to provide both files you should pass them separetely as two parametres.',
     )
     parser.add_argument(
+        '--save-fasta',
+        action='store_true',
+        help='Save all phage fasta sequences in a fasta file.',
+    )
+    parser.add_argument(
         '-d',
         '--delete-shorts',
         action='store_true',
@@ -181,12 +186,13 @@ def main():
         True if 'html' not in args.extension else False
     )
     config['phigaro']['not_open'] = args.not_open
-    config['phigaro']['output'] = args.output
+    config['phigaro']['output'] = (args.output+'/'+os.path.splitext(os.path.basename(args.fasta_file))[0]+'.phigaro').replace('//', '/')
     config['phigaro']['uuid'] = uuid.uuid4().hex
     config['phigaro']['delete_shorts'] = args.delete_shorts
     config['phigaro']['gff'] = True if ('gff' in args.extension) else False
     config['phigaro']['bed'] = True if ('bed' in args.extension) else False
     config['phigaro']['mode'] = args.mode
+    config['phigaro']['save_fasta'] = args.save_fasta
 
     filename = args.fasta_file
     sample = '{}-{}'.format(sample_name(filename), config['phigaro']['uuid'])
@@ -198,8 +204,9 @@ def main():
         args.extension.append('tsv')
         config['phigaro']['delete_shorts'] = True
         config['phigaro']['print_vogs'] = True
-        config['phigaro']['output_wtp'] = config['phigaro']['output'] + '/phigaro.txt'
-        config['phigaro']['output'] = config['phigaro']['output']+'/phigaro/phigaro'
+        config['phigaro']['output_wtp'] = args.output + '/phigaro.txt'
+        config['phigaro']['output'] = args.output +'/phigaro/phigaro'
+        config['phigaro']['save_fasta'] = True
 
 
     if config['phigaro']['output'] != '':

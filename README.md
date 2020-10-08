@@ -152,6 +152,7 @@ optional arguments:
                         If you have precomputed prodigal and/or hmmer data you can provide paths to the files in the
                         following format: program:address/to/the/file. In place of program you should write hmmer or
                         prodigal. If you need to provide both files you should pass them separetely as two parametres.        
+  --save-fasta          Save all phage fasta sequences in a fasta file.
   -d, --delete-shorts   Exclude sequences with length < 20000 automatically.
   -m MODE, --mode MODE  You can launch Phigaro at one of 3 modes: basic, abs, without_gc. Default is basic. Read more about   
                         modes at https://github.com/bobeobibo/phigaro/
