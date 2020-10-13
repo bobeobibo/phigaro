@@ -22,13 +22,17 @@ and follow the instructions.
 
 * **HMMER**: Download it from [http://hmmer.org/](http://hmmer.org/)
 
-* **locate**: In order to install Phigaro, you need `locate`. 
+* **locate**: In order to setup Phigaro easier, you need `locate`. 
  	- It is present in the latest Ubuntu distributions, 
 but in case you don't have it, install it with `sudo apt-get install locate`.
  	- For MacOS, you may need to add the following softlink `ln -s /usr/libexec/locate.updatedb /usr/local/bin/updated` and `run brew install wget`.
 
 ---
 ### Installation
+##### Via bioconda
+```
+conda install -c bioconda phigaro
+```
 ##### Via pip
 ```
 pip3 install phigaro --user
@@ -65,9 +69,9 @@ phigaro-setup --no-updatedb
 ```
 
 ##### Manual Setup
-Also, you can manually create/change a `config.yml` file and write the `hmmer`, `prodigal` and `pvogs` paths like it is done in an example below. Other parameters should stay the same for the proper work of Phigaro unless you want to change them on purpose.
+Also, you can manually create/change a `config.yml` file and write the `hmmer`, `prodigal` and `pvogs` paths like it is done in an example below. Other parameters should stay the same for the proper work of Phigaro unless you want to change them on purpose. A `config.yml` file should be placed to `$HOME\.phigaro` folder or you can provide the path to the config file every time you run `phigaro` with the `-c`  or `--config` parameter.
 
-For the `pvogs` you should download all the files to the `pvog` (or any other folder) via the [link](http://download.ripcm.com/phigaro/) unless it wasn't done previously by `phigaro-setup`.
+For the `pvogs` you should download all the files to the `pvog` (or any other folder) via the [link](http://download.ripcm.com/phigaro/) if it wasn't done previously by `phigaro-setup`.
 
 The content of the `config.yml` file could be found in [the repository](https://github.com/bobeobibo/phigaro/blob/master/config.yml) or can be copied from down here. It is possible that you may need to change the following paths:
 <ul>

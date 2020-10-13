@@ -125,6 +125,7 @@ def plot_html(records, prophage_begin, prophage_end):
             )
         ]
         layout = {
+            'template':'plotly_white',
             'yaxis': dict(
                 range=[-0.5, 2.5],
                 showgrid=False,
