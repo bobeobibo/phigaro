@@ -15,9 +15,11 @@ pause
 set /P commit_name="Please, make up the commit name:"
 set /p tag=<tag_name
 git commit -m %commit_name%
+pause
 git tag %tag%
 pause
 git push
+pause
 git push --tags
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" https://github.com/bobeobibo/phigaro/actions
 pause
