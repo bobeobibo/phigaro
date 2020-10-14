@@ -4,6 +4,8 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+Phigaro is a standalone command-line application that is able to detect prophage regions taking raw genome and metagenome assemblies as an input. It also produces dynamic annotated “prophage genome maps” and marks possible transposon insertion spots inside prophages. It is applicable for mining prophage regions from large metagenomic datasets.
+
 ## Updates tracker
 You can find the information about updates and releases by [link.](https://github.com/bobeobibo/phigaro/blob/master/version_tracker.md)
 
