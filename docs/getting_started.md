@@ -68,16 +68,20 @@ By default, root permissions are required for the installation. But you can disa
 phigaro-setup --no-updatedb
 ```
 
-##### Manual Setup
-Also, you can manually create/change a `config.yml` file and write the `hmmer`, `prodigal` and `pvogs` paths like it is done in an example below. Other parameters should stay the same for the proper work of Phigaro unless you want to change them on purpose. A `config.yml` file should be placed to `$HOME\.phigaro` folder or you can provide the path to the config file every time you run `phigaro` with the `-c`  or `--config` parameter.
+##### Allpvoghmms Download Problem
+If for some reason the downloading of pVOG database failed, you can download these files manually from [our server](http://download.ripcm.com/phigaro/) or [Google Drive](https://drive.google.com/drive/folders/1JiwFAz1ob7-WGtxQiHK5o9HHhLdvcNOg?usp=sharing). You should store the files at the directory `$HOME/.phigaro/pvog`.
 
-For the `pvogs` you should download all the files to the `pvog` (or any other folder) via the [link](http://download.ripcm.com/phigaro/) if it wasn't done previously by `phigaro-setup`.
+
+##### Manual Setup
+Also, you can manually create/change a `config.yml` file and write the `hmmer`, `prodigal` and `pvogs` paths like it is done in an example below. Other parameters should stay the same for the proper work of Phigaro unless you want to change them on purpose. A `config.yml` file should be placed to `$HOME/.phigaro` folder or you can provide the path to the config file every time you run `phigaro` with the `-c`  or `--config` parameter.
+
+For the `pvogs` you should download all the files to the `pvog` (or any other folder) via the [link](http://download.ripcm.com/phigaro/) or from [Google Drive](https://drive.google.com/drive/folders/1JiwFAz1ob7-WGtxQiHK5o9HHhLdvcNOg?usp=sharing) if it wasn't done previously by `phigaro-setup`.
 
 The content of the `config.yml` file could be found in [the repository](https://github.com/bobeobibo/phigaro/blob/master/config.yml) or can be copied from down here. It is possible that you may need to change the following paths:
 <ul>
-<li> `hmmer: bin` </li>
+<li> <code>hmmer: bin </code> </li>
 <li> <code>hmmer: pvog_path </code> </li>
-<li> `prodigal: bin` </li>
+<li> <code>prodigal: bin </code> </li>
 </ul>
 
 ```  
