@@ -1,4 +1,4 @@
-header = '''<html>
+header = """<html>
   <head>
   <title>Phigaro report: {0}</title>
   <link rel="shortcut icon" href="https://pollytikhonova.github.io/phigaro/dna.png" />
@@ -7,8 +7,8 @@ header = '''<html>
   <script src="https://cdn.jsdelivr.net/gh/bobeobibo/phigaro/scripts/FileSaver.min.js"></script>
   <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> '''
-style_css = '''
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> """
+style_css = """
 <style type="text/css">
   .container {
       max-width: 95vw;
@@ -394,18 +394,18 @@ ol {    padding-left: 0.75rem;
 }
   </style>
   </head>
-  '''
+  """
 
-body_main = '''<body>
+body_main = """<body>
   <div class="container">
   <div class="row">
   {0}
   {1}
   </div>
   </div>
-'''
+"""
 
-body_table = '''<div class="col-md-12 col-lg-4 col-xl-4">
+body_table = """<div class="col-md-12 col-lg-4 col-xl-4">
   <div class="list-group" id="list-tab" role="tablist">
   <table class="table">
   <thead>
@@ -441,11 +441,11 @@ body_table = '''<div class="col-md-12 col-lg-4 col-xl-4">
 </div>
   </div>
   </div>
-'''
+"""
 
-body_plots = '''<div class="col-md-12 col-lg-8 col-xl-8 tab-content" id="nav-tabContent">{0}</div>'''
+body_plots = """<div class="col-md-12 col-lg-8 col-xl-8 tab-content" id="nav-tabContent">{0}</div>"""
 
-transposable_index = '''<div data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This prophage may contain transposable elements.">
+transposable_index = """<div data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This prophage may contain transposable elements.">
 <svg version="1.1" class="transpose" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
    viewBox="0 0 490.1 490.1" style="enable-background:new 0 0 490.1 490.1;" xml:space="preserve">
 <g>
@@ -455,9 +455,9 @@ transposable_index = '''<div data-toggle="popover" data-trigger="hover" data-pla
 <text x="250" y="300" fill='black' font-size="220"  text-anchor="middle" alignment-baseline="baseline">{0}</text>
 </svg>
 </div>
-'''
+"""
 
-row = '''<tr class="ListGroupItem {6}" data-href="phage-{0}" id="tab-phage-{0}">
+row = """<tr class="ListGroupItem {6}" data-href="phage-{0}" id="tab-phage-{0}">
     <th scope="row">{7}</th>
     <td>{1} - {2}
         <div id='blast-phage-{0}' class="to-blast">
@@ -534,9 +534,9 @@ row = '''<tr class="ListGroupItem {6}" data-href="phage-{0}" id="tab-phage-{0}">
     </td>
 </tr>
 </tr>
-'''
+"""
 
-footer = '''<script type="text/javascript">
+footer = """<script type="text/javascript">
     var blast_loading_icon = '<div data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Click to follow the process by yourself."><div class="class-sk-fading-circle sk-fading-circle blast-icons">  <div class="sk-circle1 sk-circle"></div>  <div class="sk-circle2 sk-circle"></div>  <div class="sk-circle3 sk-circle"></div>  <div class="sk-circle4 sk-circle"></div>  <div class="sk-circle5 sk-circle"></div>  <div class="sk-circle6 sk-circle"></div>  <div class="sk-circle7 sk-circle"></div>  <div class="sk-circle8 sk-circle"></div>  <div class="sk-circle9 sk-circle"></div>  <div class="sk-circle10 sk-circle"></div>  <div class="sk-circle11 sk-circle"></div>  <div class="sk-circle12 sk-circle"></div></div></div>';
     var blast_ready_icon = '<div data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Click to see the results!"><div class="blast-icons ready-icon">	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">  <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>  <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/></svg></div></div>';
     var blast_stopwatch_icon = '<div data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The time of waiting for results is up. You can reload the page or click  to follow the process by yourself."><div class="stopwatch-icon blast-icons">	<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 60.001 60.001" style="enable-background:new 0 0 60.001 60.001;" xml:space="preserve"><g style="fill:#E84849;">	<path d="M59.693,56.636L47.849,36.33c-0.405-0.695-1.128-1.11-1.934-1.11c-0.805,0-1.527,0.415-1.933,1.11L32.137,56.636		c-0.409,0.7-0.412,1.539-0.008,2.242c0.404,0.703,1.129,1.123,1.94,1.123h23.691c0.811,0,1.536-0.42,1.939-1.123		C60.104,58.175,60.102,57.337,59.693,56.636z M57.966,57.882c-0.03,0.055-0.092,0.119-0.205,0.119H34.07		c-0.114,0-0.175-0.064-0.206-0.119s-0.056-0.14,0.001-0.238L45.71,37.338c0.057-0.098,0.143-0.118,0.205-0.118		c0.063,0,0.148,0.021,0.206,0.118l11.845,20.306C58.022,57.742,57.998,57.827,57.966,57.882z"/>	<path d="M46,42.001c-0.552,0-1,0.447-1,1v8c0,0.553,0.448,1,1,1s1-0.447,1-1v-8C47,42.448,46.552,42.001,46,42.001z"/>	<path d="M45.3,54.291c-0.19,0.18-0.3,0.439-0.3,0.71c0,0.26,0.11,0.52,0.29,0.71c0.19,0.18,0.45,0.29,0.71,0.29		c0.26,0,0.52-0.11,0.71-0.29c0.18-0.19,0.29-0.45,0.29-0.71c0-0.271-0.11-0.53-0.29-0.71C46.33,53.921,45.66,53.921,45.3,54.291z"		/>	<path d="M34,29.88c0-1.859-1.28-3.411-3-3.858V15.88c0-0.553-0.448-1-1-1s-1,0.447-1,1v10.142		c-1.399,0.364-2.494,1.459-2.858,2.858H19c-0.552,0-1,0.447-1,1s0.448,1,1,1h7.142c0.447,1.721,2,3,3.858,3		C32.206,33.88,34,32.086,34,29.88z M30,31.88c-1.103,0-2-0.897-2-2s0.897-2,2-2s2,0.897,2,2S31.103,31.88,30,31.88z"/>	<path d="M29,7.88v1c0,0.553,0.448,1,1,1s1-0.447,1-1v-1c0-0.553-0.448-1-1-1S29,7.327,29,7.88z"/>	<path d="M51,28.88c-0.553,0-1,0.447-1,1s0.447,1,1,1h1c0.553,0,1-0.447,1-1s-0.447-1-1-1H51z"/>	<path d="M8,28.88c-0.552,0-1,0.447-1,1s0.448,1,1,1h1c0.552,0,1-0.447,1-1s-0.448-1-1-1H8z"/>	<path d="M44.849,13.616l-0.707,0.707c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293		s0.512-0.098,0.707-0.293l0.707-0.707c0.391-0.391,0.391-1.023,0-1.414S45.24,13.225,44.849,13.616z"/>	<path d="M14.444,44.021l-0.707,0.707c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293		s0.512-0.098,0.707-0.293l0.707-0.707c0.391-0.391,0.391-1.023,0-1.414S14.834,43.631,14.444,44.021z"/>	<path d="M15.858,14.323l-0.707-0.707c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414l0.707,0.707		c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293C16.249,15.346,16.249,14.714,15.858,14.323z"/>	<path d="M23.243,57.18C10.735,54.082,2,42.905,2,30.001c0-15.439,12.561-28,28-28s28,12.561,28,28		c0,3.468-0.634,6.863-1.883,10.094c-0.199,0.515,0.057,1.094,0.572,1.293c0.512,0.199,1.094-0.058,1.293-0.572		C59.321,37.354,60,33.716,60,30.001c0-16.542-13.458-30-30-30s-30,13.458-30,30c0,13.825,9.36,25.801,22.762,29.121		c0.081,0.02,0.162,0.029,0.242,0.029c0.449,0,0.857-0.305,0.97-0.76C24.106,57.855,23.779,57.313,23.243,57.18z"/></g></svg></div>';
@@ -829,4 +829,4 @@ footer = '''<script type="text/javascript">
       </script>
   </body>
   </html> 
-  '''
+  """

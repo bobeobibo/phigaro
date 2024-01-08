@@ -1,5 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
+# Custom
+proc/*
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

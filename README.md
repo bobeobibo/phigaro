@@ -1,7 +1,6 @@
-# Phigaro v2.3.0
+# Phigaro v2.4.0
 [![PyPI version](https://badge.fury.io/py/phigaro.svg)](https://badge.fury.io/py/phigaro)
-![Conda installation](https://anaconda.org/bioconda/phigaro/badges/installer/conda.svg)
-![Actions Status](https://github.com/bobeobibo/phigaro/workflows/Phigaro%20Tests/badge.svg)
+![Conda installation](https://anaconda.org/bioconda/phigaro/badges/version.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 

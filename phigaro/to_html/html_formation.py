@@ -7,38 +7,32 @@ def form_html_document(
 ):
     def form_tbody(data, transposables_data):
         prophage_index = 1
-        tbody = BeautifulSoup(features="lxml").new_tag('tbody')
+        tbody = BeautifulSoup(features="lxml").new_tag("tbody")
         for scaffold, scaffold_info in data:
             tr = BeautifulSoup(features="lxml").new_tag(
-                'tr', **{'class': 'scaffold-name'}
+                "tr", **{"class": "scaffold-name"}
             )
-            th = BeautifulSoup(features="lxml").new_tag(
-                'th', scope="row", colspan="4"
-            )
+            th = BeautifulSoup(features="lxml").new_tag("th", scope="row", colspan="4")
             th.append(scaffold)
             tr.append(th)
             tbody.append(tr)
             for prophage_info in scaffold_info:
                 index_to_paste = (
                     BeautifulSoup(
-                        transposable_index.format(prophage_index), 'html.parser'
+                        transposable_index.format(prophage_index), "html.parser"
                     )
                     if transposables_data[prophage_index - 1]
                     else prophage_index
                 )
                 if prophage_index == 1:
                     prophage_info = (
-                        [prophage_index]
-                        + prophage_info
-                        + ['active', index_to_paste]
+                        [prophage_index] + prophage_info + ["active", index_to_paste]
                     )
                 else:
                     prophage_info = (
-                        [prophage_index] + prophage_info + ['', index_to_paste]
+                        [prophage_index] + prophage_info + ["", index_to_paste]
                     )
-                tbody.append(
-                    BeautifulSoup(row.format(*prophage_info), 'html.parser')
-                )
+                tbody.append(BeautifulSoup(row.format(*prophage_info), "html.parser"))
                 prophage_index += 1
         return str(tbody)
 
@@ -47,27 +41,27 @@ def form_html_document(
         for prophage_index, plot in enumerate(data):
             if prophage_index == 0:
                 div = BeautifulSoup(features="lxml").new_tag(
-                    'div',
+                    "div",
                     **{
                         "class": "tab-pane fade show active",
                         "id": "phage-%d" % (prophage_index + 1),
                     }
                 )
                 inner_div = BeautifulSoup(features="lxml").new_tag(
-                    'div', **{"class": "prophage-plot"}
+                    "div", **{"class": "prophage-plot"}
                 )
             else:
                 div = BeautifulSoup(features="lxml").new_tag(
-                    'div',
+                    "div",
                     **{
                         "class": "tab-pane fade show",
                         "id": "phage-%d" % (prophage_index + 1),
                     }
                 )
                 inner_div = BeautifulSoup(features="lxml").new_tag(
-                    'div', **{"class": "prophage-plot", "style": "display:none"}
+                    "div", **{"class": "prophage-plot", "style": "display:none"}
                 )
-            inner_div.append(BeautifulSoup(plot, 'html.parser'))
+            inner_div.append(BeautifulSoup(plot, "html.parser"))
             div.append(inner_div)
             plots_body.append(div)
         return str(plots_body)

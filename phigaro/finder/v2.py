@@ -19,7 +19,7 @@ class V2Finder(AbstractFinder):
 
     def find_phages(self, bacteria_npn, bacteria_gc):
         scores = calc_scores(bacteria_npn, self.window_len)
-        if self.mode != 'without_gc':
+        if self.mode != "without_gc":
             gc_scores = calc_scores(bacteria_gc, self.window_len)
             ranges = scan_phages(
                 np.array(scores) * np.array(gc_scores),
@@ -32,7 +32,9 @@ class V2Finder(AbstractFinder):
             )
         for (begin, end) in ranges:
             yield Phage(
-                begin=begin, end=end, is_prophage=True,
+                begin=begin,
+                end=end,
+                is_prophage=True,
             )
 
 

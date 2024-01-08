@@ -25,7 +25,7 @@ import numpy as np
 
 
 class RunPhigaroTask(AbstractTask):
-    task_name = 'run_phigaro'
+    task_name = "run_phigaro"
 
     def __init__(self, hmmer_task, prodigal_task):
         """
@@ -37,39 +37,35 @@ class RunPhigaroTask(AbstractTask):
         self.prodigal_task = prodigal_task
 
     def _prepare(self):
-        self.mode = self.config['phigaro']['mode']
+        self.mode = self.config["phigaro"]["mode"]
         self.finder = V2Finder(
-            window_len=self.config['phigaro']['window_len'],
-            threshold_min=self.config['phigaro'][
-                'threshold_min_%s' % self.mode
-            ],
-            threshold_max=self.config['phigaro'][
-                'threshold_max_%s' % self.mode
-            ],
+            window_len=self.config["phigaro"]["window_len"],
+            threshold_min=self.config["phigaro"]["threshold_min_%s" % self.mode],
+            threshold_max=self.config["phigaro"]["threshold_max_%s" % self.mode],
             mode=self.mode,
         )
-        self._wtp = self.config['phigaro'].get('wtp', False)
-        self._print_vogs = self.config['phigaro'].get('print_vogs', False)
-        self._filename = self.config['phigaro'].get('filename', False)
-        self._no_html = self.config['phigaro'].get('no_html', False)
-        self._not_open = self.config['phigaro'].get('not_open', False)
-        self._save_fasta = self.config['phigaro'].get('save_fasta', False)
-        self._output = self.config['phigaro'].get('output', False)
+        self._wtp = self.config["phigaro"].get("wtp", False)
+        self._print_vogs = self.config["phigaro"].get("print_vogs", False)
+        self._filename = self.config["phigaro"].get("filename", False)
+        self._no_html = self.config["phigaro"].get("no_html", False)
+        self._not_open = self.config["phigaro"].get("not_open", False)
+        self._save_fasta = self.config["phigaro"].get("save_fasta", False)
+        self._output = self.config["phigaro"].get("output", False)
         if self._wtp:
-            self._output_wtp = self.config['phigaro'].get('output_wtp', False)
-        self._uuid = self.config['phigaro'].get('uuid', False)
+            self._output_wtp = self.config["phigaro"].get("output_wtp", False)
+        self._uuid = self.config["phigaro"].get("uuid", False)
         self.context = Context.instance()
 
     def output(self):
-        return self.file('{}.tsv'.format(self.sample))
+        return self.file("{}.tsv".format(self.sample))
 
     def run(self):
-        max_evalue = self.config['hmmer']['e_value_threshold']
-        penalty_black = self.config['phigaro']['penalty_black']
-        penalty_white = self.config['phigaro']['penalty_white']
-        gff = self.config['phigaro']['gff']
-        bed = self.config['phigaro']['bed']
-        mean_gc = self.config['phigaro']['mean_gc']
+        max_evalue = self.config["hmmer"]["e_value_threshold"]
+        penalty_black = self.config["phigaro"]["penalty_black"]
+        penalty_white = self.config["phigaro"]["penalty_white"]
+        gff = self.config["phigaro"]["gff"]
+        bed = self.config["phigaro"]["bed"]
+        mean_gc = self.config["phigaro"]["mean_gc"]
 
         pvogs_black_list = const.DEFAULT_BLACK_LIST
         pvogs_white_list = const.DEFAULT_WHITE_LIST
@@ -77,7 +73,7 @@ class RunPhigaroTask(AbstractTask):
         scaffold_set = read_prodigal_output(self.prodigal_task.output())
         hmmer_result = read_hmmer_output(self.hmmer_task.output())
 
-        gff_base = ['##gff-version 3.2.1']
+        gff_base = ["##gff-version 3.2.1"]
         gff_scaffold = []
         gff_prophage = []
         gff_gene = []
@@ -85,33 +81,34 @@ class RunPhigaroTask(AbstractTask):
         bed_gene = []
         wtp_output = []
 
-        with open(self.output(), 'w') as of:
-            writer = csv.writer(of, delimiter='\t')
+        with open(self.output(), "w") as of:
+            writer = csv.writer(of, delimiter="\t")
 
             if self._print_vogs:
                 writer.writerow(
                     (
-                        'scaffold',
-                        'begin',
-                        'end',
-                        'transposable',
-                        'taxonomy',
-                        'vog',
+                        "scaffold",
+                        "id",
+                        "begin",
+                        "end",
+                        "transposable",
+                        "taxonomy",
+                        "vog",
                     )
                 )
             else:
                 writer.writerow(
-                    ('scaffold', 'begin', 'end', 'transposable', 'taxonomy')
+                    ("scaffold", "id", "begin", "end", "transposable", "taxonomy")
                 )
 
             plotly_plots = []
             phage_info = []
             transposables_status = []
-            phage_num = 0
             for scaffold in scaffold_set:
+                phage_num = 0
                 if gff:
                     gff_scaffold.append(
-                        '##sequence-region %s 1 %d'
+                        "##sequence-region %s 1 %d"
                         % (
                             scaffold.name,
                             self.context.scaffolds_info[scaffold.name],
@@ -128,108 +125,32 @@ class RunPhigaroTask(AbstractTask):
                     pvogs_black_list=pvogs_black_list,
                     pvogs_white_list=pvogs_white_list,
                 )
-                gc = hmmer_res_to_gc(
-                    scaffold, hmmer_result, max_evalue=max_evalue
-                )
-                if self.mode == 'abs':
+                gc = hmmer_res_to_gc(scaffold, hmmer_result, max_evalue=max_evalue)
+                if self.mode == "abs":
                     gc = np.array(gc)
                     gc = np.absolute(gc - mean_gc) + mean_gc
                     gc[gc == np.absolute(0 - mean_gc) + mean_gc] = 0
                 phages = self.finder.find_phages(npn, gc)
+
                 for phage in phages:
                     phage_num += 1
-                    begin = genes[phage.begin].begin
-                    end = genes[phage.end].end
+                    phage_name = "%s_prophage%d" % (scaffold.name, phage_num)
+                    begin = genes[phage.begin].begin - 1
+                    end = genes[phage.end].end - 1
                     phage_genes = genes[phage.begin : (phage.end + 1)]
-                    if gff:
-                        gff_prophage.append(
-                            '\t'.join(
-                                [
-                                    scaffold.name,
-                                    '.',
-                                    'prophage',
-                                    str(begin + 1),
-                                    str(end + 1),
-                                    '.',
-                                    '.',
-                                    '.',
-                                    'ID=prophage%d' % phage_num,
-                                ]
-                            )
-                        )
-                    if bed:
-                        bed_prophage.append(
-                            '\t'.join(
-                                [
-                                    scaffold.name,
-                                    str(begin),
-                                    str(end),
-                                    'prophage%d' % phage_num,
-                                    '.',
-                                    '.',
-                                ]
-                            )
-                        )
+
                     hmmer_records = [
                         hmmer_result.min_record(
                             hmmer_result.get_records(scaffold.name, gene.name)
                         )
                         for gene in genes[phage.begin : phage.end]
                     ]
-                    if gff or bed:
-                        for record in phage_genes:
-                            hmmer_record = hmmer_result.min_record(
-                                hmmer_result.get_records(
-                                    scaffold.name, record.name
-                                )
-                            )
-                            pvog = (
-                                '.'
-                                if hmmer_record is None
-                                else hmmer_record.vog_name
-                            )
-                            evalue = (
-                                '.'
-                                if hmmer_record is None
-                                else hmmer_record.evalue
-                            )
-                            if gff:
-                                gff_gene.append(
-                                    '\t'.join(
-                                        [
-                                            scaffold.name,
-                                            '.',
-                                            'gene',
-                                            str(record.begin + 1),
-                                            str(record.end + 1),
-                                            str(evalue),
-                                            '+' if record.strand > 0 else '-',
-                                            '.',
-                                            'ID=gene%s;Parent=prophage%d;pvog=%s'
-                                            % (record.name, phage_num, pvog),
-                                        ]
-                                    )
-                                )
-                            if bed:
-                                bed_gene.append(
-                                    '\t'.join(
-                                        [
-                                            scaffold.name,
-                                            str(record.begin),
-                                            str(record.end + 1),
-                                            'gene%s' % (record.name),
-                                            str(evalue),
-                                            '+' if record.strand > 0 else '-',
-                                        ]
-                                    )
-                                )
-
                     hmmer_pvogs_records = (
                         record.vog_name
                         for record in hmmer_records
                         if record and record.evalue <= max_evalue
                     )
-                    pvogs_records_str = ', '.join(hmmer_pvogs_records)
+                    pvogs_records_str = ", ".join(hmmer_pvogs_records)
                     taxonomy = define_taxonomy(pvogs_records_str)
                     hmmer_records = [
                         record
@@ -237,10 +158,85 @@ class RunPhigaroTask(AbstractTask):
                         if record and record.evalue <= max_evalue
                     ]
                     transposable = if_transposable(hmmer_records)
+
+                    if gff:
+                        gff_prophage.append(
+                            "\t".join(
+                                [
+                                    scaffold.name,
+                                    ".",
+                                    "prophage",
+                                    str(begin + 1),
+                                    str(end + 1),
+                                    ".",
+                                    ".",
+                                    ".",
+                                    "ID=%s;taxonomy=%s;transposable=%s"
+                                    % (phage_name, taxonomy, transposable),
+                                ]
+                            )
+                        )
+                    if bed:
+                        bed_prophage.append(
+                            "\t".join(
+                                [
+                                    scaffold.name,
+                                    str(begin),
+                                    str(end + 1),
+                                    phage_name,
+                                    ".",
+                                    ".",
+                                ]
+                            )
+                        )
+
+                    if gff or bed:
+                        for record in phage_genes:
+                            hmmer_record = hmmer_result.min_record(
+                                hmmer_result.get_records(scaffold.name, record.name)
+                            )
+                            pvog = (
+                                "." if hmmer_record is None else hmmer_record.vog_name
+                            )
+                            evalue = (
+                                "." if hmmer_record is None else hmmer_record.evalue
+                            )
+                            if gff:
+                                gff_gene.append(
+                                    "\t".join(
+                                        [
+                                            scaffold.name,
+                                            ".",
+                                            "gene",
+                                            str(record.begin),
+                                            str(record.end),
+                                            str(evalue),
+                                            "+" if record.strand > 0 else "-",
+                                            ".",
+                                            "ID=%s;Parent=%s;pvog=%s"
+                                            % (record.name, phage_name, pvog),
+                                        ]
+                                    )
+                                )
+                            if bed:
+                                bed_gene.append(
+                                    "\t".join(
+                                        [
+                                            scaffold.name,
+                                            str(record.begin - 1),
+                                            str(record.end),
+                                            record.name,
+                                            str(evalue),
+                                            "+" if record.strand > 0 else "-",
+                                        ]
+                                    )
+                                )
+
                     if self._print_vogs:
                         writer.writerow(
                             (
                                 scaffold.name,
+                                phage_name,
                                 begin,
                                 end,
                                 transposable,
@@ -250,12 +246,19 @@ class RunPhigaroTask(AbstractTask):
                         )
                     else:
                         writer.writerow(
-                            (scaffold.name, begin, end, transposable, taxonomy)
+                            (
+                                scaffold.name,
+                                phage_name,
+                                begin,
+                                end,
+                                transposable,
+                                taxonomy,
+                            )
                         )
 
                     sequence, record = form_sequence(
                         self._filename,
-                        '%s_prophage_%d' % (scaffold.name, phage_num),
+                        "%s_prophage_%d" % (scaffold.name, phage_num),
                         begin,
                         end,
                         scaffold.name,
@@ -270,48 +273,37 @@ class RunPhigaroTask(AbstractTask):
                     ]
                     phage_info[-1][1].append(the_phage_info)
                     if self._save_fasta:
-                        with open(self._output + '.fasta', 'a') as f:
+                        with open(self._output + ".fasta", "a") as f:
                             SeqIO.write(
                                 SeqRecord(
                                     record,
-                                    id='%s_prophage_%d'
-                                    % (scaffold.name, phage_num),
-                                    description='%s_prophage_%d'
+                                    id=phage_name,
+                                    description="%s_prophage_%d"
                                     % (scaffold.name, phage_num),
                                 ),
                                 f,
                                 "fasta",
                             )
                     if (not self._no_html) and (self._output):
-                        plotly_plots.append(
-                            plot_html(hmmer_records, begin, end)
-                        )
-
-
+                        plotly_plots.append(plot_html(hmmer_records, begin, end))
 
                 phage_info = (
-                    phage_info
-                    if len(phage_info[-1][1]) > 0
-                    else phage_info[:-1]
+                    phage_info if len(phage_info[-1][1]) > 0 else phage_info[:-1]
                 )
 
             wtp_output = [the_phage_info[0] for the_phage_info in phage_info]
 
             if self._wtp:
-                with open(self._output_wtp, 'w') as f:
-                    f.write(
-                        '\n'.join(wtp_output)
-                    )
+                with open(self._output_wtp, "w") as f:
+                    f.write("\n".join(wtp_output))
             if gff:
-                with open(self._output + '.gff3', 'w') as f:
+                with open(self._output + ".gff3", "w") as f:
                     f.write(
-                        '\n'.join(
-                            gff_base + gff_scaffold + gff_prophage + gff_gene
-                        )
+                        "\n".join(gff_base + gff_scaffold + gff_prophage + gff_gene)
                     )
             if bed:
-                with open(self._output + '.bed', 'w') as f:
-                    f.write('\n'.join(gff_base + bed_prophage + bed_gene))
+                with open(self._output + ".bed", "w") as f:
+                    f.write("\n".join(gff_base + bed_prophage + bed_gene))
 
             if (len(phage_info) > 0) and (not self._no_html) and (self._output):
                 html = form_html_document(
@@ -321,12 +313,12 @@ class RunPhigaroTask(AbstractTask):
                     self._filename,
                     self._uuid,
                 )
-                with open(self._output + '.html', 'w') as f:
+                with open(self._output + ".html", "w") as f:
                     f.write(html)
                 if not self._not_open:
                     os.system(
-                        'xdg-open '
+                        "xdg-open "
                         + self._output
-                        + '.html'
-                        + ' > /dev/null 2>/dev/null'
+                        + ".html"
+                        + " > /dev/null 2>/dev/null"
                     )

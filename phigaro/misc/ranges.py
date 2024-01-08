@@ -74,7 +74,7 @@ def jakkard_index(ranges1, ranges2):
 
     if intersection_len != 0 and union_len == 0:
         print(ranges1, ranges2)
-        raise Exception('union error')
+        raise Exception("union error")
 
     if intersection_len == 0:
         return 0
@@ -92,17 +92,13 @@ def minus(ranges1, ranges2):
     max_len = max(ranges1[-1][1], ranges2[-1][1]) + 1
     ranges2 = intersection(ranges1, ranges2)
     ranges2 = negate(ranges2, max_len)
-    ranges2 = [
-        (begin + 1, end - 1) for (begin, end) in ranges2 if end - begin >= 2
-    ]
+    ranges2 = [(begin + 1, end - 1) for (begin, end) in ranges2 if end - begin >= 2]
     for (begin, end) in intersection(ranges1, ranges2):
         yield (begin, end)
 
 
 def true_positives_rate(test_ranges, real_ranges):
-    return len_ranges(intersection(test_ranges, real_ranges)) / len_ranges(
-        real_ranges
-    )
+    return len_ranges(intersection(test_ranges, real_ranges)) / len_ranges(real_ranges)
 
 
 def false_positives_rate(test_ranges, real_ranges, max_len=None):

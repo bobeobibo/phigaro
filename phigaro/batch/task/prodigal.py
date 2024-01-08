@@ -5,18 +5,18 @@ import sh
 
 
 class ProdigalTask(AbstractTask):
-    task_name = 'prodigal'
+    task_name = "prodigal"
 
     def __init__(self, preprocess_task):
         super().__init__()
 
         self.preprocess_task = preprocess_task
-        self.prodigal = sh.Command(self.config['prodigal']['bin']).bake(
+        self.prodigal = sh.Command(self.config["prodigal"]["bin"]).bake(
             i=self.preprocess_task.output(), a=self.output()
         )
 
     def output(self):
-        return self.file('{}.faa'.format(self.sample))
+        return self.file("{}.faa".format(self.sample))
 
     def run(self):
         self.prodigal()

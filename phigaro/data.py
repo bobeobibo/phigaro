@@ -1,17 +1,17 @@
 import csv
 import re
-from collections import OrderedDict, defaultdict, Iterable
+from collections import OrderedDict, defaultdict
 from itertools import groupby
-import pickle
+import json
 from phigaro.misc.ranges import first
 import numpy as np
 import os
 
-INFINITY = float('inf')
+INFINITY = float("inf")
 
 
 def read_npn(filename, sep=None, as_dict=True):
-    sep = sep or ' '
+    sep = sep or " "
     with open(filename) as f:
         reader = csv.reader(f, delimiter=sep)
         if as_dict:
@@ -21,7 +21,7 @@ def read_npn(filename, sep=None, as_dict=True):
 
 
 def read_coords(filename, sep=None):
-    sep = sep or '\t'
+    sep = sep or "\t"
     with open(filename) as f:
         reader = csv.reader(f, delimiter=sep)
         res = {}
@@ -46,11 +46,10 @@ def hmmer_res_to_npn(
     pvogs_black_list,
     pvogs_white_list,
 ):
+
     # type: (Scaffold, HmmerResult, float)->list[int]
     ordered_records_it = (
-        HmmerResult.min_record(
-            hmmer_result.get_records(scaffold.name, gene.name)
-        )
+        HmmerResult.min_record(hmmer_result.get_records(scaffold.name, gene.name))
         for gene in scaffold
     )
 
@@ -69,9 +68,7 @@ def hmmer_res_to_npn(
 def hmmer_res_to_gc(scaffold, hmmer_result, max_evalue):
     # type: (Scaffold, HmmerResult, float)->list[int]
     ordered_records_it = (
-        HmmerResult.min_record(
-            hmmer_result.get_records(scaffold.name, gene.name)
-        )
+        HmmerResult.min_record(hmmer_result.get_records(scaffold.name, gene.name))
         for gene in scaffold
     )
 
@@ -113,9 +110,7 @@ class Scaffold(object):
 class ScaffoldSet(object):
     def __init__(self, scaffolds):
         # type: (list[Scaffold])->ScaffoldSet
-        self._scaffolds_map = {
-            scaffold.name: scaffold for scaffold in scaffolds
-        }
+        self._scaffolds_map = {scaffold.name: scaffold for scaffold in scaffolds}
 
     def get_scaffold(self, scaffold_name):
         # type: (str)->Scaffold
@@ -179,19 +174,19 @@ def read_hmmer_output(file_path):
 
     def parse_line(line):
         # type: (str)->HmmerRecord
-        tokens = re.split(r'\s+', line)
-        begin, end, strand = line.split(' # ', 4)[1:-1]
+        tokens = re.split(r"\s+", line)
+        begin, end, strand = line.split(" # ", 4)[1:-1]
         gc_cont = float(
             [
-                x.split('=')[-1]
-                for x in tokens[-1].split(';')
-                if x.startswith('gc_cont')
+                x.split("=")[-1]
+                for x in tokens[-1].split(";")
+                if x.startswith("gc_cont")
             ][0]
         )
 
         return HmmerRecord(
-            scaffold_name='_'.join(tokens[0].split('_')[:-1]),
-            gene_name=tokens[0].split('_')[-1],
+            scaffold_name="_".join(tokens[0].split("_")[:-1]),
+            gene_name=tokens[0],
             vog_name=tokens[2],
             evalue=float(tokens[4]),
             gc_cont=gc_cont,
@@ -204,7 +199,7 @@ def read_hmmer_output(file_path):
         lines_it = (
             parse_line(line.strip())
             for line in f
-            if not line.startswith('#') and line.strip()
+            if not line.startswith("#") and line.strip()
         )
         hmm_res = HmmerResult(lines_it)
 
@@ -217,7 +212,7 @@ def read_prodigal_output(file_name):
     def extract_coords_and_name(gene_str):
         # type: (str)->Gene
 
-        tokens = gene_str.split(' # ')
+        tokens = gene_str.split(" # ")
         return Gene(
             name=tokens[0],
             begin=int(tokens[1]),
@@ -227,45 +222,40 @@ def read_prodigal_output(file_name):
 
     def parse_gene_records(gene_records):
         # type: (list[str])->list[Gene]
-        return [
-            extract_coords_and_name(gene_str) for _, gene_str in gene_records
-        ]
+        return [extract_coords_and_name(gene_str) for _, gene_str in gene_records]
 
     with open(file_name) as f:
         genes_scaffold_recs = (
             [
-                '_'.join(line.strip().split(' # ', 1)[0].split('_')[:-1]),
-                line.strip().split(' # ', 1)[0].split('_')[-1]
-                + ' # '
-                + line.strip().split(' # ', 1)[1],
+                "_".join(line.strip().split(" # ", 1)[0].split("_")[:-1]),
+                line.strip().split(" # ", 1)[0].replace(">", "")
+                + " # "
+                + line.strip().split(" # ", 1)[1],
             ]
             for line in f
-            if line.startswith('>')
+            if line.startswith(">")
         )
         scaffolds = [
-            Scaffold(
-                name=scaffold_name[1:], genes=parse_gene_records(gene_records)
-            )
-            for scaffold_name, gene_records in groupby(
-                genes_scaffold_recs, key=first
-            )
+            Scaffold(name=scaffold_name[1:], genes=parse_gene_records(gene_records))
+            for scaffold_name, gene_records in groupby(genes_scaffold_recs, key=first)
         ]
         return ScaffoldSet(scaffolds=scaffolds)
 
 
 def define_taxonomy(pvogs_string):
     with open(
-        os.path.dirname(os.path.abspath(__file__)) + '/pvogs_taxonomy.pickle',
-        'rb',
+        os.path.dirname(os.path.abspath(__file__)) + "/pvogs_taxonomy.json",
+        "r",
     ) as f:
-        pvogs_taxonomy, taxonomy_codes = pickle.load(f)
-    taxonomy_codes = taxonomy_codes.astype(str)
-    pvog_list = pvogs_string.split(', ')
+        data = json.load(f)
+    pvogs_taxonomy = data["pvogs_taxonomy"]
+    taxonomy_codes = np.array(data["taxonomy_codes"])
+    pvog_list = pvogs_string.split(", ")
     taxonomy_variants = [
         pvogs_taxonomy[pvog] for pvog in pvog_list if pvog in pvogs_taxonomy
     ]
     if len(taxonomy_variants) > 0:
         taxonomies, counts = np.unique(taxonomy_variants, return_counts=True)
-        return ' / '.join(taxonomy_codes[taxonomies[counts == max(counts)]])
+        return " / ".join(taxonomy_codes[taxonomies[counts == max(counts)]])
     else:
-        return 'Unknown'
+        return "Unknown"

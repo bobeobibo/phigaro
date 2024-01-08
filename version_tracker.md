@@ -1,3 +1,12 @@
+## V2.4.0
+- Restored a compatibility with Python versions `> 3.7.1`.
+- `.pickle` files, containing data neccasary for the work of the tool, were replaced with `.json` and `.csv` files to resolve compatibility issues.
+- Added prophage IDs across outputs to improve compatibility between files.
+- Fixed a bug with `gff3` and `bed` files formats: prophage coordinates were shifted by 1 nucleotide upstream in versions `phigaro <= 2.3.0`.
+
+## V2.3.0
+Added a `--save-fasta` option.
+
 ## V2.2.6
 Minor corrections. Docker & Singularity containers. What_the_phage implementation.
 

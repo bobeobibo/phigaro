@@ -5,15 +5,15 @@ import errno
 
 def sample_name(sample_path):
     sample_path = basename(sample_path)
-    tokens = sample_path.split('.')
+    tokens = sample_path.split(".")
     if len(tokens) == 1:
         return sample_path
     else:
-        return '.'.join(tokens[:-1])
+        return ".".join(tokens[:-1])
 
 
 def path(*items):
-    items = ('proc',) + items
+    items = ("proc",) + items
     return join(*items)
 
 

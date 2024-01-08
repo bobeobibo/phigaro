@@ -6,7 +6,7 @@ from phigaro.context import Context
 
 
 class PreprocessTask(AbstractTask):
-    task_name = 'input_file'
+    task_name = "input_file"
 
     def __init__(self, input):
         super().__init__()
@@ -15,8 +15,8 @@ class PreprocessTask(AbstractTask):
 
     def check_fastafile(self):
         def get_users_answer(question):
-            yes = ['yes', 'y']
-            no = ['no', 'n']
+            yes = ["yes", "y"]
+            no = ["no", "n"]
             try:
                 input_ = raw_input
             except NameError:
@@ -40,20 +40,20 @@ class PreprocessTask(AbstractTask):
         SeqIO.write(records_to_save, self.output(), "fasta")
         del records_to_save
 
-        if not self.config['phigaro']['delete_shorts']:
+        if not self.config["phigaro"]["delete_shorts"]:
             if len(sequences_to_delete) > 0:
                 print(
-                    'Error! Your fasta file contains at least one sequence length < 20000.  The short sequences are: '
+                    "Error! Your fasta file contains at least one sequence length < 20000.  The short sequences are: "
                 )
-                print('\n'.join(sequences_to_delete))
+                print("\n".join(sequences_to_delete))
                 if not get_users_answer(
-                    'Do you want to start Phigaro without these sequences?'
+                    "Do you want to start Phigaro without these sequences?"
                 ):
                     self.clean()
                     exit(1)
 
     def output(self):
-        return self.file('{}.fasta'.format(self.sample))
+        return self.file("{}.fasta".format(self.sample))
 
     def run(self):
         self.check_fastafile()

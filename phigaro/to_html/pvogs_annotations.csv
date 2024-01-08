@@ -1,0 +1,1475 @@
+,function,group
+VOG0001,V protein,Other
+VOG0002,major coat protein,Coat
+VOG0005,phage assembly protein,Assembly
+VOG0006,Vpf491,Other
+VOG0007,putative minor coat protein,Coat
+VOG0009,putative transcription regulator,Other
+VOG0013,DNA replication initiation protein,Replication
+VOG0015,putative major coat protein,Coat
+VOG0016,S-adenosyl-L-methionine hydrolase,Other
+VOG0018,DNA ligase,Replication
+VOG0019,RNA polymerase,Other
+VOG0025,putative DNA helicase,Replication
+VOG0026,DNA polymerase,Replication
+VOG0028,exonuclease,Other
+VOG0030,head-tail connector protein,Other (structural)
+VOG0031,capsid assembly protein,Assembly
+VOG0034,tail tubular protein B,Tail
+VOG0035,internal virion protein A,Other
+VOG0037,internal virion protein C,Other
+VOG0038,internal virion protein D,Other
+VOG0040,type II holin,Lysis
+VOG0046,superinfection exclusion protein,Other
+VOG0049,RtcB,Other
+VOG0050,dCMP deaminase,Other
+VOG0051,terminase large subunit,Terminase
+VOG0052,RNA polymerase sigma factor,Other
+VOG0054,holin,Lysis
+VOG0058,P-starvation inducible protein,Other
+VOG0061,major capsid protein,Coat
+VOG0067,tail sheath protein,Tail
+VOG0083,recombination endonuclease subunit,Other
+VOG0085,deoxyuridine 5'-triphosphate nucleotidohydrolase,Other
+VOG0088,ribonucleotide reductase,Other
+VOG0092,thymidylate synthase,Other
+VOG0106,terminase large subunit,Terminase
+VOG0136,holin,Lysis
+VOG0156,serine/threonine protein phosphatase,Other
+VOG0166,maturation protein,Assembly
+VOG0167,replicase,Replication
+VOG0168,gpA,Other
+VOG0169,gpA*,Other
+VOG0170,gpB,Other
+VOG0171,gpK,Other
+VOG0172,gpC,Other
+VOG0173,gpD,Other
+VOG0174,gpE,Other
+VOG0175,gpJ,Other
+VOG0176,gpF,Other
+VOG0177,gpG,Other
+VOG0178,gpH,Other
+VOG0183,putative transcription regulator,Other
+VOG0189,DNA replication protein,Replication
+VOG0202,putative head-tail joining protein,Other (structural)
+VOG0205,putative head-tail joining protein,Other (structural)
+VOG0209,putative tail component protein,Tail
+VOG0221,integrase,Integration
+VOG0227,tail fiber assembly protein,Assembly
+VOG0234,ParB,Other
+VOG0236,Gp63,Other
+VOG0237,LysC,Other
+VOG0249,Doc,Other
+VOG0253,terminase small subunit,Terminase
+VOG0254,portal protein,Portal
+VOG0258,DNA stabilization protein,Other
+VOG0259,DNA stabilization protein,Other
+VOG0261,head assembly protein,Assembly
+VOG0263,DNA transfer protein,Other
+VOG0265,DNA transfer protein,Other
+VOG0273,O-antigen conversion protein C,Other
+VOG0274,GtrB,Other
+VOG0275,integrase,Integration
+VOG0281,Abc2 protein,Other
+VOG0284,Arf,Other
+VOG0285,Kil,Other
+VOG0286,CIII protein,Other
+VOG0287,SieB,Other
+VOG0288,antitermination protein N,Other
+VOG0292,NinB protein,Other
+VOG0293,NinE protein,Other
+VOG0295,NinF protein,Other
+VOG0296,NinG protein,Other
+VOG0298,late gene regulator Q,Other
+VOG0299,endopeptidase,Other
+VOG0300,Rz1 protein,Other
+VOG0312,Gp18 protein,Other
+VOG0320,Gp45 protein,Other
+VOG0334,DNA polymerase,Replication
+VOG0337,putative DNA-packaging protein,Other
+VOG0350,nicotinamide phosphoribosyltransferase,Other
+VOG0351,prohead core scaffolding protein and protease,Other
+VOG0355,replication protein P,Replication
+VOG0356,tail sheath protein,Tail
+VOG0372,NAD-dependent DNA ligase subunit A,Replication
+VOG0377,DNA helicase,Replication
+VOG0382,DNA topoisomerase II large subunit,Replication
+VOG0384,DNA topisomerase II medium subunit,Other
+VOG0393,ADP-ribosylase,Other
+VOG0397,dUTPase,Other
+VOG0400,spackle periplasmic protein,Other
+VOG0402,head vertex assembly chaperone,Assembly
+VOG0408,clamp loader subunit,Other
+VOG0409,sliding clamp DNA polymerase accessory protein,Replication
+VOG0410,RNA polymerase binding protein,Other
+VOG0412,alpha-glucosyl-transferase,Other
+VOG0419,anaerobic NTP reductase small subunit,Other
+VOG0420,anaerobic NTP reductase large subunit,Other
+VOG0421,inhibitor of host Lon protease,Other
+VOG0436,site-specific RNA endonuclease,Other
+VOG0443,nudix hydrolase,Other
+VOG0451,head completion protein,Assembly
+VOG0452,baseplate wedge subunit,Baseplate
+VOG0454,baseplate wedge subunit,Baseplate
+VOG0456,baseplate wedge subunit and tail pin,Tail
+VOG0457,baseplate wedge subunit and tail pin,Tail
+VOG0459,fibritin,Other
+VOG0460,neck protein,Other
+VOG0461,neck protein,Other
+VOG0462,tail sheath stabilizer and completion protein,Assembly
+VOG0463,prohead core protein,Other
+VOG0464,prohead core protein,Other
+VOG0465,scaffold prohead core protein,Other
+VOG0466,major capsid protein,Coat
+VOG0471,inhibitor of prohead protease,Other
+VOG0473,UvsY,Other
+VOG0474,baseplate hub subunit,Baseplate
+VOG0475,baseplate hub distal subunit,Baseplate
+VOG0476,baseplate hub subunit tail length determinator,Tail
+VOG0477,baseplate tail tube cap,Tail
+VOG0480,ADP-ribosyltransferase,Other
+VOG0485,lysis inhibition accessory protein,Other
+VOG0493,endonuclease II,Other
+VOG0496,dihydrofolate reductase,Other
+VOG0499,single-stranded DNA binding protein,Other
+VOG0505,holin lysis mediator,Lysis
+VOG0509,activator of middle period transcription,Other
+VOG0510,nucleoid disruption protein,Other
+VOG0529,Na/K ATPase,Other
+VOG0544,Panton-Valentine leukocidin chain S precursor,Other
+VOG0545,Panton-Valentine leukocidin chain F precursor,Other
+VOG0559,transcriptional activator RinB,Other
+VOG0566,capsid-scaffolding protein,Other
+VOG0567,terminase endonuclease subunit,Terminase
+VOG0568,head completion-stabilization protein,Assembly
+VOG0569,tail synthesis protein X,Tail
+VOG0571,tail protein,Tail
+VOG0574,tail formation protein I,Assembly
+VOG0577,major tail tube protein,Tail
+VOG0582,tail protein,Tail
+VOG0588,replication protein A,Replication
+VOG0602,holin,Lysis
+VOG0603,gpJ,Other
+VOG0609,scaffolding protein,Other
+VOG0612,terminase small subunit,Terminase
+VOG0614,lysin,Lysis
+VOG0615,holin,Lysis
+VOG0639,DNA encapsidation protein,Assembly
+VOG0641,holin,Lysis
+VOG0642,lower collar protein,Other
+VOG0643,major head protein,Other
+VOG0644,upper collar protein,Other
+VOG0645,tail protein,Tail
+VOG0647,putative minor structural protein,Other
+VOG0668,putative DNA polymerase I,Replication
+VOG0676,RNA ligase,Other
+VOG0681,gpK,Other
+VOG0691,portal protein,Portal
+VOG0692,minor capsid protein,Coat
+VOG0694,major capsid protein,Coat
+VOG0697,putative minor capsid protein,Coat
+VOG0698,putative minor capsid protein,Coat
+VOG0703,holin,Lysis
+VOG0705,FtsK/SpoIIIE protein,Other
+VOG0707,conserved phage protein,Other
+VOG0720,portal protein,Portal
+VOG0731,holin,Lysis
+VOG0739,putative topoisomerase,Replication
+VOG0756,Rad52/22 family double-strand break repair protein,Other
+VOG0764,capsid protein,Coat
+VOG0765,holin,Lysis
+VOG0785,excisionase,Other
+VOG0796,terminase small subunit,Terminase
+VOG0799,major tail protein,Tail
+VOG0816,head-tail adaptor,Other
+VOG0823,excisionase,Other
+VOG0827,mobile element protein,Other
+VOG0828,putative single-stranded DNA binding protein,Other
+VOG0830,Bor protein precursor,Other
+VOG0831,terminase small subunit nu1,Terminase
+VOG0832,head-to-tail joining protein,Other (structural)
+VOG0833,portal protein,Portal
+VOG0835,head-DNA stabilization protein,Other
+VOG0837,DNA packaging protein,Other
+VOG0838,head-tail connector Fii,Other (structural)
+VOG0839,minor tail protein,Tail
+VOG0840,minor tail protein U,Tail
+VOG0842,minor tail protein G,Tail
+VOG0843,minor tail protein,Tail
+VOG0847,minor tail protein,Tail
+VOG0848,minor tail protein,Tail
+VOG0850,tail protein,Tail
+VOG0855,attachment invasion locus protein precursor,Other
+VOG0875,terminal protein,Other
+VOG0876,transcriptional regulator,Other
+VOG0877,single stranded DNA-binding protein,Other
+VOG0878,dsDNA binding protein,Other
+VOG0879,scaffolding protein,Other
+VOG0880,head fiber protein,Other
+VOG0885,DNA replication organizer,Replication
+VOG0886,putative protein 16.8,Other
+VOG0887,putative terminase small subunit,Terminase
+VOG0889,putative strucural protein 2,Other
+VOG0890,putative strucural protein 4,Other
+VOG0897,holin,Lysis
+VOG0906,putative sak protein,Other
+VOG0913,putative structural protein,Other
+VOG0924,putative DNA polymerase subunit,Replication
+VOG0930,putative strucural protein 3,Other
+VOG0933,neck passage structure,Other
+VOG0944,transposase,Integration
+VOG0945,mobile element protein,Other
+VOG0946,shiga-like toxin II subunit A precursor,Other
+VOG0947,Shiga toxin 2 subunit B,Other
+VOG0975,Putative small subunit (Nu1 homolog) of DNA packaging dimer,Other
+VOG0976,major capsid protein,Coat
+VOG0979,retron-type RNA-directed DNA polymerase,Other
+VOG0985,ParA,Other
+VOG0986,protelomerase,Other
+VOG0991,gp55 protein,Other
+VOG0992,putative endolysin,Lysis
+VOG0996,clamp loader subunit,Other
+VOG0997,baseplate hub subunit,Baseplate
+VOG0998,queuosine biosynthesis QueE radical SAM,Other
+VOG1001,portal vertex protein,Portal
+VOG1005,tail tube protein,Tail
+VOG1006,sigma factor for late transcription,Other
+VOG1020,QueC,Other
+VOG1026,transposase,Integration
+VOG1030,thymidine kinase,Other
+VOG1031,nucleotide-sugar epimerase,Other
+VOG1032,gp4,Other
+VOG1036,putative co-chaperonin GroES,Other
+VOG1045,putative HTH transcription regulator,Other
+VOG1051,UDP-galactopyranose mutase,Other
+VOG1072,EPS-depolymerase,Replication
+VOG1092,terminase small subunit,Terminase
+VOG1099,major capsid protein,Coat
+VOG1105,major tail subunit,Tail
+VOG1112,minor tail protein,Tail
+VOG1113,minor tail protein,Tail
+VOG1146,RNaseE,Other
+VOG1165,minor tail protein,Tail
+VOG1166,minor tail protein,Tail
+VOG1167,minor tail protein,Tail
+VOG1179,gp81,Other
+VOG1184,gp40,Other
+VOG1190,portal protein,Portal
+VOG1191,major capsid protein,Coat
+VOG1198,DNA polymerase III alpha subunit,Replication
+VOG1200,galactosyltransferase,Other
+VOG1201,glycosyltransferase,Other
+VOG1213,tail assembly chaperone,Assembly
+VOG1215,minor tail protein,Tail
+VOG1222,holin,Lysis
+VOG1225,Lsr2,Other
+VOG1270,gp13,Other
+VOG1279,predicted hydrolase,Other
+VOG1284,CHC2 zinc finger protein,Other
+VOG1297,conserved hypothetical protein,Other
+VOG1298,putative methyltransferase,Other
+VOG1300,conserved hypothetical protein,Other
+VOG1309,RecT,Other
+VOG1311,PcfU,Other
+VOG1314,conserved hypothetical protein,Other
+VOG1319,major head protein,Other
+VOG1329,major capsid protein,Coat
+VOG1337,HNH endonuclease,Other
+VOG1344,nicotinamide mononucleotide transporter,Other
+VOG1363,putative Sir2-like protein,Other
+VOG1391,transaldolase-like protein,Other
+VOG1403,DUF680 domain-containing protein,Other
+VOG1404,photosystem II D1 protein,Other
+VOG1405,high light inducible protein,Other
+VOG1436,tail fiber protein,Tail
+VOG1517,putative terminase small subunit,Terminase
+VOG1519,putative tail protein,Tail
+VOG1587,tail assembly chaperone,Assembly
+VOG1590,minor tail protein,Tail
+VOG1609,DNA primase,Replication
+VOG1617,gp63,Other
+VOG1618,gp80,Other
+VOG1619,gp75,Other
+VOG1647,ParB,Other
+VOG1654,esterase/lipase,Other
+VOG1681,translation repressor,Other
+VOG1801,base plate hub assembly catalyst,Assembly
+VOG1829,head assembly cochaperone with GroEL,Assembly
+VOG1850,tRNA nucleotidyltransferase,Other
+VOG1860,loader of DNA helicase,Replication
+VOG1861,late promoter transcription accessory protein,Other
+VOG1864,anti-sigma 70 protein,Other
+VOG1871,NudE nudix hydrolase,Other
+VOG1874,gp35 hinge long tail fiber proximal connector,Other (structural)
+VOG1883,gp13,Other
+VOG1886,putative terminase large subunit,Terminase
+VOG1887,major capsid protein,Coat
+VOG1894,holin,Lysis
+VOG1898,cell adhesion domain-containing protein,Other
+VOG1912,putative portal protein,Portal
+VOG1936,AAA ATPase,Other
+VOG1981,small outer capsid protein,Coat
+VOG1992,internal head protein,Other
+VOG2005,homing endonuclease,Other
+VOG2006,hinge connector of long tail fiber proximal connector,Other (structural)
+VOG2012,DNA endonuclease IV,Other
+VOG2015,gp5,Other
+VOG2017,gp8,Other
+VOG2044,gp3,Other
+VOG2054,phosphoribosyl transferase,Other
+VOG2075,terminase small subunit,Terminase
+VOG2080,Cor protein,Other
+VOG2090,serine/threonine kinase,Other
+VOG2098,DNA packaging protein,Other
+VOG2120,putative major tail protein,Tail
+VOG2123,methyltransferase,Other
+VOG2124,Ren protein,Other
+VOG2137,major tropism determinant,Other
+VOG2142,transposase A,Integration
+VOG2200,acridine resistance protein,Other
+VOG2210,putative tail tube protein,Tail
+VOG2211,putative tail sheath protein,Tail
+VOG2215,CI,Other
+VOG2217,holin,Lysis
+VOG2218,Apl,Other
+VOG2232,minor capsid protein,Coat
+VOG2233,replication protein VP4,Replication
+VOG2234,major capsid protein VP1,Coat
+VOG2235,internal scaffolding protein VP3,Other
+VOG2310,protein kinase,Other
+VOG2312,host dGTPase inhibitor,Other
+VOG2313,gp1.5,Other
+VOG2315,host RNA polymerase inhibitor,Other
+VOG2332,HNH endonuclease,Other
+VOG2352,guanylate kinase,Other
+VOG2368,"ribonucleoside triphosphate reductase, alpha chain",Other
+VOG2379,virion RNA polymerase,Other
+VOG2384,major coat protein,Coat
+VOG2386,portal protein,Portal
+VOG2397,single stranded DNA-binding protein,Other
+VOG2403,phage lambda Rz1-like protein,Other
+VOG2422,valyl-tRNA synthetase modifier,Other
+VOG2444,transcription modulator,Other
+VOG2450,distal long tail fiber assembly catalyst,Assembly
+VOG2457,IpI,Other
+VOG2497,gp3,Other
+VOG2513,tail assembly chaperone,Assembly
+VOG2518,minor tail protein,Tail
+VOG2526,holin,Lysis
+VOG2557,antirestriction protein,Other
+VOG2559,gp1,Other
+VOG2560,terminase small subunit,Terminase
+VOG2567,tail assembly chaperone,Assembly
+VOG2570,gp28,Other
+VOG2571,gp31,Other
+VOG2575,metallophosphoesterase,Other
+VOG2612,gp2,Other
+VOG2613,gp9,Other
+VOG2617,gp16,Other
+VOG2621,gp24,Other
+VOG2622,tail assembly chaperone,Assembly
+VOG2624,gp28,Other
+VOG2626,gp33,Other
+VOG2627,gp34,Other
+VOG2634,gp1,Other
+VOG2636,gp59,Other
+VOG2637,gp2,Other
+VOG2644,holin,Lysis
+VOG2648,HTH DNA binding protein,Other
+VOG2649,GIY-YIG endonuclease,Other
+VOG2654,HTH DNA binding protein,Other
+VOG2666,gp96,Other
+VOG2766,putative holin,Lysis
+VOG2773,putative transcriptional regulator,Other
+VOG2774,putative DNA primase,Replication
+VOG2786,Ner-like protein,Other
+VOG2788,DNA transposition protein,Other
+VOG2791,tail sheath protein,Tail
+VOG2792,tail/DNA circulation protein,Tail
+VOG2793,tail protein,Tail
+VOG2806,putative head protein,Other
+VOG2819,Ser/Thr kinase,Other
+VOG2820,glycosyltransferase,Other
+VOG2821,gp18,Other
+VOG2822,gp21,Other
+VOG2842,LipC,Other
+VOG2848,AddA-like protein,Other
+VOG2875,gp205,Other
+VOG2876,Ku protein,Other
+VOG2894,gp4,Other
+VOG2895,gp7,Other
+VOG2914,gp78,Other
+VOG2920,gp56,Other
+VOG2922,RDF protein,Other
+VOG2923,gp82,Other
+VOG2924,gp85,Other
+VOG2925,gp86,Other
+VOG2932,terminase small subunit,Terminase
+VOG2933,enoyl-CoA-hydratase,Other
+VOG2936,methyltransferase,Other
+VOG2937,gp19,Other
+VOG2947,gp91,Other
+VOG2950,gp94,Other
+VOG2957,gp148,Other
+VOG2958,gp131,Other
+VOG2973,gp205,Other
+VOG2993,gp5,Other
+VOG2995,phosphoesterase,Other
+VOG3011,tyrosine phosphatase,Other
+VOG3015,gp37,Other
+VOG3020,gp4,Other
+VOG3022,gp67,Other
+VOG3028,gp1,Other
+VOG3029,gp3,Other
+VOG3030,gp139,Other
+VOG3050,RecA,Other
+VOG3093,ATP-dependent helicase,Replication
+VOG3178,major capsid protein,Coat
+VOG3180,maturation/adhesion protein,Assembly
+VOG3181,gp82,Other
+VOG3188,gp18,Other
+VOG3199,gp22,Other
+VOG3201,gp29,Other
+VOG3202,gp30,Other
+VOG3211,gp15,Other
+VOG3215,FtsK-like protein,Other
+VOG3221,gp90,Other
+VOG3222,GTP cyclohydrolase I,Other
+VOG3227,putative tail fiber,Tail
+VOG3233,phosphatidylglycerophosphatase A,Other
+VOG3235,IMP dehydrogenase/GMP reductase,Other
+VOG3238,small acid-soluble spore protein,Other
+VOG3239,putative DNA helicase,Replication
+VOG3241,Ser/Thr protein phosphatase family protein,Other
+VOG3244,putative UV damage repair endonuclease,Other
+VOG3255,virion structural protein,Other
+VOG3256,virion structural protein,Other
+VOG3262,putative helicase,Replication
+VOG3263,major capsid protein,Coat
+VOG3271,virion structural protein,Other
+VOG3275,virion structural protein,Other
+VOG3278,putative tail sheath protein,Tail
+VOG3279,putative virion structural protein,Other
+VOG3280,putative virion structural protein,Other
+VOG3287,"addiction module toxin, RelE/StbE family",Other
+VOG3288,Vpf76,Other
+VOG3294,activator of host PrrC lysyl-tRNA endonuclease,Other
+VOG3309,putative excisionase,Other
+VOG3341,minor coat protein,Coat
+VOG3344,integrase,Integration
+VOG3346,putative HTH transcriptional regulator,Other
+VOG3347,helix-turn-helix protein,Other
+VOG3356,structural protein V1,Other
+VOG3357,structural protein VP3,Other
+VOG3358,VP2-like protein,Other
+VOG3369,NinD,Other
+VOG3376,host recBCD nuclease inhibitor,Other
+VOG3379,Cox,Other
+VOG3381,Hol,Other
+VOG3382,nonstructural protein,Other
+VOG3396,Gp29,Other
+VOG3397,gp33,Other
+VOG3399,gp42 protein,Other
+VOG3401,transcription antiterminator,Other
+VOG3404,gp51,Other
+VOG3416,minor tail protein,Tail
+VOG3418,gp3,Other
+VOG3419,gp4a,Other
+VOG3420,gp5,Other
+VOG3421,gp12,Other
+VOG3427,major tail subunit,Tail
+VOG3443,GtrA,Other
+VOG3445,NinY,Other
+VOG3447,O-polysaccharide acetyltransferase protein,Other
+VOG3475,putative transcription regulator,Other
+VOG3478,excisionase,Other
+VOG3505,CRISPR-associated Cas4-like protein,Other
+VOG3506,putative helicase,Replication
+VOG3518,DNA binding protein,Other
+VOG3519,putative regulatory protein,Other
+VOG3520,putative regulatory protein,Other
+VOG3525,structural protein,Other
+VOG3526,structural protein,Other
+VOG3530,putative glycosyltransferase,Other
+VOG3546,gp32,Other
+VOG3550,gp40,Other
+VOG3552,gp46,Other
+VOG3562,exfoliative toxin A,Other
+VOG3563,"gp8, conserved hypothetical protein",Other
+VOG3564,gp71,Other
+VOG3567,gp17,Other
+VOG3570,"gp26, bacteriophage lysis protein",Lysis
+VOG3571,gp27,Other
+VOG3574,gp29,Other
+VOG3576,gp30,Other
+VOG3577,gp31,Other
+VOG3578,"gp32, hypothetical protein",Other
+VOG3583,"gp45, hypothetical protein",Other
+VOG3585,gp63,Other
+VOG3586,putative chromosome partitioning protein,Other
+VOG3588,gp62,Other
+VOG3590,gp4,Other
+VOG3591,gp65,Other
+VOG3593,"gp43, conserved domain protein",Other
+VOG3607,putative integral membrane protein,Other
+VOG3624,putative transposase,Integration
+VOG3653,tail protein,Tail
+VOG3654,putative protease,Other
+VOG3660,gp19,Other
+VOG3667,BcepNY3gp56,Other
+VOG3669,gp62,Other
+VOG3675,scaffolding protein,Other
+VOG3676,major head protein,Other
+VOG3704,excisionase,Other
+VOG3708,77ORF046,Other
+VOG3721,virion structural protein,Other
+VOG3722,thymidylate kinase,Other
+VOG3724,putative SNF2 domain helicase,Replication
+VOG3739,putative endoprotease,Other
+VOG3740,major capsid protein,Coat
+VOG3744,Rz1 gp24',Other
+VOG3760,p11,Other
+VOG3777,p53,Other
+VOG3793,putative internal virion protein A,Other
+VOG3824,DNA polymerase,Replication
+VOG3843,putative glutathionylspermidine synthase,Other
+VOG3887,"gp40, hypothetical protein",Other
+VOG3890,putative tail sheath protein,Tail
+VOG3897,gp2,Other
+VOG3900,gp63,Other
+VOG3921,A2 protein,Other
+VOG3967,D2 protein,Other
+VOG3969,D3 protein,Other
+VOG3972,D5 protein,Other
+VOG3978,tail protein Pb4,Tail
+VOG3979,tail protein,Tail
+VOG3981,pore-forming tail tip protein,Tail
+VOG3984,minor tail protein,Tail
+VOG3995,putative transposase A subunit,Integration
+VOG4006,gp35,Other
+VOG4017,2OG-Fe(II) oxygenase,Other
+VOG4023,structural protein,Other
+VOG4026,virion structural protein,Other
+VOG4027,tail fiber-like protein,Tail
+VOG4037,methylamine protein,Other
+VOG4040,peptidase,Other
+VOG4044,heat shock protein,Other
+VOG4059,virion structural protein,Other
+VOG4062,photosystem II D2 protein,Other
+VOG4070,S-adenosylmethionine decarboxylase,Other
+VOG4079,antenna protein,Other
+VOG4080,2OG-Fe(II) oxygenase,Other
+VOG4085,ferrochelatase,Other
+VOG4088,tryptophan halogenase,Other
+VOG4097,phycoerythrobilin,Other
+VOG4099,CP12 protein,Other
+VOG4111,baseplate wedge initiator,Baseplate
+VOG4120,DNA endonuclease V,Other
+VOG4123,5-phosphoribosylformylglycinamide amidotransferase,Other
+VOG4124,phosphoribosylaminoimidazole synthetase,Other
+VOG4125,phosphoribosylaminoimidazole synthetase,Other
+VOG4126,cytitidyltransferase,Other
+VOG4128,plasmid stability protein,Other
+VOG4133,plastocyanine,Other
+VOG4138,phosphate transporter subunit,Other
+VOG4142,glycosyltransferase family 11,Other
+VOG4143,glycosyltransferase family 25,Other
+VOG4149,ferredoxin,Other
+VOG4152,heme oxygenase,Other
+VOG4154,carbamoyltransferase,Other
+VOG4155,putative nucleotidyltransferase,Other
+VOG4156,putative carbohydrate kinase,Other
+VOG4157,putative nucleotidyltransferase,Other
+VOG4161,cAMP phosphodiesterase,Other
+VOG4165,structural protein,Other
+VOG4166,putative short tail fiber,Tail
+VOG4191,hemagglutinin domain-containing protein,Other
+VOG4192,structural protein,Other
+VOG4195,plastoquinol terminal oxidase,Other
+VOG4204,S-layer domain protein,Other
+VOG4210,carboxylesterase,Other
+VOG4319,putative major capsid protein,Coat
+VOG4341,gp2,Other
+VOG4344,putative membrane protein,Other
+VOG4357,transposase,Integration
+VOG4359,putative transposase,Integration
+VOG4409,6-phosphogluconate dehydrogenase,Other
+VOG4410,glucose 6-phosphate dehydrogenase,Other
+VOG4418,DUF1583 domain-containing protein,Other
+VOG4447,putative phosphatase,Other
+VOG4495,putative bacterial NUDIX hydrolase,Other
+VOG4524,phosphoribosylaminoimidazole-succinocarboxamide synthase,Other
+VOG4536,PA14 domain-containing protein,Other
+VOG4542,RNA-dependent RNA polymerase,Other
+VOG4544,terminase large subunit,Terminase
+VOG4545,tape measure protein,Other
+VOG4547,lysin A,Lysis
+VOG4548,helicase,Replication
+VOG4549,glutaredoxin,Other
+VOG4551,DNA primase,Replication
+VOG4553,major capsid protein,Coat
+VOG4555,scaffolding protein,Other
+VOG4556,portal protein,Portal
+VOG4557,major tail subunit,Tail
+VOG4558,minor tail protein,Tail
+VOG4560,lysin B,Lysis
+VOG4561,thymidylate synthase,Other
+VOG4562,ribonucleotide reductase subunit B,Other
+VOG4565,lysozyme,Other
+VOG4567,DNA methylase,Other
+VOG4569,minor tail protein,Tail
+VOG4571,DNA methylase,Other
+VOG4572,major capsid protein,Coat
+VOG4574,lysin A,Lysis
+VOG4575,recombination endonuclease subunit,Other
+VOG4577,DNA polymerase,Replication
+VOG4582,tail assembly chaperone,Assembly
+VOG4583,WhiB,Other
+VOG4584,baseplate hub subunit and tail lysozyme,Tail
+VOG4586,major tail protein,Tail
+VOG4588,D-ala-D-ala carboxypeptidase,Other
+VOG4591,baseplate wedge tail fiber connector,Other (structural)
+VOG4592,tail tubular protein A,Tail
+VOG4594,protector from prophage-induced early lysis,Other
+VOG4595,DNA end protector protein,Other
+VOG4598,tail fiber protein,Tail
+VOG4599,minor structural protein,Other
+VOG4600,exonuclease,Other
+VOG4601,major capsid protein,Coat
+VOG4603,gp46,Other
+VOG4604,portal protein,Portal
+VOG4606,DNA primase,Replication
+VOG4608,replicative helicase,Replication
+VOG4610,internal virion protein B,Other
+VOG4613,putative tail lysin,Lysis
+VOG4618,gp1,Other
+VOG4625,hinge connector of long tail fiber distal connector,Other (structural)
+VOG4627,glycosyltransferase,Other
+VOG4630,tail protein,Tail
+VOG4634,major tail subunit,Tail
+VOG4637,tail assembly chaperone,Assembly
+VOG4640,tailspike protein,Tail
+VOG4641,capsid maturation protease,Assembly
+VOG4644,baseplate J,Baseplate
+VOG4645,LysB,Other
+VOG4646,putative tail fiber protein,Tail
+VOG4648,putative helicase-primase,Replication
+VOG4649,lysin,Lysis
+VOG4650,integrase,Integration
+VOG4652,virion morphogenesis protein,Other
+VOG4653,baseplate hub subunit and tail lysozyme,Tail
+VOG4658,DNA methylase,Other
+VOG4659,putative antireceptor,Other
+VOG4660,pre-neck appendage protein,Other
+VOG4661,putative replication origin binding protein,Replication
+VOG4663,gp29,Other
+VOG4666,lysin A,Lysis
+VOG4668,assembly protein,Assembly
+VOG4669,tailspike 63D sialidase,Tail
+VOG4672,head maturation protease,Assembly
+VOG4673,conserved phage protein,Other
+VOG4676,WhiB,Other
+VOG4677,putative poly A polymerase,Replication
+VOG4678,glycosyltransferase/methyl transferase,Other
+VOG4681,gp22,Other
+VOG4683,structural protein,Other
+VOG4686,morphogenesis protein,Other
+VOG4689,gp54,Other
+VOG4690,transcriptional regulator,Other
+VOG4692,exonuclease,Other
+VOG4695,baseplate wedge subunit,Baseplate
+VOG4696,terminase small subunit,Terminase
+VOG4697,tail completion and sheath stabilizer protein,Assembly
+VOG4698,RNA ligase,Other
+VOG4701,tail assembly protein,Assembly
+VOG4702,baseplate wedge subunit,Baseplate
+VOG4707,putative endolysin,Lysis
+VOG4708,RecE,Other
+VOG4711,major capsid protein,Coat
+VOG4712,inhibitor of host transcription,Other
+VOG4714,ribonuclease H,Other
+VOG4715,baseplate wedge protein,Baseplate
+VOG4719,modifier of suppressor tRNAs,Other
+VOG4725,gp6,Other
+VOG4730,flavodoxin,Other
+VOG4733,DNA methylase,Other
+VOG4735,tail protein,Tail
+VOG4736,tail protein,Tail
+VOG4745,Kil protein,Other
+VOG4759,glycosyl transferase,Other
+VOG4760,minor tail protein,Tail
+VOG4761,minor tail protein,Tail
+VOG4763,peptidase_S74 domain protein,Other
+VOG4771,terminase small subunit,Terminase
+VOG4772,N-acetylmuramoyl-L-alanine amidase,Other
+VOG4773,capsid portal protein Q,Portal
+VOG4774,gp11,Other
+VOG4777,histidine triad domain protein,Other
+VOG4779,DNA delivery,Other
+VOG4781,putative tail protein,Tail
+VOG4790,major tail protein,Tail
+VOG4795,endolysin,Lysis
+VOG4802,O-methyltransferase,Other
+VOG4806,putative ribonuclease H,Other
+VOG4809,NAD-dependent DNA ligase,Replication
+VOG4810,modifier of transcription,Other
+VOG4811,tapemeasure,Other
+VOG4814,DNA packaging ATPase,Other
+VOG4815,gp74,Other
+VOG4820,tail protein,Tail
+VOG4823,Hoc large outer capsid protein,Coat
+VOG4825,homing endonuclease,Other
+VOG4827,putative baseplate wedge protein,Baseplate
+VOG4832,long tail fiber distal subunit,Tail
+VOG4835,gp142,Other
+VOG4837,gp31,Other
+VOG4838,WhiB,Other
+VOG4840,gp13,Other
+VOG4844,putative terminase small subunit,Terminase
+VOG4850,lysin,Lysis
+VOG4854,putative excisionase,Other
+VOG4855,recombinase,Other
+VOG4860,internal (core) protein,Other
+VOG4865,LysM domain-containing protein,Other
+VOG4868,tailspike,Tail
+VOG4882,DR0530-like primase,Replication
+VOG4884,distal tail protein,Tail
+VOG4885,late control D protein,Other
+VOG4909,tail protein,Tail
+VOG4910,putative peptidase M23,Other
+VOG4934,putative holin,Lysis
+VOG4942,Uncharacterized protein MJ0770,Other
+VOG4952,ATPase family protein,Other
+VOG4955,lytic protein Rz1,Other
+VOG4968,virion structural protein,Other
+VOG4971,HTH DNA binding domain protein,Other
+VOG4979,Vs valyl-tRNA synthetase modifier,Other
+VOG4985,putative minor structural protein,Other
+VOG4995,gp35,Other
+VOG4999,DNA primase,Replication
+VOG5008,glycerophosphoryl diesterphosphodiesterase,Other
+VOG5012,portal protein,Portal
+VOG5022,putative site-specific intron-like DNA endonuclease,Other
+VOG5024,tail assembly protein,Assembly
+VOG5027,head morphogeneis protein,Other
+VOG5031,lysin,Lysis
+VOG5032,virion-associated phage protein,Other
+VOG5035,CHAP domain protein,Other
+VOG5036,DarB-like antirestriction protein,Other
+VOG5046,replication protein,Replication
+VOG5052,partition protein ParB,Other
+VOG5053,putative gp37,Other
+VOG5055,gp10,Other
+VOG5062,gp13,Other
+VOG5063,putative transcriptional regulator,Other
+VOG5083,DarB,Other
+VOG5084,Ant1,Other
+VOG5085,"gp41, hypothetical protein",Other
+VOG5086,gp43,Other
+VOG5088,putative transposase,Integration
+VOG5089,putative phage repressor,Other
+VOG5091,cytosine-specific DNA methyltransferase,Other
+VOG5095,gp61,Other
+VOG5096,gp23,Other
+VOG5098,gp33,Other
+VOG5100,tail fiber,Tail
+VOG5101,gp10,Other
+VOG5106,phage terminase large subunit,Terminase
+VOG5116,putative endonuclease,Other
+VOG5118,gp50,Other
+VOG5121,DNA methylase,Other
+VOG5125,gp20,Other
+VOG5126,putative bifunctional DNA primase/polymerase,Replication
+VOG5127,tail assembly chaperone,Assembly
+VOG5148,metal-dependent hydrolase,Other
+VOG5156,gp4,Other
+VOG5162,Ro protein,Other
+VOG5170,putative DNA-PolB associated exonuclease,Other
+VOG5173,putative tail fiber,Tail
+VOG5188,tapemeasure,Other
+VOG5196,gp205,Other
+VOG5203,HNH endonuclease domain protein,Other
+VOG5211,structural protein,Other
+VOG5213,membrane protein,Other
+VOG5214,structural protein,Other
+VOG5227,replicative clamp,Replication
+VOG5231,6-phosphogluconate dehydrogenase,Other
+VOG5235,DNA polymerase III beta subunit,Replication
+VOG5239,restriction endonuclease,Other
+VOG5249,TreO,Other
+VOG5255,putative head stabilization/decoration protein,Other
+VOG5260,tail fiber,Tail
+VOG5268,tail fiber protein,Tail
+VOG5280,replication terminator protein,Replication
+VOG5302,flavodoxin,Other
+VOG5305,putative DNA methylase,Other
+VOG5329,TreB,Other
+VOG5332,putative peptidase,Other
+VOG5345,holin,Lysis
+VOG5372,neck passage structure protein,Other
+VOG5392,transposase-like protein,Integration
+VOG5435,putative outer membrane protein,Other
+VOG5441,colanic acid-degrading protein,Other
+VOG5443,Kil protein,Other
+VOG5447,positive control sigma-like factor,Other
+VOG5448,putative peptidyl-tRNA hydrolase,Other
+VOG5456,TreA,Other
+VOG5477,holin,Lysis
+VOG5478,head-tail adaptor,Other
+VOG5481,NAD-dependent DNA ligase subunit B,Replication
+VOG5511,tail fiber protein,Tail
+VOG5520,pre-TMP frameshift protein,Other
+VOG5551,RNAse H,Other
+VOG5556,pre-tape measure frameshift protein G-T,Other
+VOG5566,putative phage tail protein,Tail
+VOG5573,putative terminase small subunit,Terminase
+VOG5575,putative structural protein,Other
+VOG5577,putative holin,Lysis
+VOG5581,constituent protein,Other
+VOG5584,major capsid & capsid maturation protease,Assembly
+VOG5585,head-to-tail connector,Other (structural)
+VOG5587,major tail protein,Tail
+VOG5589,minor tail protein,Tail
+VOG5590,major coat protein,Coat
+VOG5593,gp23,Other
+VOG5595,putative DNA primase/polymerase,Replication
+VOG5604,portal protein,Portal
+VOG5617,recombination protein U,Other
+VOG5656,topoisomerase II large subunit,Replication
+VOG5657,beta glucosyl transferase,Other
+VOG5661,structural protein,Other
+VOG5680,VI protein,Other
+VOG5687,HTH DNA binding domain protein,Other
+VOG5698,putative DNA N6-adenine methyltransferase,Other
+VOG5700,gp18,Other
+VOG5707,rare lipoprotein A,Other
+VOG5742,putative regulatory protein,Other
+VOG5751,putative phage DNA primase,Replication
+VOG5769,structural protein,Other
+VOG5775,AAA ATPase,Other
+VOG5781,pectate lyase,Other
+VOG5782,exonuclease,Other
+VOG5786,structural protein,Other
+VOG5793,tapemeasure,Other
+VOG5794,gp26,Other
+VOG5817,gp37,Other
+VOG5818,gp65,Other
+VOG5840,putative cell division control protein,Other
+VOG5846,receptor-binding tail protein,Tail
+VOG5861,putative short tail fiber,Tail
+VOG5862,putative short tail fiber,Tail
+VOG5871,putative minor structural protein 1,Other
+VOG5902,putative lower collar protein,Other
+VOG5904,putative cell wall hydrolase protein,Other
+VOG5918,carboxypeptidase A,Other
+VOG5938,putative primase,Replication
+VOG5942,putative DNA replication protein,Replication
+VOG5946,tail protein,Tail
+VOG5950,recombinase,Other
+VOG5953,internal head protein,Other
+VOG5979,phospho-2-dehydro-3-deoxyheptonate aldolase,Other
+VOG5982,homing endonuclease,Other
+VOG5986,MazG,Other
+VOG6001,prohead protease,Other
+VOG6034,Appr-1-p processing protein,Other
+VOG6042,putative tail fiber protein,Tail
+VOG6058,putative encapsidation protein,Assembly
+VOG6076,DNA pilot protein VP2,Other
+VOG6085,putative DHH phosphoesterase protein,Other
+VOG6131,HTH binding protein,Other
+VOG6133,tail protein,Tail
+VOG6152,putative pre-tape measure chaperone protein,Other
+VOG6163,putative tape measure protein,Other
+VOG6166,tail lysozyme,Tail
+VOG6167,complement inhibitor,Other
+VOG6170,DNA methylase,Other
+VOG6193,putative endolysin,Lysis
+VOG6196,coat protein,Coat
+VOG6200,VP4 precursor,Other
+VOG6207,DnaA protein,Other
+VOG6230,receptor-blocking protein,Other
+VOG6232,major capsid protein,Coat
+VOG6236,methyltransferase,Other
+VOG6246,putative structural protein,Other
+VOG6247,antioxidant protein,Other
+VOG6275,putative sporulation protein YhbH,Other
+VOG6282,putative IS transposase (OrfA),Integration
+VOG6288,putative DNA injection protein,Other
+VOG6302,capsid maturation protease,Assembly
+VOG6313,putative terminase small subunit,Terminase
+VOG6314,receptor-binding protein,Other
+VOG6331,cell wall peptidase,Other
+VOG6343,portal protein,Portal
+VOG6345,major capsid subunit,Coat
+VOG6350,terminase large subunit,Terminase
+VOG6371,LysM,Other
+VOG6373,minor tail protein,Tail
+VOG6389,conserved phage protein,Other
+VOG6391,scaffolding protein,Other
+VOG6396,DNA polymerase IV,Replication
+VOG6422,abortive infection bacteriophage resistance protein,Other
+VOG6427,pyruvate kinase,Other
+VOG6449,peptide deformylase,Other
+VOG6452,gpB,Other
+VOG6457,virion structural protein,Other
+VOG6465,Rz,Other
+VOG6479,transcriptional regulator,Other
+VOG6488,terminase large subunit,Terminase
+VOG6513,chaperonin GroEL,Other
+VOG6520,RecE,Other
+VOG6535,baseplate wedge subunit,Baseplate
+VOG6537,gp11,Other
+VOG6540,putative adsorption protein,Other
+VOG6551,lysozyme,Other
+VOG6560,von Willebrand factor domain protein,Other
+VOG6565,putative holin,Lysis
+VOG6566,EaC protein,Other
+VOG6568,putative tail fiber protein,Tail
+VOG6599,putative DNAse/helicase protein,Replication
+VOG6602,LAGLIDADG endonuclease,Other
+VOG6628,AbrB family transcriptional regulator,Other
+VOG6632,putative transcriptional activator,Other
+VOG6633,putative tail protein,Tail
+VOG6648,HTH DNA binding protein,Other
+VOG6667,DNA primase,Replication
+VOG6669,cell wall hydrolase,Other
+VOG6672,minor structural protein,Other
+VOG6676,DNA primase,Replication
+VOG6751,tail connector protein,Other (structural)
+VOG6796,PE/PPE-like protein,Other
+VOG6813,acetyltransferase,Other
+VOG6815,bacteriocin biosynthesis protein,Other
+VOG6821,putative rIIa-like protein,Other
+VOG6822,putative DNA polymerase,Replication
+VOG6823,Cro-like protein,Other
+VOG6857,gp42,Other
+VOG6879,lytic protein Rz,Other
+VOG6888,DNA polymerase III subunit beta,Replication
+VOG6912,LysA,Other
+VOG6924,putative 2-component regulator,Other
+VOG6942,QueF,Other
+VOG6945,putative transcriptional regulator,Other
+VOG6965,"transposase InsH, IS5D, IS5 family",Integration
+VOG6967,CRO protein,Other
+VOG6975,YolD-like protein,Other
+VOG6988,putative glucose-1-phosphate thymidylyltransferase,Other
+VOG7037,putative base plate lysozyme,Other
+VOG7054,adhesin,Other
+VOG7066,structural protein,Other
+VOG7067,chaperonin cpn10,Other
+VOG7069,structural protein,Other
+VOG7071,structural protein,Other
+VOG7073,structural protein,Other
+VOG7074,structural protein,Other
+VOG7075,structural protein,Other
+VOG7089,tailspike,Tail
+VOG7099,DNA polymerase,Replication
+VOG7104,phage tail fiber protein,Tail
+VOG7110,HicA-like protein,Other
+VOG7125,putative transcriptional regulator,Other
+VOG7137,gene transfer agent,Other
+VOG7152,minor tail protein,Tail
+VOG7154,MutT/NUDIX hydrolase family protein,Other
+VOG7167,putative holin,Lysis
+VOG7168,bacterial surface protein,Other
+VOG7172,RNA polymerase ECF sigma factor,Other
+VOG7188,phosphoribosyl transferase,Other
+VOG7232,tail assembly chaperone,Assembly
+VOG7238,phage tail protein,Tail
+VOG7243,tail fiber protein,Tail
+VOG7260,Tail fiber protein,Tail
+VOG7264,DNA primase,Replication
+VOG7266,putative IS transposase (OrfB),Integration
+VOG7274,putative transglutaminase-like cysteine peptidase,Other
+VOG7277,putative minor capsid protein,Coat
+VOG7279,putative lectin-like domain protein,Other
+VOG7284,putative tail protein,Tail
+VOG7285,putative tail protein,Tail
+VOG7286,putative holin protein,Lysis
+VOG7287,putative inner membrane spanin component,Other
+VOG7288,putative outer membrane spanin component,Other
+VOG7298,putative HTH domain protein,Other
+VOG7302,putative TAT signal protein,Other
+VOG7312,terminase small subunit,Terminase
+VOG7318,putative ArdC-like antirestriction protein,Other
+VOG7320,structural protein,Other
+VOG7321,structural protein,Other
+VOG7325,portal protein,Portal
+VOG7329,tape measure,Other
+VOG7340,potassium voltage-gated channel subfamily A member 1 protein,Other
+VOG7364,putative small terminase subunit,Terminase
+VOG7391,tail assembly chaperone,Assembly
+VOG7403,putative portal protein,Portal
+VOG7405,putative rIIb-like protein,Other
+VOG7407,intein-containing putative terminase large subunit precursor,Terminase
+VOG7415,baseplate hub subunit,Baseplate
+VOG7416,putative HNH endonuclease inducing intron mobility,Other
+VOG7417,phage head-tail joining protein,Other (structural)
+VOG7419,RNA polymerase-ADP-ribosyltransferase Alt,Other
+VOG7421,DNA binding protein,Other
+VOG7424,putative phage-related hydrogenase,Other
+VOG7428,scaffolding protein,Other
+VOG7430,virion structural protein,Other
+VOG7434,staphylokinase,Other
+VOG7435,chemotaxis-inhibiting protein CHIPS,Other
+VOG7437,TerB,Other
+VOG7440,long tail fiber distal subunit adhesine,Tail
+VOG7442,putative ABC transporter ATP-binding protein,Other
+VOG7443,ea59,Other
+VOG7444,putative DNA polymerase,Replication
+VOG7451,AlpA-like transcriptional regulator,Other
+VOG7454,methyltransferase,Other
+VOG7456,ATP-dependent metalloprotease,Other
+VOG7495,putative tail protein,Tail
+VOG7497,major capsid protein,Coat
+VOG7503,putative amidotransferase,Other
+VOG7511,terminase small subunit,Terminase
+VOG7515,tRNA (cmo5U34)-methyltransferase,Other
+VOG7516,EaI protein,Other
+VOG7554,RecA-like recombination protein,Other
+VOG7563,glycosyltransferase-family protein,Other
+VOG7569,gp19,Other
+VOG7575,virion structural protein,Other
+VOG7581,cI-like putative transcriptional regulator,Other
+VOG7606,phycobilisome degredation protein,Other
+VOG7623,VP4,Other
+VOG7629,putative phage structural protein,Other
+VOG7633,putative HD domain protein,Other
+VOG7641,type II restriction enzyme BsuBI,Other
+VOG7642,modification methylase BsuBI,Other
+VOG7652,putative virion structural protein,Other
+VOG7687,gp51,Other
+VOG7689,gp31,Other
+VOG7695,structural protein,Other
+VOG7701,RstB,Other
+VOG7718,YomR-like protein,Other
+VOG7767,RIIA-like protein,Other
+VOG7789,putative tail fiber,Tail
+VOG7808,conserved hypothetical protein (XkdN-like),Other
+VOG7823,tail sheath,Tail
+VOG7880,aerobic NDP reductase small subunit,Other
+VOG7884,putative DNA segregation ATPase FtsK/SpoIIIE,Other
+VOG7887,PemK-like protein,Other
+VOG7900,tail spike protein,Tail
+VOG7907,gp10,Other
+VOG7913,gp25,Other
+VOG7917,RNA polymerase sigma factor,Other
+VOG7941,replication factor C small subunit,Replication
+VOG7946,Mu F-like capsid morphogenesis protein,Other
+VOG7961,virion structural protein,Other
+VOG7962,putative holin,Lysis
+VOG7981,regulator of chromosome condensation RCC1,Other
+VOG8001,putative lysozyme,Other
+VOG8004,tail sheath protein,Tail
+VOG8023,putative virion protein and lysozyme murein,Other
+VOG8085,methyltransferase,Other
+VOG8134,putative tail fiber protein 1,Tail
+VOG8138,major capsid protein,Coat
+VOG8163,VRR-NUC domain containing protein,Other
+VOG8165,DNA methylase,Other
+VOG8166,putative glycosyltransferase,Other
+VOG8169,head-tail connector protein,Other (structural)
+VOG8171,putative tail length tape measure protein,Tail
+VOG8172,structural protein,Other
+VOG8173,structural protein,Other
+VOG8187,head outer capsid protein,Coat
+VOG8215,gp165,Other
+VOG8216,base plate lysozyme,Other
+VOG8218,integrase,Integration
+VOG8223,putative tail fiber protein,Tail
+VOG8226,terminase small subunit,Terminase
+VOG8237,HNH endonuclease,Other
+VOG8238,putative DNA endonuclease VII,Other
+VOG8244,"site specific recombinase, tyrosine",Other
+VOG8257,RNA polymerase sigma factor,Other
+VOG8262,phage tail protein,Tail
+VOG8290,major coat protein,Coat
+VOG8295,LydD,Other
+VOG8296,OdaA,Other
+VOG8297,PmgA,Other
+VOG8298,RepA,Other
+VOG8299,ShtB,Other
+VOG8303,putative S-adenosylmethionine synthetase,Other
+VOG8306,putative envelope protein,Other
+VOG8313,gp8,Other
+VOG8314,gp11,Other
+VOG8315,gp15,Other
+VOG8316,gp21,Other
+VOG8317,gp23,Other
+VOG8332,virion protein,Other
+VOG8343,putative tail fiber,Tail
+VOG8384,peptidase-like protein,Other
+VOG8387,transposase,Integration
+VOG8389,capsid and scaffold protein,Other
+VOG8414,PblB-type protein,Other
+VOG8438,minor capsid protein,Coat
+VOG8473,RNA polymerase sigma factor,Other
+VOG8487,transcription regulatory protein,Other
+VOG8492,zinc-ribbon domain-containing protein,Other
+VOG8495,internal virion protein,Other
+VOG8498,PCNA protein,Other
+VOG8502,virion structural protein,Other
+VOG8506,RNA polymerase sigma-70 factor,Other
+VOG8516,virion-associated phage protein,Other
+VOG8519,holin,Lysis
+VOG8520,helix-turn-helix domain protein,Other
+VOG8534,high light inducible protein,Other
+VOG8536,phosphohydrolase,Other
+VOG8549,tail protein,Tail
+VOG8550,PfWMP3_27,Other
+VOG8551,tail tubular protein B,Tail
+VOG8552,tail tubular protein A,Tail
+VOG8553,scaffold protein,Other
+VOG8556,enterotoxin type A precursor,Other
+VOG8557,160 kDa protein,Other
+VOG8578,putative virion structural protein,Other
+VOG8579,tailspike protein,Tail
+VOG8586,gp63,Other
+VOG8599,thymidylate synthase,Other
+VOG8607,ribonucleotide diphosphate reductas alpha subunit,Other
+VOG8609,structural protein,Other
+VOG8616,NAD+ synthetase,Other
+VOG8617,putative tail fiber adhesion protein,Tail
+VOG8625,terminase small subunit,Terminase
+VOG8643,putative ribosomal-protein-alanine N-acetyltransferase,Other
+VOG8650,pre-neck appendage protein,Other
+VOG8651,putative lysozyme-peptidase,Other
+VOG8653,putative DNA modification methylase,Other
+VOG8678,putative aminoacyl-tRNA hydrolase,Other
+VOG8684,tail fiber protein,Tail
+VOG8687,possible virion structural protein,Other
+VOG8725,carboxylesterase,Other
+VOG8726,phenylalanyl-tRNA synthetase subunit beta,Other
+VOG8742,chaperonin cpn10,Other
+VOG8751,structural protein,Other
+VOG8752,structural protein,Other
+VOG8754,structural protein,Other
+VOG8779,NifU-like protein,Other
+VOG8783,gp63,Other
+VOG8820,beta-glucanase,Other
+VOG8849,gp42,Other
+VOG8850,gp101,Other
+VOG8855,DNA polymerase,Replication
+VOG8863,helix-turn-helix XRE-family of transcriptional regulators,Other
+VOG8866,thymidylate kinase,Other
+VOG8868,major tail protein extension,Tail
+VOG8870,pIII-CTX,Other
+VOG8877,putative regulatory protein,Other
+VOG8882,major tail protein,Tail
+VOG8888,RecA-like recombinase,Other
+VOG8899,virion structural protein,Other
+VOG8905,nonstructural protein,Other
+VOG8909,HNH protein,Other
+VOG8916,putative transposase,Integration
+VOG8925,Gp40 protein,Other
+VOG8926,Gp41 protein,Other
+VOG8954,Gp7 protein,Other
+VOG8985,putative dehalogenase hydrolase-like protein,Other
+VOG8986,putative phosphoribosyltransferase-like domain protein,Other
+VOG8992,"putative dTDP-4-dehydrorhamnose 3,5-epimerase",Other
+VOG9038,tail assembly chaperone,Assembly
+VOG9064,putative virion structural protein 19,Other
+VOG9086,internal virion protein,Other
+VOG9093,putative RNA 2'-phosphotransferase,Other
+VOG9099,putative NAD+ diphosphatase,Other
+VOG9115,primase/polymerase,Replication
+VOG9191,Cre,Other
+VOG9192,portal vertex protein of head,Portal
+VOG9193,LydA,Other
+VOG9195,Phd,Other
+VOG9203,membrane protein,Other
+VOG9209,minor tail protein L,Tail
+VOG9211,LysB,Other
+VOG9234,putative DNA binding protein,Other
+VOG9237,tail fiber protein,Tail
+VOG9243,putative nicotinamide mononucleotide transporter,Other
+VOG9244,putative tail protein,Tail
+VOG9258,tape measure,Other
+VOG9259,tail fiber protein,Tail
+VOG9260,structural protein,Other
+VOG9261,deaminase,Other
+VOG9262,prohead protease,Other
+VOG9274,middle expressed protein 4,Other
+VOG9286,putative bacterial RNA polymerase inhibitor,Other
+VOG9288,glycosidase,Other
+VOG9305,EaD protein,Other
+VOG9306,tail fiber protein,Tail
+VOG9308,phage DNA end protector during packaging,Other
+VOG9310,HNH endonuclease domain protein,Other
+VOG9315,terminase large subunit,Terminase
+VOG9322,HNH endonuclease,Other
+VOG9323,putative major tail protein,Tail
+VOG9325,immunoglobulin I-set domain protein,Other
+VOG9328,tail protein,Tail
+VOG9339,minor tail protein Z,Tail
+VOG9340,tail fiber protein,Tail
+VOG9348,tail fiber protein,Tail
+VOG9358,C8,Other
+VOG9359,Mat,Other
+VOG9360,putative protein Ulx,Other
+VOG9361,Pro,Other
+VOG9362,"conserved protein of unknown function, DdrB",Other
+VOG9363,Upf26.7,Other
+VOG9364,DarA,Other
+VOG9365,conserved protein of unknown function Hdf,Other
+VOG9366,LydB,Other
+VOG9367,gpR,Other
+VOG9368,gp16,Other
+VOG9369,PmgB,Other
+VOG9370,major tail tube protein TubB,Tail
+VOG9371,PmgC,Other
+VOG9373,putative outer membrane lipoprotein,Other
+VOG9374,Icd,Other
+VOG9375,RepL,Other
+VOG9376,Upf52.7,Other
+VOG9377,upf54.2,Other
+VOG9378,tail sheath protein Gp22,Tail
+VOG9379,Upf57.5,Other
+VOG9380,Upf62.7,Other
+VOG9381,conserved protein of unknown function UpfB,Other
+VOG9382,Upf64.0,Other
+VOG9383,Dbn,Other
+VOG9384,gp6,Other
+VOG9385,Upf78.5,Other
+VOG9386,gp7,Other
+VOG9387,gp25,Other
+VOG9388,gp26,Other
+VOG9389,PmgN,Other
+VOG9390,putative morphogenetic protein PmgP,Other
+VOG9391,HdmD,Other
+VOG9392,PmgR,Other
+VOG9393,Fdc,Other
+VOG9394,Lpa,Other
+VOG9395,PacA,Other
+VOG9396,C1.100,Other
+VOG9397,Coi,Other
+VOG9404,YolD-like protein,Other
+VOG9410,ea8.5,Other
+VOG9414,putative mitochondrial DNA polymerase gamma homologue,Replication
+VOG9415,putative DNA primase,Replication
+VOG9417,DNA polymerase I-like flap endonuclease (FEN),Replication
+VOG9420,IS1 transposase B,Integration
+VOG9425,putative minor coat protein,Coat
+VOG9429,gp74,Other
+VOG9431,gp87,Other
+VOG9433,gp114,Other
+VOG9434,gp135,Other
+VOG9437,gp59,Other
+VOG9438,HNH endonuclease,Other
+VOG9446,gp20,Other
+VOG9447,gp51,Other
+VOG9453,gp97,Other
+VOG9454,lytic conversion lipoprotein precursor,Other
+VOG9462,BofR,Other
+VOG9475,head-tail connector,Other (structural)
+VOG9481,nucleoid-associated protein,Other
+VOG9485,structural protein,Other
+VOG9487,structural protein,Other
+VOG9493,holin,Lysis
+VOG9502,putative lysin,Lysis
+VOG9509,membrane protein,Other
+VOG9532,glycosyl transferase group I,Other
+VOG9534,structural protein,Other
+VOG9539,putative amidotransferase,Other
+VOG9551,plasmid maintenance system killer HigB,Other
+VOG9556,holin,Lysis
+VOG9563,capsid and scaffold protein,Other
+VOG9572,core encoded pilin,Other
+VOG9573,accessory cholera enterotoxin,Other
+VOG9586,terminase large subunit,Terminase
+VOG9588,tail protein P,Tail
+VOG9629,formamidopyrimidine-DNA glycosylase,Other
+VOG9632,putative head-tail connector protein,Other (structural)
+VOG9639,Conserved hypothetical,Other
+VOG9657,lysophospholipase L1-related esterase,Other
+VOG9659,endolysin,Lysis
+VOG9661,acetyltransferase domain protein,Other
+VOG9663,HNH endonuclease domain protein,Other
+VOG9667,XRE family transcriptional regulator,Other
+VOG9686,S-layer domain-containing protein,Other
+VOG9690,Hypothetical-Protein ,Other
+VOG9697,sulfotransferase,Other
+VOG9701,gp5,Other
+VOG9702,gp69,Other
+VOG9705,palmitoyltransferase,Other
+VOG9709,Ea47 protein,Other
+VOG9710,Ea31 protein,Other
+VOG9712,putative excinuclease ABC,Other
+VOG9717,minor coat protein,Coat
+VOG9718,gp37,Other
+VOG9719,gp38,Other
+VOG9720,gp39,Other
+VOG9721,gp41,Other
+VOG9722,gp45,Other
+VOG9723,gp47,Other
+VOG9724,gp51,Other
+VOG9725,Phage repressor,Other
+VOG9726,gp2,Other
+VOG9727,gp4,Other
+VOG9728,gp15,Other
+VOG9729,gp18,Other
+VOG9730,gp22,Other
+VOG9731,gp23,Other
+VOG9732,gp25,Other
+VOG9733,nonstructural protein,Other
+VOG9736,O-antigen beta polymerase,Replication
+VOG9738,putative transcriptional regulator,Other
+VOG9740,ssDNA-binding,Other
+VOG9741,putative repressor,Other
+VOG9746,gp23,Other
+VOG9747,gp28,Other
+VOG9761,gp34.26,Other
+VOG9771,gp34 protein,Other
+VOG9773,gp03 protein,Other
+VOG9778,virion structural protein,Other
+VOG9787,putative Kelch-like ECH-associated protein,Other
+VOG9788,virion structural protein,Other
+VOG9789,virion structural protein,Other
+VOG9790,virion structural protein,Other
+VOG9791,virion structural protein,Other
+VOG9792,virion structural protein,Other
+VOG9793,virion structural protein,Other
+VOG9795,virion structural protein,Other
+VOG9797,virion structural protein,Other
+VOG9798,virion structural protein,Other
+VOG9799,virion structural protein,Other
+VOG9803,virion structural protein,Other
+VOG9804,virion structural protein,Other
+VOG9809,virion structural protein,Other
+VOG9810,virion structural protein,Other
+VOG9821,putative nucleotidyltransferase protein,Other
+VOG9834,gp59,Other
+VOG9836,gp29,Other
+VOG9839,putative Fe-S oxidoreductase,Other
+VOG9857,gp11,Other
+VOG9869,Hypothetical-Protein ,Other
+VOG9873,tail fiber-like protein,Tail
+VOG9876,PRGA-formyltransferase,Other
+VOG9904,putative protein 2,Other
+VOG9915,VP13,Other
+VOG9916,VP2,Other
+VOG9917,capsid protein VP5,Coat
+VOG9922,putative protein 31,Other
+VOG9924,putative protein 33,Other
+VOG9941,putative terminase large subunit-like protein,Terminase
+VOG9948,gp38,Other
+VOG9957,C-terminal part of the MCM2-like helicase,Replication
+VOG9959,capsid and scaffold protein,Other
+VOG9995,tail fiber protein,Tail
+VOG10005,putative antirestriction protein,Other
+VOG10009,putative tail fiber,Tail
+VOG10016,tail assembly protein,Assembly
+VOG10022,baseplate wedge initiator,Baseplate
+VOG10023,putative topoisomerasae I protein,Replication
+VOG10026,putative ATPase,Other
+VOG10038,trypsin-like serine protease domain protein,Other
+VOG10044,gp14-like protein,Other
+VOG10059,antirepressor,Other
+VOG10065,gp18.5,Other
+VOG10069,capsid protein,Coat
+VOG10080,glycerophosphodiester phosphodiesterase,Other
+VOG10086,baseplate wedge subunit,Baseplate
+VOG10088,DNA primase,Replication
+VOG10095,putative quaternary ammonium compound-resistance protein qacE,Other
+VOG10106,gp134,Other
+VOG10155,Very-short-patch mismatch repair endonuclease,Other
+VOG10157,putative cytoplasmic protein,Other
+VOG10158,alkaline phosphatase,Other
+VOG10195,putative DNA binding excisionase protein,Other
+VOG10217,metallo-beta-lactamase domain-containing protein,Other
+VOG10224,putative SpoVG protein,Other
+VOG10227,terminase large subunit,Terminase
+VOG10254,CobS porphyrin biosynthetic protein,Other
+VOG10264,putative tail fiber protein,Tail
+VOG10277,Possible tail sheath protein,Tail
+VOG10284,Possible phage tail tube protein,Tail
+VOG10285,putative transketolase,Other
+VOG10286,putative N-acetylneuraminate pyruvate lyase,Other
+VOG10292,putative minor tail assembly protein,Assembly
+VOG10294,putative UDP-glucose dehydrogenase,Other
+VOG10330,putative holin,Lysis
+VOG10342,HicB protein,Other
+VOG10343,tail fiber protein,Tail
+VOG10352,putative acetyltransferase,Other
+VOG10371,putative radical SAM superfamily protein 2,Other
+VOG10429,Hef nuclease,Other
+VOG10443,replication factor C large subunit,Replication
+VOG10448,RadA,Other
+VOG10452,portal protein,Portal
+VOG10453,gpF-like protein,Other
+VOG10454,zeta toxin domain protein,Other
+VOG10456,major capsid protein,Coat
+VOG10460,tail assembly chaperone,Assembly
+VOG10462,RNAse HI,Other
+VOG10471,DNA polymerase,Replication
+VOG10512,major capsid protein,Coat
+VOG10520,tail fiber protein,Tail
+VOG10522,DUF3800 domain-containing protein,Other
+VOG10538,structural protein,Other
+VOG10544,VirE N-domain protein,Other
+VOG10570,gp77,Other
+VOG10596,putative primase,Replication
+VOG10608,prophage protein,Other
+VOG10633,gp004,Other
+VOG10634,gp80,Other
+VOG10636,gp241,Other
+VOG10637,gp1,Other
+VOG10638,gp44,Other
+VOG10641,gp35,Other
+VOG10654,tail tape measure chaperone protein,Tail
+VOG10666,BTLCP-like protein,Other
+VOG10674,terminase large subunit,Terminase
+VOG10717,putative protein containing Nos-D like domain,Other
+VOG10719,peptidase M15,Other
+VOG10724,putative homing endonuclease,Other
+VOG10737,elongation factor Ts-like protein,Other
+VOG10738,S-adenosylmethionine decarboxylase-like protein,Other
+VOG10739,putative peptidase-like protein,Other
+VOG10763,signal peptide protein,Other
+VOG10787,RelA/SpoT family protein,Other
+VOG10842,terminase small subunit,Terminase
+VOG10856,DNA topoisomerase II large subunit C-terminal region,Replication
+VOG10861,gp22,Other
+VOG10868,minor capsid protein,Coat
+VOG10870,putative Transcription initiation factor B,Other
+VOG10880,packaging NTPase P4,Other
+VOG10883,gpJ,Other
+VOG10887,RNA ligase 2,Other
+VOG10898,gp15,Other
+VOG10909,putative tail fiber protein,Tail
+VOG10914,chaperone protein DnaK,Other
+VOG10915,capsid decoration protein,Coat
+VOG10916,gp14,Other
+VOG10917,prophage antirepressor,Other
+VOG10920,gp35,Other
+VOG10930,long tail fiber distal subunit,Tail
+VOG10934,putative amidotransferase,Other
+VOG10942,minor coat protein,Coat
+VOG10943,gp19,Other
+VOG10944,minor structural protein,Other
+VOG10945,holin,Lysis
+VOG10951,o-spanin,Other
+VOG10953,gp38,Other
+VOG10957,putative tail protein,Tail
+VOG10962,tail protein,Tail
+VOG10967,putative tail sheath protein,Tail
+VOG10969,putative tail fiber protein,Tail
+VOG10971,cytolethal distending toxin V B subunit,Other
+VOG10972,minor structural protein gp58,Other
+VOG10978,putative peptidase/serine protease,Other
+VOG10979,DNA polymerase subunit III,Replication
+VOG10986,adenosylribosyltransferase,Other
+VOG10993,peptidase domain-containing protein,Other
+VOG10995,head morphogenesis protein,Other
+VOG11009,putative TROVE-like domain protein,Other
+VOG11016,putative transcriptional regulator,Other
+VOG11017,putative radical SAM superfamily protein 1,Other
+VOG11026,scaffolding protein,Other
+VOG11048,structural protein,Other
+VOG11053,tape measure protein,Other
+VOG11065,gp53 protein,Other
+VOG11070,tail fiber protein,Tail
+VOG11071,putative tape measure protein,Other
+VOG11075,DNA-binding protein,Other
+VOG11080,putative crossover junction endodeoxyribonuclease RusA,Other
+VOG11081,Rec A-like recombinase,Other

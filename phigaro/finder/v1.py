@@ -18,9 +18,7 @@ class V1Finder(AbstractFinder):
         kkz, ar_positions = convert_npn(bacteria_npn)
 
         grad = count_grad(kkz, self.window_size)
-        norm_grad = count_norm_grad(
-            grad, self.window_size, self.min_phage_in_window
-        )
+        norm_grad = count_norm_grad(grad, self.window_size, self.min_phage_in_window)
         phages = get_phages(kkz, norm_grad)
 
         for phage in phages:
@@ -30,9 +28,9 @@ class V1Finder(AbstractFinder):
             # )
 
             yield Phage(
-                begin=phage['start'],
-                end=phage['end'],
-                is_prophage=phage['end'] - phage['start'] < 0.8 * len(kkz),
+                begin=phage["start"],
+                end=phage["end"],
+                is_prophage=phage["end"] - phage["start"] < 0.8 * len(kkz),
             )
 
 
@@ -48,9 +46,7 @@ def count_grad(sequence, window_size):
         end = int(i + offset)
         if end > len(sequence) - 1:  # if end is out of range
             end = len(sequence) - 1
-        grad[i] += sum(
-            sequence[start : end + 1]
-        )  # count sum of elements in window
+        grad[i] += sum(sequence[start : end + 1])  # count sum of elements in window
     return grad
 
 
@@ -128,10 +124,10 @@ def convert_npn(npn):
     ar_positions = []
 
     for i, letter in enumerate(npn):
-        if letter == 'P':
+        if letter == "P":
             kkz.append(1)
         else:
             kkz.append(0)
-        if letter == 'r':
+        if letter == "r":
             ar_positions.append(i)
     return kkz, ar_positions
